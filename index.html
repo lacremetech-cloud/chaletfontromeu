@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Chalet de luxe à vendre à Font-Romeu — 280 m² neufs, 6 chambres, spa, vue panoramique sur les Pyrénées catalanes. Livraison 2025. Brochure confidentielle sur demande." />
+<meta name="theme-color" content="#1A1410" />
+
+<meta property="og:title" content="Chalet de luxe à Font-Romeu — Le Cambre d'Aze · Brochure sur demande" />
+<meta property="og:description" content="280 m² neufs face aux Pyrénées catalanes. Diffusion confidentielle. Brochure (PDF, plans, prix) envoyée sous 24h." />
+<meta property="og:image" content="assets/video/poster.jpg" />
+<meta property="og:type" content="website" />
+
+<title>Chalet de luxe à Font-Romeu — Le Cambre d'Aze · À vendre</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="image" href="assets/video/poster.jpg" fetchpriority="high" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand" aria-label="Eliom Immobilier">
+      <span class="nav__brand-mark">ELIOM</span>
+      <span class="nav__brand-sub">Immobilier d'exception</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#bien">Le bien</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#lieu">Le lieu</a>
+      <a href="#process">Visite</a>
+    </nav>
+
+    <button class="btn btn--primary btn--sm js-open-brochure nav__cta" type="button">
+      Recevoir la brochure
+    </button>
+
+    <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav__mobile" id="navMobile" aria-label="Navigation mobile">
+    <a href="#bien">Le bien</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#lieu">Le lieu</a>
+    <a href="#process">Comment ça se passe</a>
+    <button class="btn btn--primary js-open-brochure" type="button">Recevoir la brochure</button>
+  </nav>
+</header>
+
+<!-- ============== HERO (video + form) ============== -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <!-- Mobile fallback: poster image (pas de play button moche, plus rapide) -->
+    <img class="hero__poster" src="assets/video/poster.jpg"
+         alt="Le Cambre d'Aze, chalet d'exception à Font-Romeu" />
+    <!-- Desktop: vidéo background -->
+    <video
+      class="hero__video"
+      autoplay muted loop playsinline
+      webkit-playsinline="true"
+      x5-playsinline="true"
+      disablepictureinpicture
+      preload="metadata"
+      poster="assets/video/poster.jpg"
+      aria-hidden="true">
+      <source src="assets/video/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__grid">
+
+    <div class="hero__left">
+      <div class="hero__pill">
+        <span class="dot"></span>
+        Bien d'exception &nbsp;·&nbsp; À vendre &nbsp;·&nbsp; Pyrénées
+      </div>
+
+      <div class="hero__kicker">Le Cambre d'Aze</div>
+      <h1 class="hero__title">
+        Chalet de luxe<br />
+        à <span class="italic">Font-Romeu</span>.
+      </h1>
+
+      <p class="hero__subtitle">
+        280 m² neufs · 6 chambres · Spa, sauna, salle de sport ·<br />
+        Livré clé en main · 1 800 m d'altitude.
+      </p>
+
+      <ul class="hero__features">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Construction 2025 · Jamais habité
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Vue panoramique plein sud sur les Pyrénées
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Diffusion confidentielle · 1 unique propriété
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile-only : video player en autoplay muet bouclé (style Apple landing) -->
+    <div class="hero__mobile-video">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline="true"
+        x5-playsinline="true"
+        preload="metadata"
+        poster="assets/video/poster.jpg">
+        <source src="assets/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__mobile-video-controls">
+        <button class="hero__mobile-video-btn js-toggle-sound" type="button" aria-label="Activer le son">
+          <svg class="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+          <svg class="icon-unmuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          </svg>
+        </button>
+        <button class="hero__mobile-video-btn js-fullscreen-video" type="button" aria-label="Plein écran">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/>
+          </svg>
+        </button>
+      </div>
+      <span class="hero__mobile-video-label">
+        <span class="dot"></span>
+        Visite vidéo · 1 min 29
+      </span>
+    </div>
+
+    <aside class="hero__form-wrap" id="brochureForm">
+      <div class="hero__form-card">
+        <div class="eyebrow">Brochure confidentielle</div>
+        <h2 class="hero__form-title">
+          Recevoir le dossier&nbsp;complet
+        </h2>
+        <p class="hero__form-lede">
+          PDF · plans détaillés · prix.<br />
+          Envoyé sous 24h, sans engagement.
+        </p>
+
+        <ul class="hero__form-perks">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Plans détaillés des 3 niveaux
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Prestations et matériaux
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Prix et conditions d'acquisition
+          </li>
+        </ul>
+
+        <button class="btn btn--gold btn--lg js-open-brochure hero__form-cta" type="button">
+          Recevoir la brochure
+        </button>
+
+        <p class="hero__form-trust">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% confidentiel · Aucun spam · Données protégées
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <a href="#bien" class="hero__scroll" aria-label="Faire défiler">
+    <span>Découvrir le bien</span>
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<!-- ============== CARTE D'IDENTITÉ — BENTO MODERNE ============== -->
+<section class="bento reveal" id="bien">
+  <div class="container">
+    <div class="bento__head">
+      <div>
+        <div class="eyebrow">Le bien · Carte d'identité</div>
+        <h2 class="section-title">Un chalet,<br />sept évidences.</h2>
+      </div>
+
+      <p class="bento__positioning">
+        <strong>Pour les familles qui veulent un pied-à-terre montagne sans gérer le chantier</strong> —
+        ni les artisans, ni les délais, ni les dépassements.
+        <em>Livré, équipé, prêt à habiter.</em>
+      </p>
+    </div>
+
+    <div class="bento__grid">
+
+      <!-- Featured photo card -->
+      <div class="bento__cell bento__cell--photo">
+        <img src="assets/images/exterior-dusk.jpg"
+             alt="Façade extérieure du chalet au crépuscule" loading="lazy" />
+        <div class="bento__photo-overlay">
+          <div class="bento__photo-eyebrow">Le bien</div>
+          <div class="bento__photo-title">Le Cambre d'Aze</div>
+          <div class="bento__photo-meta">Font-Romeu · Livraison 2025</div>
+        </div>
+      </div>
+
+      <!-- 280 m² -->
+      <div class="bento__cell">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V9z"/>
+        </svg>
+        <div class="bento__value">280<span>m²</span></div>
+        <div class="bento__label">Habitables · 3 niveaux</div>
+      </div>
+
+      <!-- 6 chambres -->
+      <div class="bento__cell">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M2 17v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5M2 17h20M2 17v3M22 17v3M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>
+        </svg>
+        <div class="bento__value">6</div>
+        <div class="bento__label">Chambres dont 1 suite parentale</div>
+      </div>
+
+      <!-- 16 couchages -->
+      <div class="bento__cell">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="9" cy="7" r="3"/>
+          <circle cx="17" cy="7" r="3"/>
+          <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M15 21v-2a4 4 0 0 1 4-4h2"/>
+        </svg>
+        <div class="bento__value">16</div>
+        <div class="bento__label">Couchages répartis dans 6 chambres</div>
+      </div>
+
+      <!-- 4 salles d'eau -->
+      <div class="bento__cell">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 10h16M5 10v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8M9 16v2M12 16v2M15 16v2"/>
+        </svg>
+        <div class="bento__value">4</div>
+        <div class="bento__label">Salles d'eau + WC invités</div>
+      </div>
+
+      <!-- 1800 m altitude -->
+      <div class="bento__cell">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M3 20l5-9 4 7 3-5 6 7M3 20h18"/>
+        </svg>
+        <div class="bento__value">1 800<span>m</span></div>
+        <div class="bento__label">Altitude · Plus haute station des Pyrénées</div>
+      </div>
+
+      <!-- 180° panorama (featured dark) -->
+      <div class="bento__cell bento__cell--feature">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M21 12a9 9 0 0 1-18 0M3 12a9 9 0 0 1 18 0M12 3v18M3 12h18"/>
+        </svg>
+        <div class="bento__value">180°</div>
+        <div class="bento__label">De panorama plein sud · Pyrénées catalanes</div>
+        <div class="bento__feature-tag">✦ Signature du bien</div>
+      </div>
+
+      <!-- Livré clé en main -->
+      <div class="bento__cell bento__cell--accent">
+        <svg class="bento__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        <div class="bento__value-text">Clé en main</div>
+        <div class="bento__label">Construction neuve · Jamais habité · Livraison 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== STORY 1 — L'ART DE VIVRE ============== -->
+<section class="story reveal">
+  <div class="container story__grid">
+
+    <div class="story__copy">
+      <div class="eyebrow">L'art de vivre</div>
+      <h2 class="section-title">
+        Un refuge<br />taillé pour la lumière.
+      </h2>
+
+      <p>
+        Le Cambre d'Aze a été pensé comme un sanctuaire. Façade plein sud,
+        baies vitrées toute hauteur, hauteur sous plafond de plus de cinq mètres :
+        chaque détail a été dessiné pour que la montagne entre chez vous.
+      </p>
+
+      <p>
+        Bois patinés des anciennes granges, pierre sèche locale, poêle suspendu
+        à foyer panoramique. Un dialogue entre tradition catalane et architecture
+        contemporaine, où le silence devient une matière première.
+      </p>
+
+      <button class="btn btn--ghost js-open-brochure" type="button">
+        Recevoir la brochure (PDF · plans · prix)
+      </button>
+    </div>
+
+    <div class="story__media">
+      <img src="assets/images/golden-hour-dining.jpg"
+           alt="Lumière dorée du soir dans la salle à manger" loading="lazy" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== GALERIE IMMERSIVE ============== -->
+<section class="gallery reveal" id="galerie">
+  <div class="container">
+    <div class="eyebrow">Immersion</div>
+    <h2 class="section-title">Vivre Le Cambre d'Aze</h2>
+    <p class="section-lede">
+      Plus de 100 photographies et un plan détaillé du bien sont inclus
+      dans la brochure confidentielle.
+    </p>
+  </div>
+
+  <div class="gallery__grid">
+    <figure class="gallery__item gallery__item--lg" data-lightbox>
+      <img src="assets/images/hero-vertical.jpg"
+           alt="Table dressée face aux montagnes enneigées" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/dining-fireplace.jpg"
+           alt="Salle à manger et poêle à bois contemporain" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/exterior-dusk.jpg"
+           alt="Façade extérieure éclairée au crépuscule" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item gallery__item--wide" data-lightbox>
+      <img src="assets/images/table-mountain-view.jpg"
+           alt="Vue dégagée sur les Pyrénées depuis la salle à manger" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/living-room.jpg"
+           alt="Salon contemporain avec poutres apparentes" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/spa-sauna.jpg"
+           alt="Espace bien-être : sauna et douche italienne" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/fitness-room.jpg"
+           alt="Salle de sport privée équipée" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item gallery__item--wide" data-lightbox>
+      <img src="assets/images/bedroom-suite.jpg"
+           alt="Suite parentale avec tête de lit en vieux bois" loading="lazy" />
+    </figure>
+
+    <figure class="gallery__item" data-lightbox>
+      <img src="assets/images/drone-roofs.jpg"
+           alt="Vue aérienne drone — toits enneigés et panorama" loading="lazy" />
+    </figure>
+
+    <!-- Teaser plan d'étage : pas une vraie image, une tuile incitative -->
+    <figure class="gallery__item gallery__item--teaser js-open-brochure" role="button" tabindex="0"
+            aria-label="Voir les plans dans la brochure">
+      <div class="gallery__teaser">
+        <svg class="gallery__teaser-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="0"/>
+          <path d="M3 9h18M9 3v18M3 15h6M15 9v12"/>
+        </svg>
+        <div class="gallery__teaser-eyebrow">Plans détaillés</div>
+        <div class="gallery__teaser-title">Voir la circulation<br />des trois niveaux</div>
+        <div class="gallery__teaser-cta">
+          Inclus dans la brochure
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    </figure>
+  </div>
+
+  <div class="container gallery__cta">
+    <button class="btn btn--primary btn--lg js-open-brochure" type="button">
+      Recevoir la brochure complète (PDF · plans · prix)
+    </button>
+  </div>
+</section>
+
+<!-- ============== TROIS PILIERS ============== -->
+<section class="pillars reveal" id="experience">
+  <div class="container">
+    <div class="eyebrow">L'expérience</div>
+    <h2 class="section-title">Trois promesses, tenues.</h2>
+
+    <div class="pillars__grid">
+
+      <article class="pillar">
+        <div class="pillar__media">
+          <img src="assets/images/mountain-snow-sun.jpg"
+               alt="Panorama montagne enneigée et lumière du sud" loading="lazy" />
+        </div>
+        <div class="pillar__body">
+          <div class="pillar__num">01</div>
+          <h3>La vue</h3>
+          <p>
+            Une orientation plein sud, une exposition rare aux 300 jours
+            de soleil annuels du Cerdan. Les baies vitrées encadrent
+            les sommets comme une œuvre vivante.
+          </p>
+        </div>
+      </article>
+
+      <article class="pillar pillar--reverse">
+        <div class="pillar__media">
+          <img src="assets/images/spa-sauna.jpg"
+               alt="Espace bien-être : sauna infrarouge et douche italienne" loading="lazy" />
+        </div>
+        <div class="pillar__body">
+          <div class="pillar__num">02</div>
+          <h3>L'espace bien-être</h3>
+          <p>
+            Sauna infrarouge, douche italienne, jacuzzi extérieur couvert
+            tourné vers les sommets, salle de sport équipée au niveau
+            inférieur. Le bien-être, à demeure — chaque jour de l'année.
+          </p>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__media">
+          <img src="assets/images/dining-fireplace.jpg"
+               alt="Espace de vie ouvert et convivial" loading="lazy" />
+        </div>
+        <div class="pillar__body">
+          <div class="pillar__num">03</div>
+          <h3>La convivialité</h3>
+          <p>
+            Plus de 80 m² de pièce de vie ouverte, une table d'hôte
+            de douze couverts, une cheminée centrale. Les grandes
+            tablées retrouvent enfin leur place.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== LE LIEU ============== -->
+<section class="place reveal" id="lieu">
+  <div class="place__media">
+    <img src="assets/images/aerial-sunset.jpg"
+         alt="Vue aérienne du domaine et des Pyrénées au coucher du soleil"
+         loading="lazy" />
+  </div>
+
+  <div class="place__overlay">
+    <div class="container">
+      <div class="eyebrow eyebrow--light">Le lieu</div>
+      <h2 class="section-title section-title--light">
+        Font-Romeu,<br />
+        la station des sommets et du soleil.
+      </h2>
+
+      <p class="place__lede">
+        Plus haute commune de France habitée à l'année, Font-Romeu cumule
+        une altitude de 1 800 mètres, un domaine skiable de 43 km de pistes,
+        et l'ensoleillement le plus généreux des Pyrénées.
+      </p>
+
+      <div class="place__metrics">
+        <div>
+          <div class="place__metric-value">1h30</div>
+          <div class="place__metric-label">de Perpignan</div>
+        </div>
+        <div>
+          <div class="place__metric-value">2h30</div>
+          <div class="place__metric-label">de Barcelone</div>
+        </div>
+        <div>
+          <div class="place__metric-value">3h00</div>
+          <div class="place__metric-label">de Toulouse</div>
+        </div>
+        <div>
+          <div class="place__metric-value">300j</div>
+          <div class="place__metric-label">de soleil par an</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DÉTAILS TECHNIQUES ============== -->
+<section class="specs reveal">
+  <div class="container specs__grid">
+
+    <div class="specs__intro">
+      <div class="eyebrow">Le dossier</div>
+      <h2 class="section-title">Les détails<br />qui comptent.</h2>
+      <p>
+        Construction 2025, normes RT 2020, matériaux d'origine locale.
+        Le dossier complet — incluant les plans, les matériaux et les
+        conditions d'acquisition — est transmis sur demande.
+      </p>
+      <button class="btn btn--ghost js-open-brochure" type="button" style="margin-top: 1.5rem;">
+        Recevoir la brochure (PDF · plans · prix)
+      </button>
+    </div>
+
+    <dl class="specs__list">
+      <div class="specs__row">
+        <dt>Surface habitable</dt>
+        <dd>280 m² · 3 niveaux</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Distribution</dt>
+        <dd>6 chambres dont 1 suite parentale</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Salles d'eau</dt>
+        <dd>4 salles d'eau + WC invités</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Pièces de bien-être</dt>
+        <dd>Salle de sport · Jacuzzi extérieur · Sauna en option</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Extérieurs</dt>
+        <dd>Terrasse panoramique · Balcons · Jardin privatif · Garage couvert</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Chauffage</dt>
+        <dd>Pompe à chaleur · Poêle à bois suspendu</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Matériaux</dt>
+        <dd>Vieux bois, pierre sèche locale, granit, finitions sur mesure</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Performance</dt>
+        <dd>Norme RT 2020 · Isolation haute densité</dd>
+      </div>
+      <div class="specs__row">
+        <dt>Livraison</dt>
+        <dd>2025 — Construction neuve, jamais habitée</dd>
+      </div>
+      <div class="specs__row specs__row--accent">
+        <dt>Prix</dt>
+        <dd><strong>Sur demande</strong> · Dans le dossier confidentiel</dd>
+      </div>
+    </dl>
+
+  </div>
+</section>
+
+<!-- ============== COMMENT ÇA SE PASSE (process) ============== -->
+<section class="process reveal" id="process">
+  <div class="container">
+    <div class="process__head">
+      <div class="eyebrow">La démarche</div>
+      <h2 class="section-title">
+        Comment se déroule<br />une acquisition.
+      </h2>
+      <p class="section-lede">
+        Une approche sobre, en trois étapes. Aucun démarchage, aucun engagement.
+      </p>
+    </div>
+
+    <ol class="process__steps">
+      <li class="process__step">
+        <div class="process__num">01</div>
+        <h3>Vous recevez la brochure</h3>
+        <p>
+          Plans détaillés, prestations complètes, prix et conditions.
+          Le dossier confidentiel vous parvient par email sous 24h ouvrées.
+        </p>
+      </li>
+
+      <li class="process__step">
+        <div class="process__num">02</div>
+        <h3>Nous reprenons contact</h3>
+        <p>
+          Si le bien correspond à votre recherche, Thibaut Razeyre vous
+          contacte pour échanger sur votre projet — sans pression commerciale.
+        </p>
+      </li>
+
+      <li class="process__step">
+        <div class="process__num">03</div>
+        <h3>Visite privée sur place</h3>
+        <p>
+          Une visite individuelle est organisée à Font-Romeu, en présentiel
+          ou en visio pour les acquéreurs internationaux. Vous décidez ensuite.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============== PRIX & CTA FINAL ============== -->
+<section class="price reveal">
+  <div class="container price__inner">
+    <div class="eyebrow eyebrow--light">Acquisition</div>
+    <h2 class="section-title section-title--light">
+      Une seule étape<br />vous en sépare.
+    </h2>
+    <p class="price__lede">
+      Plans, prestations, conditions d'acquisition, prix.
+      Tout est dans le dossier — transmis sous 24h ouvrées,
+      en toute confidentialité.
+    </p>
+
+    <button class="btn btn--gold btn--lg js-open-brochure" type="button">
+      Recevoir la brochure complète (PDF · plans · prix)
+    </button>
+
+    <p class="price__note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Sans engagement &nbsp;·&nbsp;
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Réponse sous 24h &nbsp;·&nbsp;
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      100% confidentiel
+    </p>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">ELIOM</div>
+      <div class="footer__tagline">Immobilier d'exception · Pyrénées-Orientales</div>
+    </div>
+
+    <div class="footer__info">
+      <p class="footer__info-title">L'agence</p>
+      <p>SASU ELIOM</p>
+      <p>Canet-en-Roussillon &amp; Font-Romeu</p>
+    </div>
+
+    <div class="footer__info">
+      <p class="footer__info-title">Le bien</p>
+      <p>Le Cambre d'Aze</p>
+      <p>Chalet neuf — Livraison 2025</p>
+    </div>
+
+    <div class="footer__credits">
+      <p>Photographies · Thomas Frowein</p>
+      <p>© 2026 Eliom Immobilier — Tous droits réservés</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== MODAL BROCHURE ============== -->
+<div class="modal" id="brochureModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="modal__backdrop js-close-modal"></div>
+
+  <div class="modal__panel" role="document">
+    <button class="modal__close js-close-modal" type="button" aria-label="Fermer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="modal__content">
+      <div class="eyebrow">Brochure confidentielle</div>
+      <h3 class="modal__title" id="modalTitle">
+        Recevez le dossier complet<br />du Cambre d'Aze.
+      </h3>
+      <p class="modal__lede">
+        Plans détaillés, prestations, prix et conditions d'acquisition.
+        Transmis sous 24h ouvrées, sans aucun engagement.
+      </p>
+
+      <ul class="modal__perks">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Brochure complète envoyée sous 24h
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Plans, matériaux, prix
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          100% confidentiel · Aucun spam
+        </li>
+      </ul>
+
+      <div class="modal__form" id="brochureFormContainer">
+        <!-- Form Systeme.io chargé en lazy au 1er click sur un CTA
+             (évite la barre d'autocomplete iOS au 1er tap) -->
+        <div class="modal__form-loading" aria-hidden="true">
+          <div class="modal__form-spinner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== STICKY CTA ============== -->
+<!-- Mobile: bottom bar plein largeur · Desktop: floating button bottom-right discret
+     Tout le container est cliquable (pas seulement le span "Recevoir la brochure") -->
+<div class="sticky-cta js-open-brochure" id="stickyCta"
+     role="button" tabindex="0" aria-hidden="true"
+     aria-label="Recevoir la brochure du Cambre d'Aze">
+  <div class="sticky-cta__inner">
+    <div class="sticky-cta__copy">
+      <div class="sticky-cta__title">Le Cambre d'Aze</div>
+      <div class="sticky-cta__sub">Chalet neuf · Font-Romeu · À vendre</div>
+    </div>
+    <span class="btn btn--gold sticky-cta__btn">
+      Recevoir la brochure
+    </span>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
