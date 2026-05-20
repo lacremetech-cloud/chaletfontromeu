@@ -406,6 +406,16 @@
     }
   }, { passive: true });
 
+  /* ---------- Language switcher: mémorise le choix manuel ---------- */
+  /* Empêche le script de détection auto (dans le <head>) de rebondir
+     l'utilisateur vers une langue qu'il vient de quitter manuellement. */
+  document.querySelectorAll('.nav__lang-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const lang = link.getAttribute('lang');
+      try { localStorage.setItem('langChoice', lang); } catch (e) {}
+    });
+  });
+
   /* ---------- Smooth scroll for anchor links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {

@@ -31,6 +31,20 @@
 <link rel="alternate" hreflang="fr" href="/" />
 <link rel="alternate" hreflang="es" href="/es/" />
 <link rel="alternate" hreflang="x-default" href="/" />
+
+<script>
+/* Auto-redirect to /es/ for Spanish-speaking browsers, unless user manually chose FR.
+   Runs inline in <head> before render to avoid flash of wrong language. */
+(function () {
+  try {
+    var saved = localStorage.getItem('langChoice');
+    if (saved === 'es') { window.location.replace('/es/'); return; }
+    if (saved === 'fr') return;
+    var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (lang.indexOf('es') === 0) { window.location.replace('/es/'); }
+  } catch (e) { /* localStorage blocked: stay on FR */ }
+})();
+</script>
 </head>
 <body>
 
@@ -51,9 +65,20 @@
 
     <div class="nav__actions">
       <div class="nav__lang" role="group" aria-label="Langue">
-        <a href="/" class="nav__lang-link is-active" aria-current="true" lang="fr">FR</a>
-        <span class="nav__lang-sep" aria-hidden="true">·</span>
-        <a href="/es/" class="nav__lang-link" lang="es">ES</a>
+        <a href="/" class="nav__lang-link is-active" aria-current="true" lang="fr" hreflang="fr" title="Français" aria-label="Français">
+          <svg class="nav__lang-flag" viewBox="0 0 3 2" aria-hidden="true">
+            <rect width="1" height="2" fill="#002395"/>
+            <rect x="1" width="1" height="2" fill="#fff"/>
+            <rect x="2" width="1" height="2" fill="#ED2939"/>
+          </svg>
+        </a>
+        <a href="/es/" class="nav__lang-link" lang="es" hreflang="es" title="Español" aria-label="Español">
+          <svg class="nav__lang-flag" viewBox="0 0 3 2" aria-hidden="true">
+            <rect width="3" height="0.5" fill="#AA151B"/>
+            <rect y="0.5" width="3" height="1" fill="#F1BF00"/>
+            <rect y="1.5" width="3" height="0.5" fill="#AA151B"/>
+          </svg>
+        </a>
       </div>
       <button class="btn btn--primary btn--sm js-open-brochure nav__cta" type="button">
         Recevoir la brochure
@@ -71,8 +96,22 @@
     <a href="#lieu">Le lieu</a>
     <a href="#process">Comment ça se passe</a>
     <div class="nav__lang nav__lang--mobile" role="group" aria-label="Langue">
-      <a href="/" class="nav__lang-link is-active" aria-current="true" lang="fr">Français</a>
-      <a href="/es/" class="nav__lang-link" lang="es">Español</a>
+      <a href="/" class="nav__lang-link is-active" aria-current="true" lang="fr" hreflang="fr">
+        <svg class="nav__lang-flag" viewBox="0 0 3 2" aria-hidden="true">
+          <rect width="1" height="2" fill="#002395"/>
+          <rect x="1" width="1" height="2" fill="#fff"/>
+          <rect x="2" width="1" height="2" fill="#ED2939"/>
+        </svg>
+        Français
+      </a>
+      <a href="/es/" class="nav__lang-link" lang="es" hreflang="es">
+        <svg class="nav__lang-flag" viewBox="0 0 3 2" aria-hidden="true">
+          <rect width="3" height="0.5" fill="#AA151B"/>
+          <rect y="0.5" width="3" height="1" fill="#F1BF00"/>
+          <rect y="1.5" width="3" height="0.5" fill="#AA151B"/>
+        </svg>
+        Español
+      </a>
     </div>
     <button class="btn btn--primary js-open-brochure" type="button">Recevoir la brochure</button>
   </nav>
