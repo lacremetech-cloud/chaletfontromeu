@@ -1845,14 +1845,60 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
 @media (max-width: 768px) {
   .container { padding: 0 1.5rem; }
 
-  .nav__inner { grid-template-columns: 1fr auto; }
+  /* === MOBILE NAV — non-sticky, logo + drapeaux + burger === */
+  .nav {
+    position: static;
+    background: rgba(245, 241, 234, 0.98);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 0;
+  }
+  .nav.is-scrolled {
+    background: rgba(245, 241, 234, 0.98);
+    padding: 0.85rem 0;
+  }
+  .nav__inner {
+    grid-template-columns: 1fr auto auto;
+    gap: 0.85rem;
+    padding: 0 1.25rem;
+  }
+  .nav__brand-mark {
+    color: var(--fg);
+    font-size: 1.15rem;
+    letter-spacing: 0.16em;
+  }
+  .nav__brand-sub { display: none; }
   .nav__links { display: none; }
   .nav .btn--ghost { display: none; }
-  .nav__burger { display: flex; }
+  .nav__burger {
+    display: flex;
+    justify-self: end;
+  }
+  .nav__burger span { background: var(--fg); }
+  /* Show inline lang flags on mobile (replaces hidden default) */
+  .nav__actions .nav__lang {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .nav__actions .nav__lang-link {
+    padding: 0.25rem;
+    opacity: 0.7;
+  }
+  .nav__actions .nav__lang-link.is-active {
+    opacity: 1;
+  }
+  .nav__actions .nav__lang-flag {
+    width: 20px;
+    height: 14px;
+  }
+  .nav__actions .nav__lang-link.is-active .nav__lang-flag {
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 0 0 3px rgba(0,0,0,0.08);
+  }
+  /* Mobile burger menu: align below the new (shorter) static nav */
+  .nav__mobile { top: 52px; }
 
   /* === MOBILE HERO — tight, form-forward === */
   .hero {
-    padding: 5.5rem 1rem 2rem;
+    padding: 1.5rem 1rem 2rem;
     min-height: auto;
     align-items: flex-start;
   }
