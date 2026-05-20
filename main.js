@@ -150,13 +150,19 @@
 
   // Lazy load du script Systeme.io : on l'injecte uniquement au 1er ouverture
   // -> évite que iOS Safari déclenche l'autocomplete au 1er tap sur le CTA
+  // Le funnel diffère selon la langue de la page (FR / ES).
+  const isSpanish = document.documentElement.lang === 'es';
+  const FORM_SCRIPT = isSpanish
+    ? { id: 'form-script-tag-24095092', src: 'https://womenvestor.systeme.io/public/remote/page/41070063f5e08476227a41bc494901a2d19b623d.js' }
+    : { id: 'form-script-tag-24078244', src: 'https://womenvestor.systeme.io/public/remote/page/41031899721b5c7af51ea4cf506e6b31005ec6bd.js' };
+
   let formLoaded = false;
   const loadBrochureForm = () => {
     if (formLoaded || !formContainer) return;
     formLoaded = true;
     const script = document.createElement('script');
-    script.id = 'form-script-tag-24078244';
-    script.src = 'https://womenvestor.systeme.io/public/remote/page/41031899721b5c7af51ea4cf506e6b31005ec6bd.js';
+    script.id = FORM_SCRIPT.id;
+    script.src = FORM_SCRIPT.src;
     script.async = true;
     formContainer.appendChild(script);
 
