@@ -1847,7 +1847,7 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
 
   /* === MOBILE NAV — non-sticky, logo + drapeaux + burger === */
   .nav {
-    position: static;
+    position: relative; /* relative (not static) so z-index applies + child mobile menu can position against it */
     background: rgba(245, 241, 234, 0.98);
     border-bottom: 1px solid var(--border);
     padding: 0.85rem 0;
@@ -1893,8 +1893,11 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
   .nav__actions .nav__lang-link.is-active .nav__lang-flag {
     box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 0 0 3px rgba(0,0,0,0.08);
   }
-  /* Mobile burger menu: align below the new (shorter) static nav */
-  .nav__mobile { top: 52px; }
+  /* Mobile burger menu: align below the new (shorter) static nav, force above hero */
+  .nav__mobile {
+    top: 52px;
+    z-index: 100;
+  }
 
   /* === MOBILE HERO — tight, form-forward === */
   .hero {
@@ -2020,9 +2023,8 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
   .footer { padding: 4rem 0 2.5rem; }
   .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
 
-  /* Hide nav CTA + lang switcher inline on mobile (handled by hamburger menu) */
+  /* Hide nav CTA on mobile (handled by hamburger menu) — flags stay visible inline */
   .nav__cta { display: none; }
-  .nav__actions .nav__lang { display: none; }
 
   /* Add bottom padding so sticky CTA bar doesn't cover footer */
   body { padding-bottom: 60px; }
