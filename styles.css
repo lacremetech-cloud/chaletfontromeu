@@ -312,6 +312,64 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
   color: #F5F1EA;
 }
 
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  justify-self: end;
+}
+
+.nav__lang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav__lang-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  padding: 0.25rem 0.1rem;
+  transition: color var(--t);
+}
+.nav__lang-link:hover,
+.nav__lang-link.is-active {
+  color: #fff;
+}
+.nav__lang-link.is-active {
+  font-weight: 500;
+}
+.nav__lang-sep {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.75rem;
+}
+.nav.is-scrolled .nav__lang-link {
+  color: var(--muted-fg);
+}
+.nav.is-scrolled .nav__lang-link:hover,
+.nav.is-scrolled .nav__lang-link.is-active {
+  color: var(--fg);
+}
+.nav.is-scrolled .nav__lang-sep {
+  color: var(--muted-fg);
+  opacity: 0.5;
+}
+
+.nav__lang--mobile {
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+.nav__lang--mobile .nav__lang-link {
+  color: var(--muted-fg);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+}
+.nav__lang--mobile .nav__lang-link.is-active {
+  color: var(--fg);
+}
+
 .nav__burger {
   display: none;
   width: 32px;
@@ -699,7 +757,8 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
 }
 
 .hero__pill {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 1.2rem;
@@ -1791,7 +1850,7 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
   .hero__pill {
     font-size: 0.6rem;
     padding: 0.45rem 0.85rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     letter-spacing: 0.15em;
   }
   .hero__title {
@@ -1899,8 +1958,9 @@ p { color: var(--muted-fg); line-height: 1.75; font-size: 1.0625rem; }
   .footer { padding: 4rem 0 2.5rem; }
   .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
 
-  /* Hide nav CTA on mobile (handled by hamburger menu) */
+  /* Hide nav CTA + lang switcher inline on mobile (handled by hamburger menu) */
   .nav__cta { display: none; }
+  .nav__actions .nav__lang { display: none; }
 
   /* Add bottom padding so sticky CTA bar doesn't cover footer */
   body { padding-bottom: 60px; }
