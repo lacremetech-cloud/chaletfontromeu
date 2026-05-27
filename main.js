@@ -153,8 +153,8 @@
   // Le funnel diffère selon la langue de la page (FR / ES).
   const isSpanish = document.documentElement.lang === 'es';
   const FORM_SCRIPT = isSpanish
-    ? { id: 'form-script-tag-24095092', src: 'https://womenvestor.systeme.io/public/remote/page/41070063f5e08476227a41bc494901a2d19b623d.js' }
-    : { id: 'form-script-tag-24078244', src: 'https://womenvestor.systeme.io/public/remote/page/41031899721b5c7af51ea4cf506e6b31005ec6bd.js' };
+    ? { id: 'form-script-tag-24095092', src: 'https://lecambredaze.systeme.io/public/remote/page/41070063f5e08476227a41bc494901a2d19b623d.js' }
+    : { id: 'form-script-tag-24078244', src: 'https://lecambredaze.systeme.io/public/remote/page/41031899721b5c7af51ea4cf506e6b31005ec6bd.js' };
 
   let formLoaded = false;
   const loadBrochureForm = () => {
