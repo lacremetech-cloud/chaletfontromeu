@@ -138,6 +138,68 @@ body {
 }
 .page-wa:hover .page-wa__arrow { transform: translateX(3px); }
 
+/* Bloc Prix + TVA — paire 2 colonnes en bas de page 5 */
+.price-tva {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 5mm;
+  margin-top: 1rem;
+  align-items: stretch;
+}
+.price-box {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-dark);
+  color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.price-box::after {
+  content: "";
+  position: absolute;
+  right: -30px; top: -30px;
+  width: 90px; height: 90px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+.price-box__label {
+  font-size: 7.5pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.price-box__amount {
+  font-family: var(--serif);
+  font-size: 26pt;
+  line-height: 1.05;
+  color: var(--accent-soft);
+  font-weight: 500;
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.01em;
+}
+.price-box__amount small {
+  font-size: 0.36em;
+  margin-left: 0.45rem;
+  letter-spacing: 0.2em;
+  color: rgba(245,241,234, 0.6);
+  font-weight: 400;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.price-box__note {
+  font-size: 8pt;
+  color: rgba(245,241,234, 0.7);
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+}
+.price-tva .tva-note { margin-top: 0; }
+
 /* Encart TVA récupérable (page 5) — accent terracotta chaleureux */
 .tva-note {
   margin-top: 1rem;
@@ -1032,7 +1094,7 @@ body {
   .cover__content { padding: 12mm 8mm; }
   .cover__title { font-size: 42pt; }
   .h2 { font-size: 22pt; }
-  .manifest, .specs-grid, .split, .perf-grid, .confid {
+  .manifest, .specs-grid, .split, .perf-grid, .confid, .price-tva {
     grid-template-columns: 1fr;
     height: auto;
     gap: 1.5rem;
@@ -1261,21 +1323,26 @@ body {
         <div class="specs-row"><dt>Matériaux</dt><dd>Vieux bois · Pierre sèche · Granit</dd></div>
         <div class="specs-row"><dt>Performance</dt><dd>RT 2020 · DPE A · GES A</dd></div>
         <div class="specs-row"><dt>Livraison</dt><dd>2025 — Construction neuve</dd></div>
-        <div class="specs-row specs-row--accent"><dt>Prix affiché</dt><dd>1 600 000 € TTC</dd></div>
       </dl>
     </div>
     <img class="side-img" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale" />
   </div>
 
-  <div class="tva-note">
-    <strong>TVA récupérable.</strong> Dans le cadre d'une exploitation
-    en résidence de tourisme classée ou en location meublée avec services
-    para-hôteliers, l'acquéreur peut récupérer la TVA incluse dans le
-    prix. L'investissement effectif passe de
-    <span class="tva-figure">1 600 000 € TTC</span> à
-    <span class="tva-figure">1 350 000 € net</span> —
-    environ <strong>250 000 € de TVA récupérables</strong>.
-    Conditions précises sur demande.
+  <div class="price-tva">
+    <div class="price-box">
+      <div class="price-box__label">Prix de vente</div>
+      <div class="price-box__amount">1 600 000<span>&nbsp;€</span><small>TTC</small></div>
+      <div class="price-box__note">Construction neuve · Livraison 2025 · Diffusion confidentielle</div>
+    </div>
+
+    <div class="tva-note">
+      <strong>TVA récupérable.</strong> En exploitation résidence de tourisme
+      classée ou location meublée avec services para-hôteliers, l'acquéreur
+      récupère la TVA incluse dans le prix d'achat. L'investissement effectif
+      passe à <span class="tva-figure">1 350 000 € net</span> —
+      environ <strong>250 000 € de TVA récupérables</strong>.
+      Conditions précises sur demande.
+    </div>
   </div>
 
   <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
