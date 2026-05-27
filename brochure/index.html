@@ -557,6 +557,30 @@ body {
   margin-top: 1rem;
 }
 .split__media { width: 100%; height: 100%; object-fit: cover; }
+/* Variante 2 photos empilées (page 7) */
+.split__photos {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4mm;
+  height: 100%;
+}
+.split__photos figure { margin: 0; position: relative; overflow: hidden; }
+.split__photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.split__photos figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.4rem 0.6rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  color: #fff;
+  font-size: 7pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 .split__text p { font-size: 11pt; margin-bottom: 0.85rem; }
 .split__list {
   list-style: none;
@@ -683,6 +707,51 @@ body {
   color: var(--muted);
 }
 
+/* Cartes villes (page 10) */
+.cities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4mm;
+  margin-top: 1rem;
+}
+.city {
+  border: 1px solid var(--border);
+  padding: 1rem 0.8rem 1.1rem;
+  text-align: center;
+  background: rgba(176, 141, 87, 0.04);
+  position: relative;
+}
+.city__icon {
+  width: 75px;
+  height: 45px;
+  margin: 0.25rem auto 0.75rem;
+  color: var(--accent);
+  display: block;
+}
+.city__name {
+  font-family: var(--serif);
+  font-size: 13pt;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+.city__duration {
+  font-size: 8pt;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.city__duration strong {
+  display: block;
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: 16pt;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+  text-transform: none;
+}
+
 /* ===== SEASONS (11) ===== */
 .seasons {
   display: grid;
@@ -691,11 +760,12 @@ body {
   margin-top: 1rem;
 }
 .season {
-  padding: 0.95rem 1rem 0.95rem 1.3rem;
+  padding: 0.7rem 0.9rem 0.7rem 1.2rem;
   border: 1px solid var(--border);
   background: rgba(176, 141, 87, 0.03);
   position: relative;
 }
+.season li { font-size: 8.5pt; padding: 0.28rem 0; }
 .season::before {
   content: '';
   position: absolute;
@@ -794,28 +864,106 @@ body {
   background: var(--accent);
 }
 
+/* Encart économie estimée (page 12) */
+.savings {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem 1rem;
+  border: 1.5px solid #2a9d3f;
+  background: rgba(42, 157, 63, 0.06);
+  border-radius: 2px;
+}
+.savings__head {
+  font-size: 7.5pt;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1f7a30;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.savings__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.savings__row {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 0.7rem;
+  align-items: center;
+  font-size: 8.5pt;
+}
+.savings__label {
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.savings__bar {
+  height: 20px;
+  background: rgba(26,20,16, 0.06);
+  position: relative;
+  border-radius: 2px;
+}
+.savings__bar span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.6rem;
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #fff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.savings__bar--old span { background: linear-gradient(90deg, #B0463A, #c95b4d); }
+.savings__bar--new span { background: linear-gradient(90deg, #2a9d3f, #56b863); }
+.savings__total {
+  margin-top: 0.7rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed rgba(42, 157, 63, 0.35);
+  font-size: 9pt;
+  text-align: center;
+  color: var(--muted);
+}
+.savings__total strong {
+  color: #1f7a30;
+  font-family: var(--serif);
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 /* ===== COMPARE (13) ===== */
 .compare {
   display: grid;
-  grid-template-columns: 1fr 1.1fr 1.1fr;
+  grid-template-columns: 0.85fr 1.1fr 1.1fr;
   gap: 0;
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
 }
 .compare > div {
-  padding: 0.85rem 0.95rem;
+  padding: 0.6rem 0.8rem;
   border-bottom: 1px solid var(--border);
   font-size: 9pt;
-  line-height: 1.5;
+  line-height: 1.45;
+  display: flex;
+  align-items: center;
 }
 .compare__head {
-  background: var(--fg);
-  color: var(--bg);
   font-family: var(--serif);
   font-size: 10pt;
   letter-spacing: 0.04em;
   font-weight: 500;
   text-align: center;
-  padding: 0.85rem !important;
+  padding: 0.7rem !important;
+  justify-content: center;
+}
+.compare__head--old {
+  background: rgba(176, 70, 58, 0.10);
+  color: #8B3A30;
+  border-top: 2px solid #B0463A;
+}
+.compare__head--new {
+  background: rgba(42, 157, 63, 0.10);
+  color: #1f7a30;
+  border-top: 2px solid #2a9d3f;
 }
 .compare__head-blank {
   background: transparent !important;
@@ -824,13 +972,41 @@ body {
 }
 .compare__cat {
   font-size: 7.5pt;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
+  color: var(--accent);
+  font-weight: 600;
+  gap: 0.45rem;
 }
-.compare__old { color: rgba(26,20,16,0.6); font-style: italic; }
-.compare__new { color: var(--accent); font-weight: 500; }
+.compare__cat svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.compare__old {
+  color: rgba(26,20,16,0.55);
+  background: rgba(176, 70, 58, 0.04);
+}
+.compare__new {
+  color: #1f7a30;
+  font-weight: 500;
+  background: rgba(42, 157, 63, 0.05);
+}
+.compare__cross {
+  color: #B0463A;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  font-size: 11pt;
+  flex-shrink: 0;
+}
+.compare__check {
+  color: #2a9d3f;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  font-size: 11pt;
+  flex-shrink: 0;
+}
 
 /* ===== TIMELINE (14) ===== */
 .timeline {
@@ -1060,7 +1236,7 @@ body {
   }
   .manifest__aside { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 1.5rem; }
   .stats, .place-metrics { grid-template-columns: repeat(2, 1fr); }
-  .materials-grid, .wellness-grid, .seasons { grid-template-columns: 1fr; }
+  .materials-grid, .wellness-grid, .seasons, .cities { grid-template-columns: 1fr; }
   .orient-points { grid-template-columns: 1fr; }
   .side-img, .split__media { height: 50mm; }
   .stats-photo, .place-img, .wellness-photo { height: 50mm; }
@@ -1369,7 +1545,16 @@ body {
   <div class="rule"></div>
 
   <div class="split">
-    <img class="split__media" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale avec tête de lit en vieux bois" />
+    <div class="split__photos">
+      <figure>
+        <img src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale avec tête de lit en vieux bois" />
+        <figcaption>Suite parentale</figcaption>
+      </figure>
+      <figure>
+        <img src="https://lecambredaze.vercel.app/assets/images/bunk-beds.jpg" alt="Chambre dortoir avec lits superposés en vieux bois" />
+        <figcaption>Chambre dortoir · jusqu'à 6 couchages</figcaption>
+      </figure>
+    </div>
     <div class="split__text">
       <p>
         Six chambres réparties sur trois niveaux, pensées comme autant
@@ -1538,27 +1723,62 @@ body {
 
   <p style="font-size: 11pt; line-height: 1.65;">
     Plus haute commune de France habitée à l'année, Font-Romeu cumule une
-    altitude de 1 650 mètres, un domaine skiable de 43 km de pistes, et
+    altitude de 1 650 mètres, un domaine skiable de 43 km, et près de
+    <strong style="color:var(--accent);">300 jours de soleil par an</strong> —
     l'ensoleillement le plus généreux des Pyrénées. À deux pas de l'Espagne,
     à mi-chemin entre la Méditerranée et l'Atlantique.
   </p>
 
-  <div class="place-metrics">
-    <div>
-      <div class="place-metrics__value">2h30</div>
-      <div class="place-metrics__label">de Barcelone</div>
+  <div class="cities">
+    <div class="city">
+      <svg class="city__icon" viewBox="0 0 100 60" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <path d="M20 55 L20 25 L23 18 L26 25 L26 55"/>
+          <path d="M38 55 L38 20 L42 11 L46 20 L46 55"/>
+          <path d="M54 55 L54 20 L58 11 L62 20 L62 55"/>
+          <path d="M74 55 L74 25 L77 18 L80 25 L80 55"/>
+          <line x1="15" y1="55" x2="85" y2="55"/>
+          <path d="M28 46 Q42 39 56 46"/>
+          <path d="M44 38 Q58 31 72 38"/>
+          <circle cx="42" cy="14" r="0.8" fill="currentColor"/>
+          <circle cx="58" cy="14" r="0.8" fill="currentColor"/>
+        </g>
+      </svg>
+      <div class="city__name">Barcelone</div>
+      <div class="city__duration"><strong>2h30</strong> en voiture</div>
     </div>
-    <div>
-      <div class="place-metrics__value">2h45</div>
-      <div class="place-metrics__label">de Toulouse</div>
+    <div class="city">
+      <svg class="city__icon" viewBox="0 0 100 60" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <path d="M10 22 L50 8 L90 22"/>
+          <line x1="15" y1="22" x2="85" y2="22"/>
+          <line x1="15" y1="55" x2="85" y2="55"/>
+          <line x1="22" y1="22" x2="22" y2="55"/>
+          <line x1="32" y1="22" x2="32" y2="55"/>
+          <line x1="42" y1="22" x2="42" y2="55"/>
+          <line x1="58" y1="22" x2="58" y2="55"/>
+          <line x1="68" y1="22" x2="68" y2="55"/>
+          <line x1="78" y1="22" x2="78" y2="55"/>
+          <path d="M46 55 L46 38 Q46 35 50 35 Q54 35 54 38 L54 55"/>
+        </g>
+      </svg>
+      <div class="city__name">Toulouse</div>
+      <div class="city__duration"><strong>2h45</strong> en voiture</div>
     </div>
-    <div>
-      <div class="place-metrics__value">2h45</div>
-      <div class="place-metrics__label">de Montpellier</div>
-    </div>
-    <div>
-      <div class="place-metrics__value">300j</div>
-      <div class="place-metrics__label">de soleil / an</div>
+    <div class="city">
+      <svg class="city__icon" viewBox="0 0 100 60" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <rect x="35" y="13" width="30" height="6"/>
+          <path d="M20 55 L20 25 Q20 19 26 19 L74 19 Q80 19 80 25 L80 55"/>
+          <line x1="20" y1="55" x2="80" y2="55"/>
+          <path d="M37 55 L37 39 Q37 33 43 33 L57 33 Q63 33 63 39 L63 55"/>
+          <line x1="50" y1="33" x2="50" y2="55" stroke-dasharray="2 2"/>
+          <line x1="28" y1="25" x2="28" y2="55"/>
+          <line x1="72" y1="25" x2="72" y2="55"/>
+        </g>
+      </svg>
+      <div class="city__name">Montpellier</div>
+      <div class="city__duration"><strong>2h45</strong> en voiture</div>
     </div>
   </div>
 
@@ -1586,7 +1806,7 @@ body {
 
   <img src="https://lecambredaze.vercel.app/assets/images/mountain-snow-sun.jpg"
        alt="Montagne enneigée sous le soleil catalan"
-       style="width:100%; height:55mm; object-fit:cover; margin: 1rem 0 0.5rem;" />
+       style="width:100%; height:40mm; object-fit:cover; margin: 0.5rem 0;" />
 
   <div class="seasons">
     <div class="season season--winter">
@@ -1705,9 +1925,26 @@ body {
         <li>Récupération des eaux pluviales (option)</li>
         <li>Garantie décennale gros œuvre</li>
         <li>Garantie biennale équipements</li>
-        <li>Parfait achèvement (1 an)</li>
         <li>Livraison contractuelle 2025</li>
       </ul>
+    </div>
+  </div>
+
+  <!-- Encart économie estimée -->
+  <div class="savings">
+    <div class="savings__head">Économie estimée sur la facture énergie</div>
+    <div class="savings__bars">
+      <div class="savings__row">
+        <div class="savings__label">Chalet ancien énergivore</div>
+        <div class="savings__bar savings__bar--old"><span style="width:100%">~ 400 € / mois</span></div>
+      </div>
+      <div class="savings__row">
+        <div class="savings__label">Chalet Mitja · RT 2020</div>
+        <div class="savings__bar savings__bar--new"><span style="width:25%">&lt; 100 € / mois</span></div>
+      </div>
+    </div>
+    <div class="savings__total">
+      Soit <strong>≈ 3 600 € d'économie / an</strong> · <strong>36 000 €</strong> sur 10 ans
     </div>
   </div>
 
@@ -1727,43 +1964,54 @@ body {
   <h2 class="h2">Pourquoi le neuf<br /><span class="italic">change tout</span>.</h2>
   <div class="rule"></div>
 
-  <p style="color: var(--muted); font-size: 11pt; max-width: 145mm;">
-    Le marché de la montagne reste dominé par l'ancien. La différence,
-    sur la durée et sur la sérénité, est massive.
+  <img src="https://lecambredaze.vercel.app/assets/images/exterior-balcony.jpg"
+       alt="Façade du chalet et balcon vieux bois"
+       style="width:100%; height:50mm; object-fit:cover; margin-bottom: 0.85rem;" />
+
+  <p style="color: var(--muted); font-size: 10.5pt; max-width: 145mm;">
+    Le marché de la montagne reste dominé par l'ancien. Sur la durée et sur
+    la sérénité, la différence est massive.
   </p>
 
   <div class="compare">
     <div class="compare__head-blank"></div>
-    <div class="compare__head">Bien ancien typique</div>
-    <div class="compare__head">Chalet Mitja</div>
+    <div class="compare__head compare__head--old">Bien ancien typique</div>
+    <div class="compare__head compare__head--new">Chalet Mitja</div>
 
-    <div class="compare__cat">Entretien</div>
-    <div class="compare__old">Lourd et imprévisible</div>
-    <div class="compare__new">Aucun pendant 10 ans</div>
+    <div class="compare__cat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Entretien
+    </div>
+    <div class="compare__old"><span class="compare__cross">✗</span>Lourd et imprévisible</div>
+    <div class="compare__new"><span class="compare__check">✓</span>Aucun pendant 10 ans</div>
 
-    <div class="compare__cat">Coûts cachés</div>
-    <div class="compare__old">À découvrir après achat</div>
-    <div class="compare__new">Tout est inclus, prix transparent</div>
+    <div class="compare__cat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Délais
+    </div>
+    <div class="compare__old"><span class="compare__cross">✗</span>Travaux longs, incertains</div>
+    <div class="compare__new"><span class="compare__check">✓</span>Livraison contractuelle 2025</div>
 
-    <div class="compare__cat">Garanties</div>
-    <div class="compare__old">Limitées au notaire</div>
-    <div class="compare__new">Décennales sur tout le gros œuvre</div>
+    <div class="compare__cat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Garanties
+    </div>
+    <div class="compare__old"><span class="compare__cross">✗</span>Limitées au notaire</div>
+    <div class="compare__new"><span class="compare__check">✓</span>Décennales sur le gros œuvre</div>
 
-    <div class="compare__cat">Finitions</div>
-    <div class="compare__old">À reprendre souvent</div>
-    <div class="compare__new">Sur mesure dès la livraison</div>
+    <div class="compare__cat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Énergie
+    </div>
+    <div class="compare__old"><span class="compare__cross">✗</span>DPE moyen E ou F</div>
+    <div class="compare__new"><span class="compare__check">✓</span>RT 2020 · DPE A</div>
 
-    <div class="compare__cat">Énergie</div>
-    <div class="compare__old">DPE moyen E ou F</div>
-    <div class="compare__new">RT 2020 — étiquette A</div>
-
-    <div class="compare__cat">Délais</div>
-    <div class="compare__old">Travaux longs et incertains</div>
-    <div class="compare__new">Livraison contractuelle 2025</div>
-
-    <div class="compare__cat">Style</div>
-    <div class="compare__old">Daté à moderniser</div>
-    <div class="compare__new">Architecture contemporaine</div>
+    <div class="compare__cat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V9z"/></svg>
+      Style
+    </div>
+    <div class="compare__old"><span class="compare__cross">✗</span>Daté, à moderniser</div>
+    <div class="compare__new"><span class="compare__check">✓</span>Architecture contemporaine</div>
   </div>
 
   <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
