@@ -236,52 +236,6 @@ body {
   white-space: nowrap;
 }
 
-/* Bouton flottant — téléchargement PDF (vrai download, pas le print dialog) */
-.pdf-btn {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  background: var(--accent);
-  color: #F5F1EA;
-  padding: 0.95rem 1.6rem;
-  font-family: var(--sans);
-  font-size: 9pt;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  border-radius: 100px;
-  z-index: 999;
-  box-shadow: 0 14px 36px rgba(176, 141, 87, 0.4);
-  transition: transform 200ms, box-shadow 200ms, background 200ms;
-}
-.pdf-btn:hover:not(:disabled) {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 44px rgba(176, 141, 87, 0.5);
-}
-.pdf-btn:disabled { opacity: 0.65; cursor: wait; }
-.pdf-btn svg {
-  width: 16px; height: 16px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.8;
-}
-.pdf-btn .spinner {
-  width: 14px; height: 14px;
-  border: 2px solid rgba(245,241,234,0.3);
-  border-top-color: #F5F1EA;
-  border-radius: 50%;
-  animation: spin 800ms linear infinite;
-  display: none;
-}
-.pdf-btn.is-loading .spinner { display: inline-block; }
-.pdf-btn.is-loading .pdf-icon { display: none; }
-@keyframes spin { to { transform: rotate(360deg); } }
 .page-num::before {
   content: '';
   display: inline-block;
@@ -426,11 +380,34 @@ body {
 }
 
 /* ===== MANIFESTO (2) ===== */
+.manifest-photos {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 3mm;
+  margin: 0.5rem 0 1rem;
+}
+.manifest-photos figure { margin: 0; position: relative; }
+.manifest-photos img {
+  width: 100%;
+  height: 65mm;
+  object-fit: cover;
+  display: block;
+}
+.manifest-photos figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.4rem 0.6rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  color: #fff;
+  font-size: 7pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
 .manifest {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 14mm;
-  height: calc(297mm - 60mm);
+  grid-template-columns: 1.5fr 1fr;
+  gap: 12mm;
   margin-top: 0.5rem;
 }
 .manifest__body p { font-size: 11.5pt; line-height: 1.7; margin-bottom: 1rem; }
@@ -1041,7 +1018,7 @@ body {
   @page { size: A4; margin: 0; }
   html, body { background: #fff !important; }
   body { padding: 0; }
-  .nav-bar, .pdf-btn, .page-wa { display: none !important; }
+  .nav-bar, .page-wa { display: none !important; }
   .brochure { max-width: none; }
   .page {
     margin: 0 !important;
@@ -1053,16 +1030,6 @@ body {
   }
   .page:last-child { page-break-after: auto; }
 }
-
-/* ===== MODE EXPORT PDF (toutes pages visibles, temporaire) ===== */
-.brochure.is-exporting .page {
-  display: block !important;
-  margin: 0 !important;
-  box-shadow: none;
-  transform: none !important;
-  animation: none;
-}
-.brochure.is-exporting { background: var(--bg); }
 
 /* Responsive : on adapte pour les écrans < A4 */
 @media (max-width: 240mm) {
@@ -1082,19 +1049,11 @@ body {
     justify-content: center;
     display: flex;
   }
-  .pdf-btn {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    bottom: 5.5rem;
-    padding: 0.85rem 1.4rem;
-    font-size: 8.5pt;
-  }
   .cover { padding: 0; min-height: 95vh; }
   .cover__content { padding: 12mm 8mm; }
   .cover__title { font-size: 42pt; }
   .h2 { font-size: 22pt; }
-  .manifest, .specs-grid, .split, .perf-grid, .confid, .price-tva {
+  .manifest, .manifest-photos, .specs-grid, .split, .perf-grid, .confid, .price-tva {
     grid-template-columns: 1fr;
     height: auto;
     gap: 1.5rem;
@@ -1148,6 +1107,21 @@ body {
   <h2 class="h2">Un sanctuaire<br />taillé pour la <span class="italic">lumière</span>.</h2>
   <div class="rule"></div>
 
+  <div class="manifest-photos">
+    <figure>
+      <img src="https://lecambredaze.vercel.app/assets/images/exterior-dusk.jpg" alt="Façade du chalet au crépuscule, sous la neige" />
+      <figcaption>Façade nord · à la tombée du jour</figcaption>
+    </figure>
+    <figure>
+      <img src="https://lecambredaze.vercel.app/assets/images/living-room.jpg" alt="Salon contemporain avec poutres apparentes" />
+      <figcaption>Pièce de vie · lumière naturelle</figcaption>
+    </figure>
+    <figure>
+      <img src="https://lecambredaze.vercel.app/assets/images/drone-roofs.jpg" alt="Toits enneigés et panorama des Pyrénées catalanes" />
+      <figcaption>Vue drone · Pyrénées catalanes</figcaption>
+    </figure>
+  </div>
+
   <div class="manifest">
     <div class="manifest__body">
       <p>
@@ -1158,21 +1132,12 @@ body {
       </p>
       <p>
         Bois patinés des anciennes granges, pierre sèche locale, poêle
-        suspendu à foyer panoramique. Un dialogue entre tradition
-        catalane et architecture contemporaine, où le silence devient
-        une matière première.
-      </p>
-      <p>
-        À 1 650 mètres d'altitude, au-dessus des nuages, on retrouve
-        ce que la montagne offre de plus rare : le temps. Celui des
-        grandes tablées, des feux qui durent, des aurores partagées.
+        suspendu à foyer panoramique. Un dialogue entre tradition catalane
+        et architecture contemporaine, où le silence devient une matière première.
       </p>
     </div>
 
     <aside class="manifest__aside">
-      <img src="https://lecambredaze.vercel.app/assets/images/golden-hour-dining.jpg"
-           alt="Lumière dorée du soir dans la salle à manger"
-           style="width:100%; height:85mm; object-fit:cover; margin-bottom:1rem;" />
       <div class="manifest__aside-title">Pour qui ?</div>
       <ul>
         <li>Familles cherchant un chalet haut de gamme</li>
@@ -1962,18 +1927,6 @@ body {
   <div class="nav-dots" id="navDots"></div>
 </nav>
 
-<!-- Bouton flottant de téléchargement PDF (rendu via html2pdf.js, photos incluses) -->
-<button class="pdf-btn" id="pdfBtn" type="button" aria-label="Télécharger au format PDF">
-  <svg class="pdf-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <span class="spinner" aria-hidden="true"></span>
-  <span class="pdf-label">Télécharger au format PDF</span>
-</button>
-
-<!-- html2pdf.js : rendu canvas-vers-PDF avec photos incluses, déclenche un download direct -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 <script>
 (() => {
   const pages = document.querySelectorAll('.page');
@@ -1982,8 +1935,6 @@ body {
   const nextBtn = document.getElementById('nextBtn');
   const counter = document.getElementById('navCounter');
   const dotsEl = document.getElementById('navDots');
-  const pdfBtn = document.getElementById('pdfBtn');
-  const brochureEl = document.querySelector('.brochure');
   let current = 1;
 
   // Build dots
@@ -2042,59 +1993,6 @@ body {
   }
   window.addEventListener('resize', updateScale);
   updateScale();
-
-  // ============== Export PDF (html2pdf.js) ==============
-  // Affiche temporairement toutes les pages, capture en PDF (photos incluses),
-  // déclenche le téléchargement direct, puis restaure l'affichage page par page.
-  pdfBtn.addEventListener('click', async () => {
-    if (typeof html2pdf === 'undefined') {
-      alert('La librairie de génération PDF n’est pas chargée. Vérifiez votre connexion internet et rechargez la page.');
-      return;
-    }
-    pdfBtn.disabled = true;
-    pdfBtn.classList.add('is-loading');
-    const labelEl = pdfBtn.querySelector('.pdf-label');
-    const originalLabel = labelEl.textContent;
-    labelEl.textContent = 'Génération en cours…';
-
-    // Active le mode "toutes pages visibles" (cf. .brochure.is-exporting)
-    brochureEl.classList.add('is-exporting');
-    // Réinitialise le scale pour rendre les pages à leur vraie taille pendant la capture
-    const savedScale = document.documentElement.style.getPropertyValue('--scale');
-    document.documentElement.style.setProperty('--scale', 1);
-
-    // Petit délai pour laisser le navigateur appliquer les nouveaux styles
-    await new Promise(r => setTimeout(r, 250));
-
-    const opt = {
-      margin:       0,
-      filename:     'Chalet-Mitja-Brochure.pdf',
-      image:        { type: 'jpeg', quality: 0.94 },
-      html2canvas:  {
-        scale: 2,
-        useCORS: true,
-        allowTaint: false,
-        logging: false,
-        backgroundColor: '#F5F1EA'
-      },
-      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-      pagebreak:    { mode: ['css', 'legacy'], before: '.page' }
-    };
-
-    try {
-      await html2pdf().set(opt).from(brochureEl).save();
-    } catch (err) {
-      console.error('PDF export failed:', err);
-      alert('Le téléchargement a échoué. Réessayez ou contactez-nous.');
-    } finally {
-      brochureEl.classList.remove('is-exporting');
-      document.documentElement.style.setProperty('--scale', savedScale || 1);
-      updateScale();
-      pdfBtn.disabled = false;
-      pdfBtn.classList.remove('is-loading');
-      labelEl.textContent = originalLabel;
-    }
-  });
 })();
 </script>
 
