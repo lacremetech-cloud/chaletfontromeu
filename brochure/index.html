@@ -1,1687 +1,940 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Brochure confidentielle — Chalet Mitja, chalet d'exception à vendre à Font-Romeu. Construction neuve 2025, 270 m², 6 chambres, spa, vue panoramique." />
-<meta name="robots" content="noindex, nofollow" />
-<title>Chalet Mitja — Brochure confidentielle</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<style>
-:root {
-  --bg: #F5F1EA;
-  --bg-dark: #1A1410;
-  --fg: #1A1410;
-  --muted: rgba(26,20,16, 0.62);
-  --accent: #B08D57;
-  --accent-soft: #d4b888;
-  --accent-dark: #8c6e3f;
-  --border: rgba(26,20,16, 0.14);
-  --serif: 'Cinzel', 'Times New Roman', serif;
-  --sans: 'Josefin Sans', -apple-system, sans-serif;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #4a443c; }
-body {
-  font-family: var(--sans);
-  color: var(--fg);
-  font-size: 11pt;
-  line-height: 1.55;
-  font-weight: 300;
-  padding: 2.5rem 1rem 6rem;
-  -webkit-font-smoothing: antialiased;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Chalet Mitja — Brochure confidentielle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#F5F1EA;
+      --gold:#B08D57;
+      --gold-light:#d4b888;
+      --gold-dark:#8c6e3f;
+      --ink:#1A1410;
+      --muted:rgba(26,20,16,.66);
+      --line:rgba(26,20,16,.14);
+      --white:#fffaf2;
+      --shadow:0 28px 70px rgba(26,20,16,.18);
+      --scale:1;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:#ded5c8;
+      color:var(--ink);
+      font-family:'Josefin Sans',sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
 
-.brochure { max-width: 210mm; margin: 0 auto; position: relative; }
+    /* ======= TOOLBAR (nav) bottom-center ======= */
+    .toolbar{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:rgba(26,20,16,.90);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 18px 45px rgba(0,0,0,.25);
+      pointer-events:auto;
+    }
+    .toolbar button{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-family:'Josefin Sans',sans-serif;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:11px;
+      padding:9px 13px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .toolbar button:hover{background:var(--gold);border-color:var(--gold);}
+    .toolbar button:disabled{opacity:.35;cursor:not-allowed;}
+    .nav-arrow{width:34px;height:34px;padding:0!important;font-size:24px!important;line-height:1;font-family:'Cinzel',serif!important;text-transform:none!important;display:flex;align-items:center;justify-content:center;}
+    .dots{display:flex;gap:5px;align-items:center;}
+    .dot{width:7px;height:7px;border-radius:999px;background:rgba(255,255,255,.34);cursor:pointer;transition:.2s ease;}
+    .dot.active{width:22px;background:var(--gold-light);}
 
-.page {
-  width: 210mm;
-  height: 297mm;
-  margin: 0 auto 1.75rem;
-  background: var(--bg);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
-  padding: 22mm 20mm;
-  display: none;
-  page-break-after: always;
-  animation: fadeIn 320ms ease-out;
-}
-.page.is-active { display: block; }
-.page:last-child { page-break-after: auto; }
+    /* ======= PDF DOWNLOAD BUTTON — bottom right ======= */
+    .pdf-btn{
+      position:fixed;
+      bottom:18px;
+      right:18px;
+      z-index:9999;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      background:var(--gold);
+      color:#fff;
+      font-family:'Josefin Sans',sans-serif;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:500;
+      padding:13px 22px;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      box-shadow:0 14px 36px rgba(176,141,87,.4);
+      transition:.25s ease;
+    }
+    .pdf-btn:hover{
+      background:var(--gold-dark);
+      transform:translateY(-2px);
+      box-shadow:0 18px 44px rgba(176,141,87,.5);
+    }
+    .pdf-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    /* ======= PRINT NOTE — top right tip ======= */
+    .print-note{
+      position:fixed;
+      top:18px;right:18px;
+      z-index:40;
+      max-width:270px;
+      background:rgba(245,241,234,.94);
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:12px 14px;
+      border-radius:14px;
+      font-size:11.5px;
+      line-height:1.4;
+      box-shadow:0 12px 30px rgba(26,20,16,.12);
+    }
+    .print-note strong{color:var(--ink);font-weight:500;}
 
-.eyebrow {
-  font-size: 8pt;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-  font-weight: 500;
-}
-.h1, .h2, .h3 {
-  font-family: var(--serif);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.005em;
-  margin: 0;
-  color: var(--fg);
-}
-.h1 { font-size: 38pt; }
-.h2 { font-size: 26pt; margin-bottom: 1rem; }
-.h3 { font-size: 14pt; margin-bottom: 0.4rem; }
-.italic { font-style: italic; color: var(--accent); font-weight: 400; }
-.rule { width: 60px; height: 1px; background: var(--accent); margin: 1rem 0 1.5rem; }
+    /* ======= MAIN — fit A4 to viewport ======= */
+    main{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding:24px 0 92px;
+    }
+    .book{
+      position:relative;
+      width:210mm;
+      min-height:297mm;
+      transform:scale(var(--scale));
+      transform-origin:top center;
+      /* compense le vide laissé en flow quand la page est réduite */
+      margin-bottom:calc((1 - var(--scale)) * -297mm);
+    }
 
-.page > p, .page > .body { margin-bottom: 0.85rem; }
+    /* ======= PAGES ======= */
+    .page{
+      width:210mm;height:297mm;
+      background:var(--cream);
+      box-shadow:var(--shadow);
+      padding:22mm 20mm;
+      position:relative;
+      display:none;
+      overflow:hidden;
+      page-break-after:always;
+    }
+    .page.active{display:block;animation:fade .35s ease both;}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.page-num {
-  position: absolute;
-  bottom: 12mm;
-  right: 20mm;
-  font-size: 8pt;
-  letter-spacing: 0.3em;
-  color: var(--muted);
-}
-.page-num::before {
-  content: '';
-  display: inline-block;
-  width: 24px; height: 1px;
-  background: var(--accent);
-  vertical-align: middle;
-  margin-right: 0.6rem;
-}
+    h1,h2,h3,.serif{font-family:'Cinzel',serif;font-weight:500;letter-spacing:.04em;}
+    h1{font-size:54px;line-height:.98;margin:0;color:var(--gold-light);}
+    h2{font-size:31px;line-height:1.12;margin:18px 0 18px;}
+    h3{font-size:17px;margin:0 0 10px;}
+    p{font-size:16px;line-height:1.58;margin:0 0 14px;color:var(--muted);font-weight:300;}
+    .lead{font-size:20px;line-height:1.55;color:var(--ink);font-weight:300;}
+    .eyebrow{
+      display:flex;align-items:center;gap:12px;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:11px;
+      font-weight:600;
+    }
+    .eyebrow:after{content:"";height:1px;background:var(--gold);opacity:.55;flex:1;}
+    .page-num{position:absolute;right:20mm;bottom:14mm;display:flex;align-items:center;gap:12px;color:var(--gold);font-size:12px;letter-spacing:.18em;}
+    .page-num:before{content:"";width:42px;height:1px;background:var(--gold);}
+    .brand-small{position:absolute;left:20mm;bottom:14mm;color:rgba(26,20,16,.45);font-size:11px;letter-spacing:.16em;text-transform:uppercase;}
 
-/* ===== NAV BAR ===== */
-.nav-bar {
-  position: fixed;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(26,20,16, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  padding: 0.45rem 0.6rem;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  z-index: 1000;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.4);
-}
-.nav-btn {
-  width: 38px; height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  color: #F5F1EA;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 200ms, color 200ms;
-}
-.nav-btn:hover { background: rgba(245,241,234,0.1); color: var(--accent-soft); }
-.nav-btn:disabled { opacity: 0.25; cursor: default; }
-.nav-btn:disabled:hover { background: transparent; color: #F5F1EA; }
-.nav-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+    /* ======= WHATSAPP CTA — bottom-center each content page ======= */
+    .page-wa{
+      position:absolute;
+      left:50%;
+      bottom:14mm;
+      transform:translateX(-50%);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:10.5px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      text-decoration:none;
+      transition:color .2s ease;
+      white-space:nowrap;
+    }
+    .page-wa:hover{color:var(--gold);}
+    .page-wa svg{width:12px;height:12px;fill:var(--gold);flex-shrink:0;}
+    .page-wa__arrow{
+      width:11px;height:11px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.8;
+      transition:transform .2s ease;
+    }
+    .page-wa:hover .page-wa__arrow{transform:translateX(3px);}
 
-.nav-counter {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--accent-soft);
-  font-family: var(--serif);
-  padding: 0 0.7rem;
-  min-width: 64px;
-  text-align: center;
-}
+    /* ======= LAYOUTS ======= */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+    .card{border:1px solid var(--line);background:rgba(255,250,242,.44);padding:18px;border-radius:2px;}
+    .photo{width:100%;height:260px;object-fit:cover;display:block;filter:saturate(.94) contrast(1.02);}
+    .photo.tall{height:440px;}
+    .photo.small{height:170px;}
+    .caption{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-top:9px;}
+    .gold{color:var(--gold);font-style:italic;}
+    .rule{height:1px;background:var(--line);margin:22px 0;}
+    .spec-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px;}
+    .spec-table td{border-bottom:1px solid var(--line);padding:12px 6px;vertical-align:top;}
+    .spec-table td:first-child{color:var(--gold);text-transform:uppercase;letter-spacing:.13em;font-size:11px;width:34%;font-weight:600;}
+    .spec-table tr.price td{color:var(--gold);font-family:'Cinzel',serif;font-size:18px;border-bottom:none;padding-top:18px;}
+    .spec-table tr.price td:first-child{font-family:'Josefin Sans',sans-serif;font-size:11px;}
+    .spec-table tr.price small{display:block;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:300;margin-top:6px;text-transform:none;}
+    .tva-note{
+      margin-top:18px;
+      padding:16px 18px;
+      border:1px solid var(--gold);
+      background:rgba(176,141,87,.07);
+      border-radius:2px;
+      font-size:13px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+    .tva-note strong{color:var(--ink);font-weight:500;}
+    .tva-note .tva-figure{
+      font-family:'Cinzel',serif;
+      color:var(--gold);
+      font-size:17px;
+      letter-spacing:.04em;
+      font-weight:500;
+    }
 
-.nav-dots {
-  display: flex;
-  gap: 5px;
-  padding: 0 0.5rem 0 0.75rem;
-  border-left: 1px solid rgba(245,241,234,0.15);
-  margin-left: 0.25rem;
-}
-.dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(245,241,234,0.25);
-  border: none;
-  cursor: pointer;
-  transition: background 200ms, transform 200ms;
-  padding: 0;
-}
-.dot:hover { background: rgba(245,241,234,0.55); }
-.dot.is-active { background: var(--accent-soft); transform: scale(1.45); }
+    /* ======= COVER ======= */
+    .cover{padding:0;background:#111;color:#fff;}
+    .cover-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.72)),url('https://lecambredaze.vercel.app/assets/images/exterior-dusk.jpg') center/cover no-repeat;}
+    .cover-content{position:absolute;inset:0;padding:24mm 20mm;display:flex;flex-direction:column;justify-content:space-between;}
+    .cover .top{display:flex;justify-content:space-between;align-items:flex-start;color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;}
+    .cover .bottom{max-width:560px;}
+    .cover h1{font-size:64px;text-shadow:0 16px 40px rgba(0,0,0,.4);}
+    .cover .subtitle{font-size:21px;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-top:18px;}
+    .cover .conf{color:var(--gold-light);letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin-top:45px;}
 
-.nav-print {
-  margin-left: 0.25rem;
-  padding-left: 0.75rem;
-  border-left: 1px solid rgba(245,241,234,0.15);
-}
+    /* ======= STAT GRID ======= */
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;}
+    .stat{border:1px solid var(--line);padding:16px 12px;text-align:center;background:rgba(255,250,242,.5);}
+    .stat strong{display:block;font-family:'Cinzel';font-size:28px;color:var(--gold);font-weight:500;margin-bottom:5px;}
+    .stat span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
 
-/* ===== COVER (1) ===== */
-.cover {
-  padding: 0;
-  color: #fff;
-  background: var(--bg-dark);
-}
-.cover__img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);
-}
-.cover__content {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 22mm 20mm;
-}
-.cover__brand {
-  font-family: var(--serif);
-  font-size: 11pt;
-  letter-spacing: 0.4em;
-  font-weight: 500;
-}
-.cover__brand small {
-  display: block;
-  font-family: var(--sans);
-  font-size: 7pt;
-  letter-spacing: 0.32em;
-  font-weight: 300;
-  opacity: 0.8;
-  margin-top: 4px;
-}
-.cover__kicker {
-  font-family: var(--serif);
-  font-size: 10pt;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent-soft);
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-  display: inline-block;
-}
-.cover__title {
-  font-family: var(--serif);
-  font-size: 60pt;
-  line-height: 0.95;
-  font-weight: 500;
-  margin: 0 0 1rem;
-}
-.cover__title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
-.cover__sub {
-  font-size: 12pt;
-  letter-spacing: 0.05em;
-  font-weight: 300;
-  max-width: 70%;
-  opacity: 0.92;
-}
-.cover__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-size: 8pt;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
+    /* ======= MINI ICONS ======= */
+    .icon-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;}
+    .mini-icon{border:1px solid var(--line);padding:15px;text-align:center;background:rgba(255,250,242,.38);}
+    .mini-icon svg{height:34px;margin-bottom:10px;stroke:var(--gold);fill:none;stroke-width:1.4;}
+    .mini-icon span{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.12em;line-height:1.35;}
 
-/* ===== MANIFESTO (2) ===== */
-.manifest {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 14mm;
-  height: calc(297mm - 60mm);
-  margin-top: 0.5rem;
-}
-.manifest__body p { font-size: 11.5pt; line-height: 1.7; margin-bottom: 1rem; }
-.manifest__aside {
-  border-left: 1px solid var(--border);
-  padding-left: 12mm;
-}
-.manifest__aside-title {
-  font-family: var(--serif);
-  font-size: 11pt;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-  color: var(--accent);
-}
-.manifest__aside ul { list-style: none; }
-.manifest__aside li {
-  font-size: 9.5pt;
-  padding: 0.5rem 0;
-  border-bottom: 1px dotted var(--border);
-  color: var(--fg);
-}
-.manifest__aside li:last-child { border-bottom: none; }
-.manifest__aside li::before { content: '— '; color: var(--accent); }
+    .svg-panel{border:1px solid var(--line);background:rgba(255,250,242,.48);padding:16px;margin-top:20px;}
+    svg text{font-family:'Josefin Sans',sans-serif;fill:var(--ink);}
 
-/* ===== STATS (3) ===== */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin: 1.25rem 0;
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
-}
-.stats__cell {
-  padding: 1.2rem 1rem;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  min-height: 100px;
-}
-.stats__icon {
-  width: 22px; height: 22px;
-  color: var(--accent);
-  margin-bottom: 0.6rem;
-  stroke-width: 1.4;
-  fill: none;
-  stroke: currentColor;
-  display: block;
-}
-.stats__value {
-  font-family: var(--serif);
-  font-size: 22pt;
-  line-height: 1;
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-}
-.stats__value small {
-  font-size: 0.42em;
-  margin-left: 2px;
-  color: var(--muted);
-  font-weight: 400;
-}
-.stats__label {
-  font-size: 7.5pt;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+    /* ======= COMPARISON ======= */
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:22px;}
+    .compare .col{padding:18px;border-right:1px solid var(--line);}
+    .compare .col:last-child{border-right:0;background:rgba(176,141,87,.08);}
+    .compare ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.65;}
 
-.stats-photo {
-  width: 100%;
-  height: 80mm;
-  object-fit: cover;
-  margin-top: 0.5rem;
-}
+    /* ======= FINAL CTA (page 16) ======= */
+    .final-cta{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100%;}
+    .final-cta h2{font-size:42px;max-width:620px;}
+    .final-cta p{max-width:560px;}
+    .final-cta a{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--gold);color:#fff;text-decoration:none;border-radius:999px;padding:16px 28px;text-transform:uppercase;letter-spacing:.14em;font-size:12px;box-shadow:0 20px 45px rgba(176,141,87,.28);transition:.25s ease;}
+    .final-cta a:hover{background:var(--gold-dark);transform:translateY(-2px);}
+    .final-cta a svg{width:18px;height:18px;fill:currentColor;}
+    .footer-legal{position:absolute;bottom:16mm;left:20mm;right:20mm;text-align:center;color:rgba(26,20,16,.54);font-size:11px;line-height:1.6;}
+    .watermark{position:absolute;right:-22mm;top:28mm;font-family:'Cinzel';font-size:92px;color:rgba(176,141,87,.055);transform:rotate(90deg);letter-spacing:.06em;white-space:nowrap;}
 
-/* ===== MATERIALS (4) ===== */
-.materials-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  margin-top: 1rem;
-}
-.material {
-  padding: 1.25rem 1.1rem;
-  border: 1px solid var(--border);
-  background: rgba(176, 141, 87, 0.03);
-}
-.material__icon {
-  width: 32px; height: 32px;
-  color: var(--accent);
-  margin-bottom: 0.7rem;
-  stroke-width: 1.2;
-  fill: none;
-  stroke: currentColor;
-  display: block;
-}
-.material h3 {
-  font-family: var(--serif);
-  font-size: 13pt;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-.material p {
-  font-size: 9pt;
-  color: var(--muted);
-  line-height: 1.55;
-  margin: 0;
-}
+    /* ======= PRINT ======= */
+    @media print{
+      @page{size:A4;margin:0;}
+      body{background:white;}
+      main{display:block;padding:0;}
+      .book{
+        width:auto;min-height:0;
+        transform:none!important;
+        margin-bottom:0!important;
+      }
+      .page{display:block!important;box-shadow:none;margin:0;width:210mm;height:297mm;break-after:page;page-break-after:always;}
+      .page:last-child{page-break-after:auto;}
+      .toolbar,.print-note,.pdf-btn,.page-wa{display:none!important;}
+    }
 
-/* ===== SPECS (5) ===== */
-.specs-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 12mm;
-  height: calc(297mm - 60mm);
-}
-.specs-list dl { margin: 0; }
-.specs-row {
-  display: grid;
-  grid-template-columns: 38% 1fr;
-  gap: 1rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 9.5pt;
-}
-.specs-row dt {
-  font-size: 7pt;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  align-self: center;
-}
-.specs-row dd {
-  margin: 0;
-  color: var(--fg);
-}
-.specs-row--accent dd { color: var(--accent); font-weight: 500; }
-.side-img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ===== Two-column split (6, 7) ===== */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 12mm;
-  height: calc(297mm - 75mm);
-  margin-top: 1rem;
-}
-.split__media { width: 100%; height: 100%; object-fit: cover; }
-.split__text p { font-size: 11pt; margin-bottom: 0.85rem; }
-.split__list {
-  list-style: none;
-  margin: 1.25rem 0 0;
-}
-.split__list li {
-  padding: 0.55rem 0 0.55rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 10pt;
-  position: relative;
-}
-.split__list li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 1rem;
-  width: 12px; height: 1px;
-  background: var(--accent);
-}
-.split__list li:last-child { border-bottom: none; }
-
-/* ===== BIEN-ÊTRE (8) ===== */
-.wellness-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  margin-top: 1rem;
-}
-.wellness-card {
-  padding: 1.4rem 1.2rem;
-  border: 1px solid var(--border);
-  text-align: left;
-}
-.wellness-icon {
-  width: 36px; height: 36px;
-  color: var(--accent);
-  margin-bottom: 0.7rem;
-  stroke-width: 1.2;
-  fill: none;
-  stroke: currentColor;
-  display: block;
-}
-.wellness-card h4 {
-  font-family: var(--serif);
-  font-size: 13pt;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-}
-.wellness-card p {
-  font-size: 9pt;
-  color: var(--muted);
-  line-height: 1.55;
-}
-.wellness-photo {
-  width: 100%;
-  height: 70mm;
-  object-fit: cover;
-  margin-top: 4mm;
-}
-
-/* ===== ORIENTATION (9) ===== */
-.orient-wrap { margin-top: 1rem; }
-.orient-svg {
-  display: block;
-  width: 100%;
-  max-width: 150mm;
-  margin: 1rem auto 1.5rem;
-  height: auto;
-}
-.orient-points {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4mm;
-  margin-top: 1rem;
-}
-.orient-point {
-  text-align: center;
-  padding: 1rem;
-  border: 1px solid var(--border);
-}
-.orient-point__value {
-  font-family: var(--serif);
-  font-size: 18pt;
-  color: var(--accent);
-  margin-bottom: 0.3rem;
-}
-.orient-point__label {
-  font-size: 8pt;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ===== LIEU (10) ===== */
-.place-img {
-  width: 100%;
-  height: 80mm;
-  object-fit: cover;
-  margin: 1rem 0 1.25rem;
-}
-.place-metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
-  margin-top: 1rem;
-}
-.place-metrics > div {
-  padding: 1.1rem 0.8rem;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  text-align: center;
-}
-.place-metrics__value {
-  font-family: var(--serif);
-  font-size: 18pt;
-  line-height: 1;
-  margin-bottom: 0.35rem;
-  color: var(--accent);
-}
-.place-metrics__label {
-  font-size: 7pt;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ===== SEASONS (11) ===== */
-.seasons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  margin-top: 1rem;
-}
-.season {
-  padding: 1.4rem 1.2rem;
-  border: 1px solid var(--border);
-  background: rgba(176, 141, 87, 0.03);
-}
-.season__name {
-  font-family: var(--serif);
-  font-size: 14pt;
-  color: var(--accent);
-  margin-bottom: 0.6rem;
-  font-weight: 500;
-}
-.season__name small {
-  font-family: var(--sans);
-  font-size: 7pt;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-}
-.season ul {
-  list-style: none;
-  margin: 0;
-}
-.season li {
-  font-size: 9pt;
-  padding: 0.4rem 0;
-  border-bottom: 1px dotted var(--border);
-  color: var(--fg);
-}
-.season li:last-child { border-bottom: none; }
-.season li::before { content: '· '; color: var(--accent); }
-
-/* ===== PERFORMANCE (12) ===== */
-.perf-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12mm;
-  margin-top: 1rem;
-}
-.perf-chart { margin-top: 0.5rem; }
-.perf-bar {
-  display: grid;
-  grid-template-columns: 30px 1fr 60px;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 4px 0;
-  font-size: 8pt;
-}
-.perf-bar__letter {
-  font-family: var(--serif);
-  font-size: 11pt;
-  font-weight: 500;
-}
-.perf-bar__track {
-  height: 14px;
-  background: var(--border);
-  position: relative;
-}
-.perf-bar__fill { height: 100%; }
-.perf-bar__value {
-  font-size: 7pt;
-  color: var(--muted);
-  text-align: right;
-  letter-spacing: 0.05em;
-}
-.perf-bar.is-current .perf-bar__letter { color: var(--accent); font-size: 14pt; }
-.perf-bar.is-current .perf-bar__value { color: var(--accent); font-weight: 500; }
-.perf-list {
-  list-style: none;
-  margin: 0;
-}
-.perf-list li {
-  padding: 0.55rem 0 0.55rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 10pt;
-  position: relative;
-}
-.perf-list li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 1.05rem;
-  width: 12px; height: 1px;
-  background: var(--accent);
-}
-
-/* ===== COMPARE (13) ===== */
-.compare {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr 1.1fr;
-  gap: 0;
-  margin-top: 1.25rem;
-}
-.compare > div {
-  padding: 0.85rem 0.95rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 9pt;
-  line-height: 1.5;
-}
-.compare__head {
-  background: var(--fg);
-  color: var(--bg);
-  font-family: var(--serif);
-  font-size: 10pt;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-  text-align: center;
-  padding: 0.85rem !important;
-}
-.compare__head-blank {
-  background: transparent !important;
-  color: transparent;
-  border-bottom: none !important;
-}
-.compare__cat {
-  font-size: 7.5pt;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
-}
-.compare__old { color: rgba(26,20,16,0.6); font-style: italic; }
-.compare__new { color: var(--accent); font-weight: 500; }
-
-/* ===== TIMELINE (14) ===== */
-.timeline {
-  margin-top: 1.25rem;
-  position: relative;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 25px; top: 30px; bottom: 30px;
-  width: 1px;
-  background: var(--accent);
-  opacity: 0.4;
-}
-.timeline__step {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  gap: 1.75rem;
-  padding: 1.1rem 0;
-  align-items: start;
-}
-.timeline__num {
-  position: relative;
-  z-index: 1;
-  width: 50px; height: 50px;
-  background: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 13pt;
-  color: var(--accent);
-  font-weight: 500;
-}
-.timeline__content h3 {
-  font-family: var(--serif);
-  font-size: 13pt;
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-}
-.timeline__content p {
-  font-size: 9.5pt;
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.55;
-}
-
-/* ===== CONFID (15) ===== */
-.confid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14mm;
-  margin-top: 1rem;
-  height: calc(297mm - 75mm);
-}
-.confid__text p { font-size: 11pt; line-height: 1.7; margin-bottom: 1rem; }
-.confid__quote {
-  font-family: var(--serif);
-  font-size: 16pt;
-  line-height: 1.3;
-  font-style: italic;
-  color: var(--accent);
-  padding: 1.5rem 0 1.5rem 1.5rem;
-  border-left: 1px solid var(--accent);
-  margin-top: 1.5rem;
-}
-.confid__list {
-  list-style: none;
-  align-self: center;
-}
-.confid__list li {
-  padding: 0.7rem 0 0.7rem 2rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 10pt;
-  position: relative;
-}
-.confid__list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0; top: 0.65rem;
-  width: 18px; height: 18px;
-  background: var(--accent);
-  color: var(--bg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9pt;
-  font-weight: 600;
-}
-
-/* ===== FINAL (16) ===== */
-.final {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: calc(297mm - 44mm);
-  justify-content: center;
-  align-items: center;
-}
-.final .eyebrow { margin-bottom: 1.5rem; }
-.final__title {
-  font-family: var(--serif);
-  font-size: 36pt;
-  line-height: 1;
-  margin: 0 auto 1.5rem;
-  font-weight: 500;
-}
-.final__title em { font-style: italic; color: var(--accent); font-weight: 400; }
-.final__lede {
-  font-size: 12pt;
-  color: var(--muted);
-  max-width: 120mm;
-  margin: 0 auto 2.5rem;
-  line-height: 1.7;
-}
-.final__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.85rem;
-  background: var(--accent);
-  color: #F5F1EA;
-  padding: 1.1rem 2.5rem;
-  font-family: var(--sans);
-  font-size: 9pt;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 200ms, box-shadow 200ms, background 200ms;
-  box-shadow: 0 10px 28px rgba(176,141,87,0.3);
-  border: none;
-  cursor: pointer;
-}
-.final__btn:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(176,141,87,0.4);
-}
-.final__btn svg { width: 18px; height: 18px; fill: currentColor; }
-.final__mention {
-  font-size: 7pt;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 1.5rem 0 2.5rem;
-}
-.final__contact {
-  padding: 1.5rem 2rem;
-  background: var(--fg);
-  color: var(--bg);
-  max-width: 130mm;
-  width: 100%;
-}
-.final__contact .eyebrow { color: var(--accent-soft); margin-bottom: 0.5rem; }
-.final__contact strong {
-  font-family: var(--serif);
-  font-size: 14pt;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-}
-.final__contact p {
-  font-size: 9.5pt;
-  opacity: 0.92;
-  line-height: 1.65;
-  margin: 0;
-}
-.final__legal {
-  position: absolute;
-  bottom: 12mm; left: 20mm; right: 20mm;
-  font-size: 7pt;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
-  padding-top: 0.55rem;
-  line-height: 1.45;
-  text-align: center;
-}
-
-/* ===== PRINT ===== */
-@media print {
-  @page { size: A4; margin: 0; }
-  html, body { background: #fff !important; }
-  body { padding: 0; }
-  .nav-bar { display: none !important; }
-  .brochure { max-width: none; }
-  .page {
-    margin: 0;
-    box-shadow: none;
-    display: block !important;
-    animation: none;
-    page-break-after: always;
-  }
-  .page:last-child { page-break-after: auto; }
-}
-
-/* Responsive : on adapte pour les écrans < A4 */
-@media (max-width: 240mm) {
-  body { padding: 1rem 0.5rem 6rem; }
-  .page {
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    padding: 12mm 8mm;
-  }
-  .cover { padding: 0; min-height: 95vh; }
-  .cover__content { padding: 12mm 8mm; }
-  .cover__title { font-size: 42pt; }
-  .h2 { font-size: 22pt; }
-  .manifest, .specs-grid, .split, .perf-grid, .confid {
-    grid-template-columns: 1fr;
-    height: auto;
-    gap: 1.5rem;
-  }
-  .manifest__aside { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 1.5rem; }
-  .stats, .place-metrics { grid-template-columns: repeat(2, 1fr); }
-  .materials-grid, .wellness-grid, .seasons { grid-template-columns: 1fr; }
-  .orient-points { grid-template-columns: 1fr; }
-  .side-img, .split__media { height: 50mm; }
-  .stats-photo, .place-img, .wellness-photo { height: 50mm; }
-  .compare { grid-template-columns: 1fr; }
-  .compare > div { border-bottom: 1px solid var(--border) !important; }
-  .compare__head { grid-column: 1; }
-  .compare__head-blank { display: none; }
-  .final__title { font-size: 28pt; }
-  .final__legal { position: static; margin-top: 2rem; }
-}
-</style>
+    /* ======= MOBILE — disable A4 fit, stack pages naturally ======= */
+    @media (max-width:240mm){
+      main{padding:14px 0 100px;}
+      .book{
+        width:auto;
+        max-width:100%;
+        min-height:0;
+        transform:none;
+        margin-bottom:0;
+        padding:0 12px;
+      }
+      .page{
+        width:100%;
+        height:auto;
+        min-height:auto;
+        padding:30px 22px 70px;
+        margin-bottom:18px;
+      }
+      .cover{padding:0;min-height:80vh;}
+      h1{font-size:42px;}
+      h2{font-size:24px;}
+      .cover h1{font-size:46px;}
+      .cover .subtitle{font-size:16px;}
+      .grid-2,.grid-3,.stat-grid,.icon-row,.compare{grid-template-columns:1fr;}
+      .photo.tall{height:260px;}
+      .watermark{display:none;}
+      .page-wa{
+        position:static;
+        transform:none;
+        margin-top:24px;
+        justify-content:center;
+        display:flex;
+      }
+      .brand-small,.page-num{position:static;display:block;margin-top:8px;text-align:center;}
+      .page-num:before{display:none;}
+      .pdf-btn{
+        left:50%;
+        right:auto;
+        bottom:72px;
+        transform:translateX(-50%);
+        padding:11px 18px;
+        font-size:10px;
+      }
+      .print-note{display:none;}
+    }
+  </style>
 </head>
 <body>
 
-<div class="brochure">
-
-<!-- ===================================================== -->
-<!-- PAGE 1 — COUVERTURE                                    -->
-<!-- ===================================================== -->
-<section class="page cover is-active" data-page="1">
-  <img class="cover__img" src="https://lecambredaze.vercel.app/assets/images/exterior-dusk.jpg" alt="Façade au crépuscule" />
-  <div class="cover__content">
-    <div class="cover__brand">
-      ELIOM
-      <small>Immobilier d'exception</small>
-    </div>
-    <div>
-      <div class="cover__kicker">Bien d'exception · À vendre</div>
-      <h1 class="cover__title">Chalet<br /><em>Mitja</em></h1>
-      <p class="cover__sub">Chalet d'exception de 270 m² · Font-Romeu, Pyrénées catalanes · Construction neuve, livraison 2025</p>
-    </div>
-    <div class="cover__footer">
-      <span>Brochure confidentielle</span>
-      <span>Édition 2026</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 2 — MANIFESTE                                     -->
-<!-- ===================================================== -->
-<section class="page" data-page="2">
-  <div class="eyebrow">Manifeste</div>
-  <h2 class="h2">Un sanctuaire<br />taillé pour la <span class="italic">lumière</span>.</h2>
-  <div class="rule"></div>
-
-  <div class="manifest">
-    <div class="manifest__body">
-      <p>
-        Chalet Mitja a été pensé comme un refuge. Façade plein sud,
-        baies vitrées toute hauteur, hauteur sous plafond de plus de
-        cinq mètres : chaque détail a été dessiné pour que la montagne
-        entre chez vous.
-      </p>
-      <p>
-        Bois patinés des anciennes granges, pierre sèche locale, poêle
-        suspendu à foyer panoramique. Un dialogue entre tradition
-        catalane et architecture contemporaine, où le silence devient
-        une matière première.
-      </p>
-      <p>
-        À 1 650 mètres d'altitude, au-dessus des nuages, on retrouve
-        ce que la montagne offre de plus rare : le temps. Celui des
-        grandes tablées, des feux qui durent, des aurores partagées.
-      </p>
-    </div>
-
-    <aside class="manifest__aside">
-      <div class="manifest__aside-title">Pour qui ?</div>
-      <ul>
-        <li>Familles cherchant un chalet haut de gamme</li>
-        <li>Résidence secondaire clé en main</li>
-        <li>Actif patrimonial neuf</li>
-        <li>Amoureux de l'architecture catalane contemporaine</li>
-        <li>Acquéreurs voulant éviter la gestion de chantier</li>
-      </ul>
-    </aside>
+  <div class="print-note">
+    <strong>Imprimer en PDF</strong> — Cmd/Ctrl + P, puis cocher <em>« Graphiques d'arrière-plan »</em> pour conserver les photos et fonds.
   </div>
 
-  <div class="page-num">02</div>
-</section>
+  <main>
+    <div class="book" id="book">
 
-<!-- ===================================================== -->
-<!-- PAGE 3 — LE BIEN EN CHIFFRES                           -->
-<!-- ===================================================== -->
-<section class="page" data-page="3">
-  <div class="eyebrow">Le bien en chiffres</div>
-  <h2 class="h2">Huit évidences.</h2>
-  <div class="rule"></div>
+      <!-- ====================== PAGE 1 — COVER ====================== -->
+      <section class="page cover active">
+        <div class="cover-bg"></div>
+        <div class="cover-content">
+          <div class="top">
+            <div>Eliom Immobilier</div>
+            <div>Immobilier d'exception · Pyrénées-Orientales</div>
+          </div>
+          <div class="bottom">
+            <div class="conf">Brochure confidentielle · 2026</div>
+            <h1>Chalet<br>Mitja</h1>
+            <div class="subtitle">Chalet d'exception · Font-Romeu</div>
+          </div>
+        </div>
+      </section>
 
-  <div class="stats">
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V9z"/></svg>
-      <div class="stats__value">270<small>m²</small></div>
-      <div class="stats__label">Surface totale</div>
+      <!-- ====================== PAGE 2 — MANIFESTE ====================== -->
+      <section class="page">
+        <div class="watermark">VISION</div>
+        <div class="eyebrow">Page 02 · Manifeste</div>
+        <h2>Un refuge contemporain, pensé pour vivre la montagne sans compromis.</h2>
+        <p class="lead">Chalet Mitja s'adresse à celles et ceux qui recherchent davantage qu'une adresse : un lieu de rassemblement familial, un pied-à-terre d'altitude livré clé en main, où la noblesse des matières catalanes rencontre la précision d'une construction neuve.</p>
+        <div class="rule"></div>
+        <div class="grid-2">
+          <div>
+            <p>À Font-Romeu, la montagne possède une lumière rare. Ici, l'architecture ne cherche pas à dominer le paysage ; elle le cadre, l'ouvre, le prolonge. Les volumes sont généreux, la terrasse plein sud accueille le soleil, et les vues à 180° sur les Pyrénées catalanes deviennent un décor quotidien.</p>
+            <p>Ce chalet a été imaginé pour les familles qui souhaitent arriver, poser les valises, recevoir, transmettre, sans porter le poids d'un chantier, d'une rénovation ou d'un entretien incertain.</p>
+          </div>
+          <div class="card">
+            <h3>Positionnement</h3>
+            <p>Une propriété neuve, confidentielle, rare par sa capacité d'accueil, son altitude, ses prestations bien-être et sa lecture contemporaine des codes montagnards.</p>
+            <svg viewBox="0 0 300 150" width="100%" height="150" aria-label="icône chalet montagne">
+              <path d="M20 115 L90 45 L150 95 L205 35 L280 115" stroke="#B08D57" stroke-width="2" fill="none"/>
+              <path d="M80 118 L80 84 L115 60 L150 84 L150 118 Z" stroke="#1A1410" stroke-width="1.4" fill="none"/>
+              <path d="M70 86 L115 50 L160 86" stroke="#B08D57" stroke-width="1.4" fill="none"/>
+              <circle cx="230" cy="45" r="18" stroke="#d4b888" stroke-width="1.4" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Une question ? Discutons sur WhatsApp
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">02</div>
+      </section>
+
+      <!-- ====================== PAGE 3 — BIEN EN CHIFFRES ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 03 · Le bien en chiffres</div>
+        <h2>Les proportions d'un chalet familial, la précision d'un actif neuf.</h2>
+        <p>Les données essentielles de Chalet Mitja dessinent une propriété rare : vaste, structurée sur trois niveaux, capable d'accueillir jusqu'à 16 couchages tout en conservant une lecture intime et élégante de l'espace.</p>
+        <div class="stat-grid">
+          <div class="stat"><strong>270</strong><span>m² au total</span></div>
+          <div class="stat"><strong>250</strong><span>m² habitables</span></div>
+          <div class="stat"><strong>6</strong><span>chambres</span></div>
+          <div class="stat"><strong>16</strong><span>couchages</span></div>
+          <div class="stat"><strong>5</strong><span>salles de bains</span></div>
+          <div class="stat"><strong>1 650</strong><span>m d'altitude</span></div>
+          <div class="stat"><strong>180°</strong><span>panorama</span></div>
+          <div class="stat"><strong>3</strong><span>niveaux</span></div>
+        </div>
+        <div class="svg-panel">
+          <svg viewBox="0 0 680 260" width="100%" height="260">
+            <line x1="60" y1="220" x2="620" y2="220" stroke="#B08D57" stroke-width="1"/>
+            <rect x="90" y="80" width="55" height="140" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <rect x="170" y="100" width="55" height="120" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <rect x="250" y="130" width="55" height="90" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <rect x="330" y="105" width="55" height="115" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <rect x="410" y="62" width="55" height="158" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <rect x="490" y="35" width="55" height="185" fill="rgba(176,141,87,.18)" stroke="#B08D57"/>
+            <text x="100" y="60" font-size="16">270 m²</text><text x="175" y="82" font-size="16">250 m²</text><text x="258" y="115" font-size="16">6 ch.</text><text x="335" y="90" font-size="16">16 couch.</text><text x="415" y="45" font-size="16">1 650 m</text><text x="498" y="22" font-size="16">180°</text>
+            <path d="M565 160 C590 120 610 95 640 78" stroke="#d4b888" fill="none" stroke-width="2"/>
+            <path d="M636 78 l-18 0 m18 0 l-8 16" stroke="#d4b888" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Échanger avec Thibaut sur WhatsApp
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">03</div>
+      </section>
+
+      <!-- ====================== PAGE 4 — ARCHITECTURE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 04 · Architecture & matériaux</div>
+        <h2>Une écriture catalane contemporaine, enracinée dans la matière.</h2>
+        <div class="grid-2">
+          <div>
+            <p>Le chalet conjugue l'esprit des granges de montagne et les lignes nettes d'une architecture contemporaine : vieux bois, pierre sèche locale, granit, baies vitrées toute hauteur et volumes intérieurs culminant à plus de cinq mètres.</p>
+            <p>Chaque matière a été choisie pour créer une continuité entre le bâti et son territoire : une maison de montagne actuelle, mais jamais déconnectée de son paysage.</p>
+            <div class="svg-panel">
+              <svg viewBox="0 0 320 280" width="100%" height="250">
+                <circle cx="160" cy="135" r="74" fill="rgba(176,141,87,.08)" stroke="#B08D57"/>
+                <text x="160" y="132" text-anchor="middle" font-size="15">MATIÈRES</text>
+                <text x="160" y="154" text-anchor="middle" font-size="11" fill="#B08D57">NOBLES</text>
+                <g stroke="#B08D57" fill="none"><line x1="160" y1="61" x2="160" y2="18"/><line x1="224" y1="100" x2="285" y2="70"/><line x1="220" y1="180" x2="282" y2="220"/><line x1="96" y1="178" x2="35" y2="218"/><line x1="94" y1="100" x2="35" y2="70"/></g>
+                <text x="160" y="13" text-anchor="middle" font-size="13">Vieux bois</text><text x="288" y="70" font-size="13">Pierre sèche</text><text x="286" y="226" font-size="13">Granit</text><text x="5" y="226" font-size="13">Baies vitrées</text><text x="0" y="70" font-size="13">+5 m plafond</text>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <img class="photo tall" src="https://lecambredaze.vercel.app/assets/images/aerial-sunset.jpg" alt="Vue aérienne du chalet au coucher de soleil">
+            <div class="caption">Architecture en dialogue avec la montagne</div>
+          </div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Discussion confidentielle sur WhatsApp
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">04</div>
+      </section>
+
+      <!-- ====================== PAGE 5 — CARTE D'IDENTITÉ ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 05 · Carte d'identité technique</div>
+        <h2>Une propriété neuve, lisible, documentée, prête à être transmise.</h2>
+        <p>La force de Chalet Mitja réside dans sa clarté technique : surfaces, distribution, équipements, performance et livraison s'inscrivent dans une logique de confort durable.</p>
+        <table class="spec-table">
+          <tr><td>Surface totale</td><td>270 m², dont 250 m² habitables.</td></tr>
+          <tr><td>Distribution</td><td>3 niveaux, 6 chambres dont 1 suite parentale, 16 couchages, 5 salles de bains et WC indépendant.</td></tr>
+          <tr><td>Espaces de vie</td><td>Pièce principale ouverte, table d'hôte 12 couverts, cheminée, terrasse panoramique plein sud.</td></tr>
+          <tr><td>Prestations</td><td>Spa, sauna infrarouge, jacuzzi extérieur couvert, salle de sport équipée, jardin privatif et garage.</td></tr>
+          <tr><td>Chauffage</td><td>Pompe à chaleur, conception performante et confort quatre saisons.</td></tr>
+          <tr><td>Performance</td><td>Norme RT 2020, DPE A · GES A, isolation haute densité.</td></tr>
+          <tr><td>Matériaux</td><td>Vieux bois, pierre sèche locale, granit, ouvertures panoramiques toute hauteur.</td></tr>
+          <tr><td>Livraison</td><td>Construction neuve 2025, chalet livré clé en main.</td></tr>
+          <tr class="price"><td>Prix affiché</td><td>1 600 000 € <small>TVA incluse · Prix net après récupération de la TVA : <strong style="color:var(--gold);font-weight:500;">1 350 000 €</strong></small></td></tr>
+        </table>
+
+        <div class="tva-note">
+          <strong>TVA récupérable.</strong> Dans le cadre d'une exploitation
+          en résidence de tourisme classée ou en location meublée avec
+          services para-hôteliers, l'acquéreur peut récupérer la TVA
+          incluse dans le prix d'achat. L'investissement effectif passe alors
+          de <span class="tva-figure">1 600 000 €</span> à
+          <span class="tva-figure">1 350 000 € net</span> — soit
+          environ <strong>250 000 € de TVA récupérables</strong> sur la
+          durée d'exploitation. Conditions précises sur demande.
+        </div>
+
+        <div class="icon-row">
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M8 26 L24 12 L40 26 V42 H8 Z"/><path d="M18 42 V28 H30 V42"/></svg><span>Chalet neuf</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M12 34 C20 22 28 22 36 34"/><path d="M24 10 V38"/><path d="M16 18 H32"/></svg><span>RT 2020</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M24 6 C16 16 14 24 14 30 A10 10 0 0 0 34 30 C34 22 28 16 24 6Z"/></svg><span>Bien-être</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M8 32 C16 18 24 18 32 32 C36 25 40 22 44 22"/><circle cx="12" cy="12" r="5"/></svg><span>Panorama</span></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Une question sur ce point ? WhatsApp
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">05</div>
+      </section>
+
+      <!-- ====================== PAGE 6 — ESPACES DE VIE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 06 · Les espaces de vie</div>
+        <h2>Recevoir, respirer, regarder loin.</h2>
+        <div class="grid-2">
+          <div><img class="photo" src="https://lecambredaze.vercel.app/assets/images/living-room.jpg" alt="Salon du chalet"><div class="caption">Salon ouvert sur le paysage</div></div>
+          <div><img class="photo" src="https://lecambredaze.vercel.app/assets/images/dining-fireplace.jpg" alt="Salle à manger et cheminée"><div class="caption">Table d'hôte et chaleur du feu</div></div>
+        </div>
+        <div class="rule"></div>
+        <p class="lead">La pièce de vie est pensée comme un espace de rassemblement : table d'hôte de 12 couverts, cheminée, volumes ouverts et lumière naturelle.</p>
+        <div class="icon-row">
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M8 22 H40 V34 H8 Z"/><path d="M14 34 V42 M34 34 V42"/></svg><span>Table 12 couverts</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M24 8 C16 18 18 25 24 30 C31 24 32 17 24 8Z"/><path d="M16 36 H32"/></svg><span>Cheminée</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M8 10 H40 V38 H8 Z"/><path d="M24 10 V38 M8 24 H40"/></svg><span>Baies vitrées</span></div>
+          <div class="mini-icon"><svg viewBox="0 0 48 48"><path d="M6 32 C16 18 26 18 38 32"/><path d="M10 36 H42"/></svg><span>Intérieur / extérieur</span></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Échangeons sur WhatsApp
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">06</div>
+      </section>
+
+      <!-- ====================== PAGE 7 — CHAMBRES ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 07 · Les chambres & suites</div>
+        <h2>Six chambres, une suite parentale, une capacité rare en altitude.</h2>
+        <div class="grid-2">
+          <div>
+            <p>Le chalet accueille jusqu'à 16 couchages, avec une distribution pensée pour préserver l'intimité des générations, des invités et des temps de repos.</p>
+            <p>La suite parentale vient poser une respiration plus confidentielle, tandis que les chambres complémentaires permettent de recevoir famille élargie et amis dans un confort homogène.</p>
+            <div class="svg-panel">
+              <svg viewBox="0 0 300 390" width="100%" height="340">
+                <rect x="85" y="32" width="130" height="86" fill="rgba(176,141,87,.10)" stroke="#B08D57"/>
+                <rect x="85" y="150" width="130" height="86" fill="rgba(176,141,87,.10)" stroke="#B08D57"/>
+                <rect x="85" y="268" width="130" height="86" fill="rgba(176,141,87,.10)" stroke="#B08D57"/>
+                <text x="150" y="68" text-anchor="middle" font-size="14">Niveau 3</text><text x="150" y="91" text-anchor="middle" font-size="12">Suite parentale</text>
+                <text x="150" y="186" text-anchor="middle" font-size="14">Niveau 2</text><text x="150" y="209" text-anchor="middle" font-size="12">Chambres invitées</text>
+                <text x="150" y="304" text-anchor="middle" font-size="14">Niveau 1</text><text x="150" y="327" text-anchor="middle" font-size="12">Couchages famille</text>
+                <line x1="150" y1="118" x2="150" y2="150" stroke="#B08D57"/><line x1="150" y1="236" x2="150" y2="268" stroke="#B08D57"/>
+                <circle cx="150" cy="134" r="4" fill="#B08D57"/><circle cx="150" cy="252" r="4" fill="#B08D57"/>
+              </svg>
+            </div>
+          </div>
+          <div><img class="photo tall" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale"><div class="caption">Chambre & suite — calme, bois, lumière</div></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Demander plus de détails
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">07</div>
+      </section>
+
+      <!-- ====================== PAGE 8 — BIEN-ÊTRE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 08 · L'espace bien-être</div>
+        <h2>Le privilège d'un spa privé après la neige, la randonnée ou le silence.</h2>
+        <div class="grid-2">
+          <div><img class="photo" src="https://lecambredaze.vercel.app/assets/images/spa-sauna.jpg" alt="Spa et sauna"><div class="caption">Spa & sauna infrarouge</div></div>
+          <div><img class="photo" src="https://lecambredaze.vercel.app/assets/images/fitness-room.jpg" alt="Salle de sport"><div class="caption">Salle de sport équipée</div></div>
+        </div>
+        <p class="lead" style="margin-top:22px">Le bien-être n'est pas un supplément : il fait partie de l'expérience du chalet. Sauna infrarouge, jacuzzi extérieur couvert, spa et salle de sport composent un véritable parcours de récupération.</p>
+        <div class="svg-panel">
+          <svg viewBox="0 0 650 170" width="100%" height="170">
+            <g fill="none" stroke="#B08D57" stroke-width="1.4">
+              <circle cx="90" cy="70" r="38"/><path d="M74 74 C82 64 96 84 106 70"/><path d="M82 95 H98"/>
+              <circle cx="235" cy="70" r="38"/><path d="M220 90 V48 H250 V90"/><path d="M226 56 H244 M226 66 H244 M226 76 H244"/>
+              <circle cx="380" cy="70" r="38"/><path d="M355 78 C370 62 390 94 405 72"/><path d="M360 98 H400"/>
+              <circle cx="525" cy="70" r="38"/><path d="M500 70 H550 M510 58 V82 M540 58 V82"/>
+            </g>
+            <text x="90" y="140" text-anchor="middle" font-size="13">Spa</text><text x="235" y="140" text-anchor="middle" font-size="13">Sauna infrarouge</text><text x="380" y="140" text-anchor="middle" font-size="13">Jacuzzi couvert</text><text x="525" y="140" text-anchor="middle" font-size="13">Fitness</text>
+          </svg>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Organiser une visite privée
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">08</div>
+      </section>
+
+      <!-- ====================== PAGE 9 — VUE & ORIENTATION ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 09 · La vue & l'orientation</div>
+        <h2>Plein sud, 180° de panorama, une lumière qui signe le lieu.</h2>
+        <div class="grid-2">
+          <div><img class="photo tall" src="https://lecambredaze.vercel.app/assets/images/lifestyle-terrace.jpg" alt="Terrasse panoramique"><div class="caption">Terrasse panoramique plein sud</div></div>
+          <div>
+            <p>La terrasse et les ouvertures principales captent l'orientation la plus recherchée : le plein sud. Le soleil traverse la journée, réchauffe les matières, souligne les volumes et révèle les lignes des Pyrénées catalanes.</p>
+            <div class="svg-panel">
+              <svg viewBox="0 0 340 330" width="100%" height="310">
+                <path d="M45 230 C115 70 230 70 300 230" stroke="#d4b888" stroke-width="2" fill="none"/>
+                <circle cx="170" cy="80" r="22" fill="rgba(212,184,136,.25)" stroke="#B08D57"/>
+                <path d="M52 250 L115 180 L165 220 L224 150 L305 250" stroke="#1A1410" stroke-width="1.4" fill="none"/>
+                <rect x="125" y="238" width="90" height="38" stroke="#B08D57" fill="rgba(176,141,87,.08)"/>
+                <text x="170" y="263" text-anchor="middle" font-size="13">CHALET</text>
+                <text x="170" y="305" text-anchor="middle" font-size="15" fill="#B08D57">PLEIN SUD · 180°</text>
+                <text x="40" y="245" font-size="11">Est</text><text x="290" y="245" font-size="11">Ouest</text>
+              </svg>
+            </div>
+            <p>Ce rapport à la lumière donne au chalet son caractère : ni ostentatoire, ni démonstratif, simplement placé au bon endroit.</p>
+          </div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Voir le bien sur place
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">09</div>
+      </section>
+
+      <!-- ====================== PAGE 10 — LE LIEU ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 10 · Le lieu — Font-Romeu</div>
+        <h2>Une station solaire, habitée toute l'année, ouverte sur l'Espagne.</h2>
+        <div class="grid-2">
+          <div>
+            <p>Font-Romeu est l'une des adresses les plus singulières des Pyrénées catalanes : une commune d'altitude, vivante, lumineuse, offrant environ 300 jours de soleil par an et un domaine skiable de 43 km.</p>
+            <p>Son emplacement relie naturellement la Méditerranée, l'Espagne et les grandes métropoles du sud.</p>
+            <div class="svg-panel">
+              <svg viewBox="0 0 330 330" width="100%" height="300">
+                <circle cx="165" cy="165" r="52" fill="rgba(176,141,87,.10)" stroke="#B08D57"/>
+                <text x="165" y="160" text-anchor="middle" font-size="14">Font-Romeu</text><text x="165" y="181" text-anchor="middle" font-size="11">1 650 m</text>
+                <g stroke="#B08D57" fill="none"><line x1="165" y1="165" x2="70" y2="72"/><line x1="165" y1="165" x2="278" y2="88"/><line x1="165" y1="165" x2="260" y2="260"/></g>
+                <circle cx="70" cy="72" r="6" fill="#B08D57"/><circle cx="278" cy="88" r="6" fill="#B08D57"/><circle cx="260" cy="260" r="6" fill="#B08D57"/>
+                <text x="34" y="58" font-size="13">Barcelone</text><text x="42" y="78" font-size="11">2h30</text>
+                <text x="246" y="68" font-size="13">Toulouse</text><text x="258" y="88" font-size="11">2h45</text>
+                <text x="222" y="285" font-size="13">Montpellier</text><text x="244" y="305" font-size="11">2h45</text>
+              </svg>
+            </div>
+          </div>
+          <div><img class="photo tall" src="https://lecambredaze.vercel.app/assets/images/mountain-snow-sun.jpg" alt="Montagnes enneigées ensoleillées"><div class="caption">300 jours de soleil · Domaine skiable 43 km</div></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Une question sur Font-Romeu ?
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">10</div>
+      </section>
+
+      <!-- ====================== PAGE 11 — ART DE VIVRE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 11 · L'art de vivre à Font-Romeu</div>
+        <h2>Une montagne habitée, à chaque saison.</h2>
+        <div class="grid-2">
+          <div><img class="photo tall" src="https://lecambredaze.vercel.app/assets/images/table-mountain-view.jpg" alt="Table avec vue montagne"><div class="caption">Recevoir face aux Pyrénées catalanes</div></div>
+          <div>
+            <p>L'hiver invite au ski, aux retours au feu et aux bains chauds. Le printemps ouvre les sentiers. L'été prolonge les repas en terrasse. L'automne ramène le calme, la lumière rasante et la profondeur des matières.</p>
+            <p>Autour du chalet, l'art de vivre catalan s'exprime par la randonnée, le golf, les thermes, la gastronomie et la proximité de l'Espagne. Une montagne habitée, solaire, plus méridionale que spectaculaire.</p>
+            <div class="grid-2" style="gap:10px;margin-top:18px">
+              <div class="card"><h3>Ski</h3><p>Domaine skiable de 43 km, accessible dans l'écosystème de Font-Romeu.</p></div>
+              <div class="card"><h3>Randonnée</h3><p>Sentiers, plateaux, forêts et vues ouvertes sur les Pyrénées.</p></div>
+              <div class="card"><h3>Thermes</h3><p>Une culture du soin et de la récupération propre aux stations d'altitude.</p></div>
+              <div class="card"><h3>Catalogne</h3><p>Une identité chaleureuse, minérale, solaire, entre France et Espagne.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Discutons de votre projet
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">11</div>
+      </section>
+
+      <!-- ====================== PAGE 12 — PERFORMANCE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 12 · Performance & garanties</div>
+        <h2>Le confort du neuf, la sérénité d'un bien garanti.</h2>
+        <p class="lead">Chalet Mitja bénéficie d'une construction neuve 2025, conforme à la norme RT 2020, DPE A · GES A, avec isolation haute densité, pompe à chaleur et garanties décennales.</p>
+        <div class="svg-panel">
+          <svg viewBox="0 0 660 290" width="100%" height="290">
+            <text x="35" y="40" font-size="13" fill="#B08D57">Performance énergétique · DPE A</text>
+            <rect x="35" y="70" width="560" height="24" rx="12" fill="rgba(26,20,16,.08)"/>
+            <rect x="35" y="70" width="470" height="24" rx="12" fill="rgba(176,141,87,.45)"/>
+            <circle cx="505" cy="82" r="13" fill="#B08D57"/>
+            <text x="530" y="87" font-size="12">RT 2020 · A</text>
+            <g fill="none" stroke="#B08D57" stroke-width="1.4">
+              <circle cx="110" cy="185" r="38"/><path d="M90 190 C106 160 126 160 140 190"/><path d="M110 148 V130"/>
+              <circle cx="250" cy="185" r="38"/><path d="M226 196 H274 M238 174 H262 M232 185 H268"/>
+              <circle cx="390" cy="185" r="38"/><path d="M365 190 C380 160 402 160 416 190"/><path d="M390 155 V215"/>
+              <circle cx="530" cy="185" r="38"/><path d="M510 200 L530 165 L550 200 Z"/>
+            </g>
+            <text x="110" y="252" text-anchor="middle" font-size="12">Isolation</text><text x="250" y="252" text-anchor="middle" font-size="12">Pompe à chaleur</text><text x="390" y="252" text-anchor="middle" font-size="12">Confort 4 saisons</text><text x="530" y="252" text-anchor="middle" font-size="12">Décennales</text>
+          </svg>
+        </div>
+        <div class="grid-3" style="margin-top:18px">
+          <div class="card"><h3>Énergie</h3><p>Une conception performante pour maîtriser les usages et le confort thermique en altitude.</p></div>
+          <div class="card"><h3>Garantie</h3><p>Les garanties attachées au neuf sécurisent l'acquisition et limitent les aléas d'un bien ancien.</p></div>
+          <div class="card"><h3>Livraison</h3><p>Un chalet livré clé en main, pensé pour une prise de possession fluide.</p></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Demander le DPE complet
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">12</div>
+      </section>
+
+      <!-- ====================== PAGE 13 — CONSTRUCTION NEUVE ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 13 · Construction neuve</div>
+        <h2>Pourquoi le neuf change l'expérience d'achat.</h2>
+        <p>En montagne, l'ancien peut séduire par son histoire, mais il impose souvent un niveau d'incertitude élevé : isolation, chauffage, conformité, entretien, rénovation, finitions. Chalet Mitja propose une alternative plus lisible.</p>
+        <div class="compare">
+          <div class="col">
+            <h3>Bien ancien en montagne</h3>
+            <ul>
+              <li>Travaux parfois difficiles à chiffrer.</li>
+              <li>Performance énergétique variable.</li>
+              <li>Entretien structurel à anticiper.</li>
+              <li>Distribution souvent moins adaptée aux grands séjours familiaux.</li>
+              <li>Garanties limitées après acquisition.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Neuf clé en main</h3>
+            <ul>
+              <li>Construction 2025 et normes actuelles.</li>
+              <li>RT 2020, isolation haute densité.</li>
+              <li>Pompe à chaleur et confort quatre saisons.</li>
+              <li>Finitions pensées comme un ensemble cohérent.</li>
+              <li>Garanties décennales et acquisition sécurisée.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="svg-panel">
+          <svg viewBox="0 0 650 150" width="100%" height="150">
+            <path d="M60 100 L130 42 L200 100" stroke="#B08D57" fill="none"/><path d="M85 100 V70 H175 V100" stroke="#1A1410" fill="none"/>
+            <path d="M305 100 L375 42 L445 100" stroke="#B08D57" fill="none"/><path d="M330 100 V70 H420 V100" stroke="#1A1410" fill="none"/><path d="M375 42 V20" stroke="#B08D57"/>
+            <path d="M520 100 C550 70 570 70 600 100" stroke="#B08D57" fill="none"/><path d="M538 100 V76 H584 V100" stroke="#1A1410" fill="none"/>
+            <text x="130" y="132" text-anchor="middle" font-size="12">Ancien : charme + incertitude</text><text x="375" y="132" text-anchor="middle" font-size="12">Neuf : norme + garantie</text><text x="560" y="132" text-anchor="middle" font-size="12">Clé en main</text>
+          </svg>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Parler du projet
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">13</div>
+      </section>
+
+      <!-- ====================== PAGE 14 — PROCESS ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 14 · Process d'acquisition</div>
+        <h2>Un parcours confidentiel, simple et maîtrisé.</h2>
+        <p class="lead">L'accompagnement Eliom privilégie la précision : peu d'interlocuteurs, des informations qualifiées, une visite privée et un passage à l'acte encadré.</p>
+        <div class="svg-panel" style="margin-top:34px">
+          <svg viewBox="0 0 680 330" width="100%" height="330">
+            <line x1="95" y1="160" x2="585" y2="160" stroke="#B08D57" stroke-width="1.5"/>
+            <g>
+              <circle cx="95" cy="160" r="40" fill="rgba(176,141,87,.12)" stroke="#B08D57"/><text x="95" y="154" text-anchor="middle" font-size="13">01</text><text x="95" y="178" text-anchor="middle" font-size="11">Brochure</text>
+              <circle cx="258" cy="160" r="40" fill="rgba(176,141,87,.12)" stroke="#B08D57"/><text x="258" y="154" text-anchor="middle" font-size="13">02</text><text x="258" y="178" text-anchor="middle" font-size="11">Contact</text>
+              <circle cx="421" cy="160" r="40" fill="rgba(176,141,87,.12)" stroke="#B08D57"/><text x="421" y="154" text-anchor="middle" font-size="13">03</text><text x="421" y="178" text-anchor="middle" font-size="11">Visite</text>
+              <circle cx="585" cy="160" r="40" fill="rgba(176,141,87,.12)" stroke="#B08D57"/><text x="585" y="154" text-anchor="middle" font-size="13">04</text><text x="585" y="178" text-anchor="middle" font-size="11">Acte</text>
+            </g>
+            <text x="95" y="238" text-anchor="middle" font-size="12">Lecture du dossier</text><text x="258" y="238" text-anchor="middle" font-size="12">Qualification privée</text><text x="421" y="238" text-anchor="middle" font-size="12">Découverte sur site</text><text x="585" y="238" text-anchor="middle" font-size="12">Acquisition encadrée</text>
+          </svg>
+        </div>
+        <div class="grid-2" style="margin-top:22px">
+          <div class="card"><h3>Confidentialité</h3><p>La diffusion reste volontairement sélective afin de préserver le caractère unique de la propriété.</p></div>
+          <div class="card"><h3>Fluidité</h3><p>Le parcours est pensé pour les acquéreurs qui souhaitent des informations nettes, sans dispersion.</p></div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Démarrer la démarche maintenant
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">14</div>
+      </section>
+
+      <!-- ====================== PAGE 15 — CONFIDENTIALITÉ ====================== -->
+      <section class="page">
+        <div class="eyebrow">Page 15 · Confidentialité & accompagnement</div>
+        <h2>Une unique propriété, un accompagnement de bout en bout.</h2>
+        <div class="grid-2">
+          <div>
+            <p class="lead">Chalet Mitja n'est pas un programme. C'est une propriété singulière, proposée dans un cadre de diffusion confidentielle.</p>
+            <p>Eliom Immobilier accompagne l'acquéreur depuis la première prise de contact jusqu'à la visite privée, la transmission des éléments techniques et la coordination des étapes d'acquisition.</p>
+            <p>L'approche est volontairement sobre : qualification sérieuse, documentation claire, confidentialité des échanges et respect du rythme de décision.</p>
+          </div>
+          <div class="card">
+            <h3>Eliom Immobilier</h3>
+            <p>Immobilier d'exception — Pyrénées-Orientales</p>
+            <div class="rule"></div>
+            <p><span class="gold">Contact</span><br>Thibaut Razeyre<br>Canet-en-Roussillon & Font-Romeu</p>
+            <p><span class="gold">Site</span><br>lecambredaze.vercel.app</p>
+            <svg viewBox="0 0 300 120" width="100%" height="120">
+              <path d="M30 90 L92 35 L150 82 L210 28 L270 90" stroke="#B08D57" fill="none"/>
+              <path d="M95 90 V62 L125 45 L155 62 V90" stroke="#1A1410" fill="none"/>
+              <circle cx="238" cy="38" r="12" stroke="#d4b888" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="brand-small">Eliom</div>
+        <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Contacter Thibaut directement
+          <svg class="page-wa__arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="page-num">15</div>
+      </section>
+
+      <!-- ====================== PAGE 16 — FINAL CTA ====================== -->
+      <section class="page">
+        <div class="final-cta">
+          <div class="eyebrow" style="width:100%;max-width:620px">Page 16 · Visite privée</div>
+          <h2>Découvrir Chalet Mitja dans un cadre confidentiel.</h2>
+          <p class="lead">Pour recevoir les informations complémentaires ou organiser une visite privée à Font-Romeu, contactez directement Eliom Immobilier sur WhatsApp.</p>
+          <a href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Demander une visite privée
+          </a>
+          <div style="margin-top:26px;color:var(--gold);letter-spacing:.08em;font-size:12px;line-height:1.7;">
+            <div style="text-transform:uppercase;">1 600 000 € · Diffusion confidentielle · Sans engagement</div>
+            <div style="text-transform:none;color:var(--muted);font-size:11.5px;margin-top:6px;letter-spacing:.04em;">
+              TVA récupérable — prix net après récupération : <strong style="color:var(--gold);font-weight:500;">1 350 000 €</strong>
+            </div>
+          </div>
+          <div class="svg-panel" style="width:560px;margin-top:20px">
+            <svg viewBox="0 0 560 150" width="100%" height="150">
+              <path d="M65 95 C140 30 210 120 280 65 C350 10 420 115 500 55" stroke="#B08D57" fill="none" stroke-width="1.4"/>
+              <path d="M155 105 L225 48 L280 90 L335 42 L405 105" stroke="#1A1410" fill="none"/>
+              <rect x="248" y="94" width="62" height="26" stroke="#B08D57" fill="rgba(176,141,87,.08)"/>
+              <circle cx="455" cy="42" r="18" stroke="#d4b888" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="footer-legal">
+          Contact : Thibaut Razeyre · Canet-en-Roussillon &amp; Font-Romeu · lecambredaze.vercel.app<br>
+          © 2026 Eliom Immobilier — Tous droits réservés · Document non contractuel
+        </div>
+      </section>
+
     </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 3v18"/></svg>
-      <div class="stats__value">250<small>m²</small></div>
-      <div class="stats__label">Habitables</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M2 17v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5M2 17h20M2 17v3M22 17v3M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
-      <div class="stats__value">6</div>
-      <div class="stats__label">Chambres</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M15 21v-2a4 4 0 0 1 4-4h2"/></svg>
-      <div class="stats__value">16</div>
-      <div class="stats__label">Couchages</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 10h16M5 10v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8M9 16v2M12 16v2M15 16v2"/></svg>
-      <div class="stats__value">5</div>
-      <div class="stats__label">Salles de bains</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
-      <div class="stats__value">3</div>
-      <div class="stats__label">Niveaux</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 20l5-9 4 7 3-5 6 7M3 20h18"/></svg>
-      <div class="stats__value">1650<small>m</small></div>
-      <div class="stats__label">Altitude</div>
-    </div>
-    <div class="stats__cell">
-      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-18 0M3 12a9 9 0 0 1 18 0M12 3v18M3 12h18"/></svg>
-      <div class="stats__value">180°</div>
-      <div class="stats__label">De panorama</div>
-    </div>
+  </main>
+
+  <div class="toolbar" aria-label="Navigation de la brochure">
+    <button id="prev" class="nav-arrow" aria-label="Page précédente">‹</button>
+    <div class="dots" id="dots"></div>
+    <button id="next" class="nav-arrow" aria-label="Page suivante">›</button>
   </div>
 
-  <img class="stats-photo" src="https://lecambredaze.vercel.app/assets/images/aerial-sunset.jpg" alt="Vue aérienne au coucher du soleil" />
-
-  <div class="page-num">03</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 4 — ARCHITECTURE & MATÉRIAUX                      -->
-<!-- ===================================================== -->
-<section class="page" data-page="4">
-  <div class="eyebrow">Architecture · Matériaux</div>
-  <h2 class="h2">Le dialogue<br />des <span class="italic">matières</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="max-width: 140mm; color: var(--muted); font-size: 11pt;">
-    Chaque matériau a été choisi pour sa noblesse, sa durabilité, et son
-    enracinement dans la tradition catalane. Travaillés par des artisans
-    locaux, ils confèrent au chalet une présence rare.
-  </p>
-
-  <div class="materials-grid">
-    <div class="material">
-      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l4-3v15M11 21V11l4-2v12M17 21V13l4-1v9"/></svg>
-      <h3>Vieux bois</h3>
-      <p>Patines des anciennes granges catalanes, marquées par le temps et la neige. Une mémoire vivante intégrée à l'enveloppe contemporaine du chalet.</p>
-    </div>
-    <div class="material">
-      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 12h18M3 18h18M3 6h6M11 6h4M17 6h4M5 12v6M9 12v6M13 12v6M17 12v6"/></svg>
-      <h3>Pierre sèche locale</h3>
-      <p>Construction traditionnelle des Pyrénées-Orientales, montée à sec par des artisans de la région. Une enveloppe minérale qui prolonge le paysage.</p>
-    </div>
-    <div class="material">
-      <svg class="material__icon" viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><path d="M12 22V12M22 8.5L12 12M2 8.5L12 12"/></svg>
-      <h3>Granit</h3>
-      <p>Pierre noble extraite localement, utilisée pour les soubassements et les surfaces de prestige. Résistante, dense, intemporelle.</p>
-    </div>
-    <div class="material">
-      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V6h14v15M9 6V3M15 6V3M5 11h14M5 16h14"/></svg>
-      <h3>Hauteur +5 m</h3>
-      <p>Sous plafond cathédrale dans la pièce de vie principale. Baies vitrées toute hauteur, lumière en cascade matinale et dorée du soir.</p>
-    </div>
-  </div>
-
-  <div class="page-num">04</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 5 — CARTE D'IDENTITÉ                              -->
-<!-- ===================================================== -->
-<section class="page" data-page="5">
-  <div class="eyebrow">Carte d'identité</div>
-  <h2 class="h2">Les détails<br />qui <span class="italic">comptent</span>.</h2>
-  <div class="rule"></div>
-
-  <div class="specs-grid">
-    <div class="specs-list">
-      <dl>
-        <div class="specs-row"><dt>Surface</dt><dd>270 m² total · 250 m² habitables · 3 niveaux</dd></div>
-        <div class="specs-row"><dt>Distribution</dt><dd>6 chambres dont 1 suite parentale · 16 couchages</dd></div>
-        <div class="specs-row"><dt>Salles d'eau</dt><dd>5 salles de bains (WC privatifs) + 1 WC indépendant</dd></div>
-        <div class="specs-row"><dt>Bien-être</dt><dd>Spa · Sauna infrarouge · Jacuzzi extérieur couvert · Salle de sport</dd></div>
-        <div class="specs-row"><dt>Extérieurs</dt><dd>Terrasse panoramique plein sud · Jardin privatif · Garage</dd></div>
-        <div class="specs-row"><dt>Vue</dt><dd>180° sur les Pyrénées catalanes</dd></div>
-        <div class="specs-row"><dt>Altitude</dt><dd>1 650 m — Plus haute commune habitée à l'année en France</dd></div>
-        <div class="specs-row"><dt>Chauffage</dt><dd>Pompe à chaleur dernière génération · Poêle à bois suspendu</dd></div>
-        <div class="specs-row"><dt>Matériaux</dt><dd>Vieux bois · Pierre sèche locale · Granit · Finitions sur mesure</dd></div>
-        <div class="specs-row"><dt>Performance</dt><dd>Norme RT 2020 · Isolation haute densité</dd></div>
-        <div class="specs-row"><dt>Garanties</dt><dd>Décennales · Construction neuve, jamais habitée</dd></div>
-        <div class="specs-row"><dt>Livraison</dt><dd>2025</dd></div>
-        <div class="specs-row specs-row--accent"><dt>Prix</dt><dd>Sur demande · Dossier confidentiel</dd></div>
-      </dl>
-    </div>
-    <img class="side-img" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale" />
-  </div>
-
-  <div class="page-num">05</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 6 — ESPACES DE VIE                                -->
-<!-- ===================================================== -->
-<section class="page" data-page="6">
-  <div class="eyebrow">Espaces de vie</div>
-  <h2 class="h2">L'art de la <span class="italic">convivialité</span>.</h2>
-  <div class="rule"></div>
-
-  <div class="split">
-    <div class="split__text">
-      <p>
-        Plus de quatre-vingts mètres carrés de pièce de vie ouverte,
-        organisés autour d'une table d'hôte de douze couverts et d'une
-        cheminée centrale. Les baies vitrées toute hauteur effacent la
-        frontière entre l'intérieur et la montagne.
-      </p>
-      <p>
-        Ici, les grandes tablées retrouvent leur place. La cuisine,
-        ouverte sur le séjour, est conçue comme un théâtre — un poêle
-        suspendu à foyer panoramique en signature.
-      </p>
-
-      <ul class="split__list">
-        <li>Pièce de vie + de 80 m² ouverte</li>
-        <li>Table d'hôte 12 couverts</li>
-        <li>Cheminée centrale, poêle à bois suspendu</li>
-        <li>Baies vitrées toute hauteur, plein sud</li>
-        <li>Cuisine ouverte, équipée haut de gamme</li>
-        <li>Dialogue permanent intérieur / extérieur</li>
-      </ul>
-    </div>
-    <img class="split__media" src="https://lecambredaze.vercel.app/assets/images/dining-fireplace.jpg" alt="Salle à manger et poêle à bois contemporain" />
-  </div>
-
-  <div class="page-num">06</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 7 — CHAMBRES & SUITES                             -->
-<!-- ===================================================== -->
-<section class="page" data-page="7">
-  <div class="eyebrow">Espace nuit</div>
-  <h2 class="h2">Six refuges,<br />une <span class="italic">suite</span>.</h2>
-  <div class="rule"></div>
-
-  <div class="split">
-    <img class="split__media" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale avec tête de lit en vieux bois" />
-    <div class="split__text">
-      <p>
-        Six chambres réparties sur trois niveaux, pensées comme autant
-        de refuges privatifs. Une suite parentale premium prend ses
-        aises au calme — dressing intégré et salle de bains attenante.
-      </p>
-      <p>
-        Au total, seize couchages distribués pour accueillir confortablement
-        la famille élargie ou plusieurs amis. Chaque chambre offre une vue
-        montagne.
-      </p>
-
-      <ul class="split__list">
-        <li>6 chambres sur 3 niveaux</li>
-        <li>1 suite parentale premium</li>
-        <li>Dressing intégré · Salle de bains attenante</li>
-        <li>16 couchages au total</li>
-        <li>5 salles de bains (WC privatifs)</li>
-        <li>Vue montagne dans toutes les chambres</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="page-num">07</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 8 — ESPACE BIEN-ÊTRE                              -->
-<!-- ===================================================== -->
-<section class="page" data-page="8">
-  <div class="eyebrow">Bien-être</div>
-  <h2 class="h2">Le bien-être<br />à <span class="italic">demeure</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
-    Un niveau entier dédié au soin du corps et de l'esprit. Conçu comme
-    un véritable spa privé, ouvert sur la montagne — utilisable chaque
-    jour de l'année.
-  </p>
-
-  <div class="wellness-grid">
-    <div class="wellness-card">
-      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M2 12c2-3 4-3 6-1s4 2 6-1 4-2 6 1 2 3 2 3v6H2z"/><path d="M12 6V3M9 6V3M15 6V3"/></svg>
-      <h4>Spa privatif</h4>
-      <p>Bassin chauffé pour la détente quotidienne, isolé du reste du chalet.</p>
-    </div>
-    <div class="wellness-card">
-      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M5 21V9l7-6 7 6v12M5 21h14M9 21V13h6v8M3 9h18"/></svg>
-      <h4>Sauna infrarouge</h4>
-      <p>Détoxifiant, basse consommation, bois clair et banc en cèdre.</p>
-    </div>
-    <div class="wellness-card">
-      <svg class="wellness-icon" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M5 13c0-2 7-4 14 0M12 6V3"/></svg>
-      <h4>Jacuzzi extérieur</h4>
-      <p>Couvert, orienté vers les sommets. Sous les étoiles, en toute saison.</p>
-    </div>
-    <div class="wellness-card">
-      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M6 5v14M18 5v14M2 8v8M22 8v8M6 12h12"/></svg>
-      <h4>Salle de sport</h4>
-      <p>Équipée complète, baie vitrée sur les pistes du domaine.</p>
-    </div>
-  </div>
-
-  <img class="wellness-photo" src="https://lecambredaze.vercel.app/assets/images/spa-sauna.jpg" alt="Espace bien-être : sauna et douche italienne" />
-
-  <div class="page-num">08</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 9 — VUE & ORIENTATION                             -->
-<!-- ===================================================== -->
-<section class="page" data-page="9">
-  <div class="eyebrow">Vue · Orientation</div>
-  <h2 class="h2">Plein sud,<br /><span class="italic">panoramique</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
-    L'implantation a été soigneusement étudiée pour capter le meilleur
-    de la course du soleil tout au long de l'année. Façade orientée
-    plein sud, baies vitrées de cinq mètres de haut, panorama 180° sur
-    les sommets enneigés des Pyrénées catalanes.
-  </p>
-
-  <div class="orient-wrap">
-    <svg class="orient-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-      <!-- Horizon -->
-      <line x1="20" y1="170" x2="380" y2="170" stroke="#1A1410" stroke-opacity="0.2" stroke-width="1"/>
-      <!-- Sun arc -->
-      <path d="M 60 170 Q 200 30 340 170" fill="none" stroke="#B08D57" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.6"/>
-      <!-- Sun positions -->
-      <g>
-        <circle cx="100" cy="130" r="9" fill="#d4b888" opacity="0.6"/>
-        <text x="100" y="155" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">EST</text>
-        <text x="100" y="118" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#8c6e3f">08h</text>
-      </g>
-      <g>
-        <circle cx="200" cy="58" r="14" fill="#B08D57"/>
-        <circle cx="200" cy="58" r="22" fill="#B08D57" opacity="0.15"/>
-        <text x="200" y="42" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#8c6e3f" font-weight="500">13h · ZÉNITH</text>
-        <text x="200" y="190" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">SUD</text>
-      </g>
-      <g>
-        <circle cx="300" cy="130" r="9" fill="#d4b888" opacity="0.6"/>
-        <text x="300" y="155" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">OUEST</text>
-        <text x="300" y="118" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#8c6e3f">18h</text>
-      </g>
-      <!-- Chalet -->
-      <g transform="translate(186, 158)">
-        <path d="M 0 12 L 14 0 L 28 12 L 28 20 L 0 20 Z" fill="#1A1410"/>
-        <rect x="4" y="14" width="4" height="6" fill="#d4b888"/>
-        <rect x="20" y="14" width="4" height="6" fill="#d4b888"/>
-        <rect x="12" y="14" width="4" height="6" fill="#d4b888"/>
-      </g>
-      <!-- 180° arc indicator -->
-      <path d="M 60 168 A 140 140 0 0 1 340 168" fill="none" stroke="#B08D57" stroke-width="1.5" opacity="0.8"/>
-      <text x="200" y="178" text-anchor="middle" font-family="Cinzel" font-size="10" fill="#B08D57" font-weight="500" letter-spacing="2">180°</text>
+  <button class="pdf-btn" id="pdfBtn" type="button" aria-label="Télécharger au format PDF">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-  </div>
-
-  <div class="orient-points">
-    <div class="orient-point">
-      <div class="orient-point__value">Plein sud</div>
-      <div class="orient-point__label">Façade principale</div>
-    </div>
-    <div class="orient-point">
-      <div class="orient-point__value">300j</div>
-      <div class="orient-point__label">De soleil par an</div>
-    </div>
-    <div class="orient-point">
-      <div class="orient-point__value">5 m</div>
-      <div class="orient-point__label">De baies vitrées</div>
-    </div>
-  </div>
-
-  <div class="page-num">09</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 10 — LE LIEU                                      -->
-<!-- ===================================================== -->
-<section class="page" data-page="10">
-  <div class="eyebrow">Le lieu</div>
-  <h2 class="h2">Font-Romeu,<br />sommets et <span class="italic">soleil</span>.</h2>
-  <div class="rule"></div>
-
-  <img class="place-img" src="https://lecambredaze.vercel.app/assets/images/aerial-sunset.jpg" alt="Vue aérienne du domaine au coucher du soleil" />
-
-  <p style="font-size: 11pt; line-height: 1.65;">
-    Plus haute commune de France habitée à l'année, Font-Romeu cumule une
-    altitude de 1 650 mètres, un domaine skiable de 43 km de pistes, et
-    l'ensoleillement le plus généreux des Pyrénées. À deux pas de l'Espagne,
-    à mi-chemin entre la Méditerranée et l'Atlantique.
-  </p>
-
-  <div class="place-metrics">
-    <div>
-      <div class="place-metrics__value">2h30</div>
-      <div class="place-metrics__label">de Barcelone</div>
-    </div>
-    <div>
-      <div class="place-metrics__value">3h00</div>
-      <div class="place-metrics__label">de Toulouse</div>
-    </div>
-    <div>
-      <div class="place-metrics__value">3h30</div>
-      <div class="place-metrics__label">de Montpellier</div>
-    </div>
-    <div>
-      <div class="place-metrics__value">300j</div>
-      <div class="place-metrics__label">de soleil / an</div>
-    </div>
-  </div>
-
-  <div class="page-num">10</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 11 — ART DE VIVRE                                 -->
-<!-- ===================================================== -->
-<section class="page" data-page="11">
-  <div class="eyebrow">Art de vivre</div>
-  <h2 class="h2">Quatre saisons,<br />mille <span class="italic">raisons</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
-    Une montagne qui se renouvelle. Le ski en hiver, la randonnée en
-    altitude au printemps, les lacs et le golf l'été, les vendanges en
-    Roussillon à l'automne. Et la cuisine catalane toute l'année.
-  </p>
-
-  <div class="seasons">
-    <div class="season">
-      <div class="season__name"><small>Décembre · Mars</small>Hiver</div>
-      <ul>
-        <li>Ski alpin · 43 km de pistes</li>
-        <li>Ski de fond · domaine reconnu mondialement</li>
-        <li>Raquettes sur sentiers balisés</li>
-        <li>Bains norvégiens en altitude</li>
-        <li>Cuisine de montagne, vins du Roussillon</li>
-      </ul>
-    </div>
-    <div class="season">
-      <div class="season__name"><small>Avril · Juin</small>Printemps</div>
-      <ul>
-        <li>Randonnée glaciaire au Carlit</li>
-        <li>VTT enduro dans la Cerdagne</li>
-        <li>Eaux thermales de Llo et Dorres</li>
-        <li>Lacs d'altitude (Bouillouses)</li>
-        <li>Festival Pablo Casals à Prades</li>
-      </ul>
-    </div>
-    <div class="season">
-      <div class="season__name"><small>Juillet · Septembre</small>Été</div>
-      <ul>
-        <li>Trail d'altitude au-dessus des nuages</li>
-        <li>Golf 18 trous de Font-Romeu</li>
-        <li>Baignade en lac d'altitude</li>
-        <li>Train jaune historique</li>
-        <li>Festivals catalans, marchés artisanaux</li>
-      </ul>
-    </div>
-    <div class="season">
-      <div class="season__name"><small>Octobre · Novembre</small>Automne</div>
-      <ul>
-        <li>Cueillette de champignons</li>
-        <li>Vélo de route dans les cols mythiques</li>
-        <li>Vendanges à Maury, Banyuls, Collioure</li>
-        <li>Gastronomie de saison</li>
-        <li>Escapade en Catalogne espagnole</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="page-num">11</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 12 — PERFORMANCE & GARANTIES                      -->
-<!-- ===================================================== -->
-<section class="page" data-page="12">
-  <div class="eyebrow">Performance · Garanties</div>
-  <h2 class="h2">Construit<br />pour <span class="italic">durer</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
-    Construction conforme à la norme RT 2020 — la plus exigeante du marché
-    français. Bâtiment basse consommation à très haute performance
-    énergétique. Toutes les garanties constructeur incluses.
-  </p>
-
-  <div class="perf-grid">
-    <div>
-      <div class="eyebrow" style="margin-bottom: 1rem;">Étiquette énergétique</div>
-      <div class="perf-chart">
-        <div class="perf-bar is-current">
-          <div class="perf-bar__letter">A</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 18%; background: #2a9d3f;"></div></div>
-          <div class="perf-bar__value">Chalet Mitja</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">B</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 30%; background: #6ab04c;"></div></div>
-          <div class="perf-bar__value">51-90</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">C</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 42%; background: #c8d44e;"></div></div>
-          <div class="perf-bar__value">91-150</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">D</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 56%; background: #f5d33b;"></div></div>
-          <div class="perf-bar__value">151-230</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">E</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 70%; background: #ed9c2a;"></div></div>
-          <div class="perf-bar__value">231-330</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">F</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 84%; background: #d6663f;"></div></div>
-          <div class="perf-bar__value">331-450</div>
-        </div>
-        <div class="perf-bar">
-          <div class="perf-bar__letter">G</div>
-          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 96%; background: #b94a48;"></div></div>
-          <div class="perf-bar__value">&gt; 450</div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="eyebrow" style="margin-bottom: 1rem;">Performance & garanties</div>
-      <ul class="perf-list">
-        <li>Norme RT 2020 — bâtiment basse consommation</li>
-        <li>Pompe à chaleur dernière génération</li>
-        <li>Isolation haute densité, ouate de cellulose</li>
-        <li>Triple vitrage faible émissivité</li>
-        <li>Récupération des eaux pluviales (option)</li>
-        <li>Garantie décennale gros œuvre</li>
-        <li>Garantie biennale équipements</li>
-        <li>Parfait achèvement (1 an)</li>
-        <li>Livraison contractuelle 2025</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="page-num">12</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 13 — POURQUOI LE NEUF                             -->
-<!-- ===================================================== -->
-<section class="page" data-page="13">
-  <div class="eyebrow">Le choix du neuf</div>
-  <h2 class="h2">Pourquoi le neuf<br /><span class="italic">change tout</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 145mm;">
-    Le marché de la montagne reste dominé par l'ancien. La différence,
-    sur la durée et sur la sérénité, est massive.
-  </p>
-
-  <div class="compare">
-    <div class="compare__head-blank"></div>
-    <div class="compare__head">Bien ancien typique</div>
-    <div class="compare__head">Chalet Mitja</div>
-
-    <div class="compare__cat">Entretien</div>
-    <div class="compare__old">Lourd et imprévisible</div>
-    <div class="compare__new">Aucun pendant 10 ans</div>
-
-    <div class="compare__cat">Coûts cachés</div>
-    <div class="compare__old">À découvrir après achat</div>
-    <div class="compare__new">Tout est inclus, prix transparent</div>
-
-    <div class="compare__cat">Garanties</div>
-    <div class="compare__old">Limitées au notaire</div>
-    <div class="compare__new">Décennales sur tout le gros œuvre</div>
-
-    <div class="compare__cat">Finitions</div>
-    <div class="compare__old">À reprendre souvent</div>
-    <div class="compare__new">Sur mesure dès la livraison</div>
-
-    <div class="compare__cat">Énergie</div>
-    <div class="compare__old">DPE moyen E ou F</div>
-    <div class="compare__new">RT 2020 — étiquette A</div>
-
-    <div class="compare__cat">Délais</div>
-    <div class="compare__old">Travaux longs et incertains</div>
-    <div class="compare__new">Livraison contractuelle 2025</div>
-
-    <div class="compare__cat">Style</div>
-    <div class="compare__old">Daté à moderniser</div>
-    <div class="compare__new">Architecture contemporaine</div>
-  </div>
-
-  <div class="page-num">13</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 14 — PROCESS D'ACQUISITION                        -->
-<!-- ===================================================== -->
-<section class="page" data-page="14">
-  <div class="eyebrow">La démarche</div>
-  <h2 class="h2">Quatre étapes,<br /><span class="italic">sans pression</span>.</h2>
-  <div class="rule"></div>
-
-  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
-    Une approche sobre et confidentielle. Aucun démarchage. À chaque
-    étape, vous décidez si vous souhaitez aller plus loin.
-  </p>
-
-  <ol class="timeline" style="list-style: none;">
-    <li class="timeline__step">
-      <div class="timeline__num">01</div>
-      <div class="timeline__content">
-        <h3>Demande de brochure</h3>
-        <p>Vous remplissez le formulaire confidentiel sur notre site. Le dossier complet — plans, prestations, prix — vous est transmis en moins d'une minute, sans engagement.</p>
-      </div>
-    </li>
-    <li class="timeline__step">
-      <div class="timeline__num">02</div>
-      <div class="timeline__content">
-        <h3>Échange personnel</h3>
-        <p>Si le bien correspond à votre recherche, Thibaut Razeyre vous contacte pour comprendre votre projet. Conversation directe, sans pression commerciale.</p>
-      </div>
-    </li>
-    <li class="timeline__step">
-      <div class="timeline__num">03</div>
-      <div class="timeline__content">
-        <h3>Visite privée</h3>
-        <p>Visite individuelle organisée à Font-Romeu, en présentiel ou en visite virtuelle pour les acquéreurs internationaux. Vous prenez le temps qu'il vous faut.</p>
-      </div>
-    </li>
-    <li class="timeline__step">
-      <div class="timeline__num">04</div>
-      <div class="timeline__content">
-        <h3>Acte authentique</h3>
-        <p>Signature chez le notaire en présence d'Eliom. Accompagnement complet jusqu'à la remise des clés et au-delà : architectes, décorateurs, conciergerie.</p>
-      </div>
-    </li>
-  </ol>
-
-  <div class="page-num">14</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 15 — CONFIDENTIALITÉ                              -->
-<!-- ===================================================== -->
-<section class="page" data-page="15">
-  <div class="eyebrow">Diffusion · Accompagnement</div>
-  <h2 class="h2">Un bien,<br />un <span class="italic">acquéreur</span>.</h2>
-  <div class="rule"></div>
-
-  <div class="confid">
-    <div class="confid__text">
-      <p>
-        Chalet Mitja ne fait l'objet d'aucune diffusion publique massive.
-        Pas d'annonce sur les sites grand public, pas de photographie
-        aérienne géolocalisée disponible. La sélection des contacts est
-        volontairement limitée.
-      </p>
-      <p>
-        Eliom prend en charge l'intégralité du processus : prise de contact
-        qualifiée, organisation des visites, mise en relation avec architectes
-        et décorateurs, accompagnement notarial, conseil fiscal, conciergerie.
-      </p>
-      <div class="confid__quote">
-        Notre métier n'est pas de vendre,<br />c'est de transmettre.
-      </div>
-    </div>
-
-    <ul class="confid__list">
-      <li>Diffusion strictement confidentielle</li>
-      <li>Une unique propriété, un unique acquéreur</li>
-      <li>Accompagnement Eliom de A à Z</li>
-      <li>Mise en relation architectes &amp; décorateurs</li>
-      <li>Conseil fiscal et juridique</li>
-      <li>Gestion locative saisonnière sur demande</li>
-      <li>Présence permanente à Font-Romeu</li>
-      <li>Réseau partenaire Pyrénées-Orientales</li>
-    </ul>
-  </div>
-
-  <div class="page-num">15</div>
-</section>
-
-<!-- ===================================================== -->
-<!-- PAGE 16 — CONTACT + CTA                                -->
-<!-- ===================================================== -->
-<section class="page" data-page="16">
-  <div class="final">
-    <div class="eyebrow">Visite privée</div>
-    <h2 class="final__title">Une seule étape<br />vous en <em>sépare</em>.</h2>
-    <p class="final__lede">
-      Plans, prestations, prix, conditions d'acquisition. Thibaut vous reçoit
-      en visite privée à Font-Romeu, ou répond directement à vos questions
-      sur WhatsApp — en toute confidentialité, sans engagement.
-    </p>
-
-    <a class="final__btn" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
-      Demander une visite privée
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-
-    <div class="final__mention">
-      Prix sur demande · Diffusion confidentielle · Sans engagement
-    </div>
-
-    <div class="final__contact">
-      <div class="eyebrow">Contact</div>
-      <strong>Eliom Immobilier</strong>
-      <p>
-        Thibaut Razeyre<br />
-        Canet-en-Roussillon &amp; Font-Romeu<br />
-        <span style="color: var(--accent-soft);">lecambredaze.vercel.app</span>
-      </p>
-    </div>
-  </div>
-
-  <div class="final__legal">
-    © 2026 Eliom Immobilier — Document non contractuel · Photographies non contractuelles · Visite privée sur rendez-vous
-  </div>
-</section>
-
-</div>
-
-<!-- ===== NAVIGATION ===== -->
-<nav class="nav-bar" aria-label="Navigation brochure">
-  <button class="nav-btn" id="prevBtn" aria-label="Page précédente" disabled>
-    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Télécharger au format PDF
   </button>
-  <div class="nav-counter" id="navCounter">01 / 16</div>
-  <button class="nav-btn" id="nextBtn" aria-label="Page suivante">
-    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-  <div class="nav-dots" id="navDots"></div>
-  <div class="nav-print">
-    <button class="nav-btn" id="printBtn" aria-label="Imprimer en PDF" title="Imprimer en PDF">
-      <svg viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
-</nav>
 
-<script>
-(() => {
-  const pages = document.querySelectorAll('.page');
-  const total = pages.length;
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const counter = document.getElementById('navCounter');
-  const dotsEl = document.getElementById('navDots');
-  const printBtn = document.getElementById('printBtn');
-  let current = 1;
+  <script>
+    (() => {
+      const pages = [...document.querySelectorAll('.page')];
+      const dotsEl = document.getElementById('dots');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const pdfBtn = document.getElementById('pdfBtn');
+      let current = 0;
 
-  // Build dots
-  for (let i = 1; i <= total; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'dot';
-    dot.setAttribute('aria-label', `Aller à la page ${i}`);
-    dot.dataset.page = i;
-    if (i === 1) dot.classList.add('is-active');
-    dot.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(dot);
-  }
-  const dots = dotsEl.querySelectorAll('.dot');
+      // Build dots
+      pages.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(dot);
+      });
+      const dots = dotsEl.querySelectorAll('.dot');
 
-  const pad = (n) => String(n).padStart(2, '0');
+      function goTo(i) {
+        if (i < 0 || i >= pages.length) return;
+        pages.forEach(p => p.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        pages[i].classList.add('active');
+        dots[i].classList.add('active');
+        current = i;
+        prevBtn.disabled = i === 0;
+        nextBtn.disabled = i === pages.length - 1;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
 
-  const goTo = (n) => {
-    if (n < 1 || n > total) return;
-    pages.forEach((p, i) => p.classList.toggle('is-active', i + 1 === n));
-    dots.forEach((d, i) => d.classList.toggle('is-active', i + 1 === n));
-    counter.textContent = `${pad(n)} / ${pad(total)}`;
-    prevBtn.disabled = n === 1;
-    nextBtn.disabled = n === total;
-    current = n;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
-  printBtn.addEventListener('click', () => window.print());
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+      });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
-    if (e.key === 'p' && (e.metaKey || e.ctrlKey)) { /* let native print fire */ }
-  });
-})();
-</script>
+      pdfBtn.addEventListener('click', () => window.print());
 
+      // ========= A4 fit-to-viewport =========
+      // Calcule un facteur d'échelle pour que la page A4 (210×297mm)
+      // tienne entièrement dans le viewport au chargement et au resize.
+      function updateScale() {
+        const MM_TO_PX = 3.7795275591; // 96 DPI
+        const pageH = 297 * MM_TO_PX;  // ~1123px
+        const pageW = 210 * MM_TO_PX;  // ~794px
+
+        const toolbarH = 90;           // hauteur réservée à la nav bottom
+        const topPadding = 40;
+        const horizPadding = 64;
+
+        const availH = window.innerHeight - toolbarH - topPadding;
+        const availW = window.innerWidth - horizPadding;
+
+        // Si l'écran est trop petit (< 240mm ≈ 907px), on désactive le scale
+        // (le CSS responsive prend le relai pour empiler les sections).
+        if (window.innerWidth < 907) {
+          document.documentElement.style.setProperty('--scale', 1);
+          return;
+        }
+
+        const scale = Math.min(availH / pageH, availW / pageW, 1);
+        document.documentElement.style.setProperty('--scale', scale);
+      }
+      window.addEventListener('resize', updateScale);
+      updateScale();
+
+      goTo(0);
+    })();
+  </script>
 </body>
 </html>
