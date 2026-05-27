@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Brochure confidentielle — Chalet Mitja, chalet d'exception à vendre à Font-Romeu. Construction neuve 2025, 270 m², 6 chambres, spa, vue panoramique." />
+<meta name="robots" content="noindex, nofollow" />
+<title>Chalet Mitja — Brochure confidentielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #F5F1EA;
+  --bg-dark: #1A1410;
+  --fg: #1A1410;
+  --muted: rgba(26,20,16, 0.62);
+  --accent: #B08D57;
+  --accent-soft: #d4b888;
+  --accent-dark: #8c6e3f;
+  --border: rgba(26,20,16, 0.14);
+  --serif: 'Cinzel', 'Times New Roman', serif;
+  --sans: 'Josefin Sans', -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #4a443c; }
+body {
+  font-family: var(--sans);
+  color: var(--fg);
+  font-size: 11pt;
+  line-height: 1.55;
+  font-weight: 300;
+  padding: 2.5rem 1rem 6rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brochure { max-width: 210mm; margin: 0 auto; position: relative; }
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto 1.75rem;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  padding: 22mm 20mm;
+  display: none;
+  page-break-after: always;
+  animation: fadeIn 320ms ease-out;
+}
+.page.is-active { display: block; }
+.page:last-child { page-break-after: auto; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  font-size: 8pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+.h1, .h2, .h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  margin: 0;
+  color: var(--fg);
+}
+.h1 { font-size: 38pt; }
+.h2 { font-size: 26pt; margin-bottom: 1rem; }
+.h3 { font-size: 14pt; margin-bottom: 0.4rem; }
+.italic { font-style: italic; color: var(--accent); font-weight: 400; }
+.rule { width: 60px; height: 1px; background: var(--accent); margin: 1rem 0 1.5rem; }
+
+.page > p, .page > .body { margin-bottom: 0.85rem; }
+
+.page-num {
+  position: absolute;
+  bottom: 12mm;
+  right: 20mm;
+  font-size: 8pt;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+.page-num::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 0.6rem;
+}
+
+/* ===== NAV BAR ===== */
+.nav-bar {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,20,16, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.45rem 0.6rem;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 1000;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+}
+.nav-btn {
+  width: 38px; height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #F5F1EA;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 200ms, color 200ms;
+}
+.nav-btn:hover { background: rgba(245,241,234,0.1); color: var(--accent-soft); }
+.nav-btn:disabled { opacity: 0.25; cursor: default; }
+.nav-btn:disabled:hover { background: transparent; color: #F5F1EA; }
+.nav-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+.nav-counter {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-soft);
+  font-family: var(--serif);
+  padding: 0 0.7rem;
+  min-width: 64px;
+  text-align: center;
+}
+
+.nav-dots {
+  display: flex;
+  gap: 5px;
+  padding: 0 0.5rem 0 0.75rem;
+  border-left: 1px solid rgba(245,241,234,0.15);
+  margin-left: 0.25rem;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(245,241,234,0.25);
+  border: none;
+  cursor: pointer;
+  transition: background 200ms, transform 200ms;
+  padding: 0;
+}
+.dot:hover { background: rgba(245,241,234,0.55); }
+.dot.is-active { background: var(--accent-soft); transform: scale(1.45); }
+
+.nav-print {
+  margin-left: 0.25rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(245,241,234,0.15);
+}
+
+/* ===== COVER (1) ===== */
+.cover {
+  padding: 0;
+  color: #fff;
+  background: var(--bg-dark);
+}
+.cover__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+.cover__content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22mm 20mm;
+}
+.cover__brand {
+  font-family: var(--serif);
+  font-size: 11pt;
+  letter-spacing: 0.4em;
+  font-weight: 500;
+}
+.cover__brand small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.32em;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+.cover__kicker {
+  font-family: var(--serif);
+  font-size: 10pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  display: inline-block;
+}
+.cover__title {
+  font-family: var(--serif);
+  font-size: 60pt;
+  line-height: 0.95;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+.cover__title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
+.cover__sub {
+  font-size: 12pt;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  max-width: 70%;
+  opacity: 0.92;
+}
+.cover__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 8pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ===== MANIFESTO (2) ===== */
+.manifest {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 14mm;
+  height: calc(297mm - 60mm);
+  margin-top: 0.5rem;
+}
+.manifest__body p { font-size: 11.5pt; line-height: 1.7; margin-bottom: 1rem; }
+.manifest__aside {
+  border-left: 1px solid var(--border);
+  padding-left: 12mm;
+}
+.manifest__aside-title {
+  font-family: var(--serif);
+  font-size: 11pt;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.manifest__aside ul { list-style: none; }
+.manifest__aside li {
+  font-size: 9.5pt;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--border);
+  color: var(--fg);
+}
+.manifest__aside li:last-child { border-bottom: none; }
+.manifest__aside li::before { content: '— '; color: var(--accent); }
+
+/* ===== STATS (3) ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.stats__cell {
+  padding: 1.2rem 1rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  min-height: 100px;
+}
+.stats__icon {
+  width: 22px; height: 22px;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  stroke-width: 1.4;
+  fill: none;
+  stroke: currentColor;
+  display: block;
+}
+.stats__value {
+  font-family: var(--serif);
+  font-size: 22pt;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+.stats__value small {
+  font-size: 0.42em;
+  margin-left: 2px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.stats__label {
+  font-size: 7.5pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stats-photo {
+  width: 100%;
+  height: 80mm;
+  object-fit: cover;
+  margin-top: 0.5rem;
+}
+
+/* ===== MATERIALS (4) ===== */
+.materials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 1rem;
+}
+.material {
+  padding: 1.25rem 1.1rem;
+  border: 1px solid var(--border);
+  background: rgba(176, 141, 87, 0.03);
+}
+.material__icon {
+  width: 32px; height: 32px;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  stroke-width: 1.2;
+  fill: none;
+  stroke: currentColor;
+  display: block;
+}
+.material h3 {
+  font-family: var(--serif);
+  font-size: 13pt;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.material p {
+  font-size: 9pt;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ===== SPECS (5) ===== */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12mm;
+  height: calc(297mm - 60mm);
+}
+.specs-list dl { margin: 0; }
+.specs-row {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 9.5pt;
+}
+.specs-row dt {
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  align-self: center;
+}
+.specs-row dd {
+  margin: 0;
+  color: var(--fg);
+}
+.specs-row--accent dd { color: var(--accent); font-weight: 500; }
+.side-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== Two-column split (6, 7) ===== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 12mm;
+  height: calc(297mm - 75mm);
+  margin-top: 1rem;
+}
+.split__media { width: 100%; height: 100%; object-fit: cover; }
+.split__text p { font-size: 11pt; margin-bottom: 0.85rem; }
+.split__list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+}
+.split__list li {
+  padding: 0.55rem 0 0.55rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 10pt;
+  position: relative;
+}
+.split__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1rem;
+  width: 12px; height: 1px;
+  background: var(--accent);
+}
+.split__list li:last-child { border-bottom: none; }
+
+/* ===== BIEN-ÊTRE (8) ===== */
+.wellness-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 1rem;
+}
+.wellness-card {
+  padding: 1.4rem 1.2rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.wellness-icon {
+  width: 36px; height: 36px;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  stroke-width: 1.2;
+  fill: none;
+  stroke: currentColor;
+  display: block;
+}
+.wellness-card h4 {
+  font-family: var(--serif);
+  font-size: 13pt;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.wellness-card p {
+  font-size: 9pt;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.wellness-photo {
+  width: 100%;
+  height: 70mm;
+  object-fit: cover;
+  margin-top: 4mm;
+}
+
+/* ===== ORIENTATION (9) ===== */
+.orient-wrap { margin-top: 1rem; }
+.orient-svg {
+  display: block;
+  width: 100%;
+  max-width: 150mm;
+  margin: 1rem auto 1.5rem;
+  height: auto;
+}
+.orient-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4mm;
+  margin-top: 1rem;
+}
+.orient-point {
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+.orient-point__value {
+  font-family: var(--serif);
+  font-size: 18pt;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.orient-point__label {
+  font-size: 8pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== LIEU (10) ===== */
+.place-img {
+  width: 100%;
+  height: 80mm;
+  object-fit: cover;
+  margin: 1rem 0 1.25rem;
+}
+.place-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  margin-top: 1rem;
+}
+.place-metrics > div {
+  padding: 1.1rem 0.8rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.place-metrics__value {
+  font-family: var(--serif);
+  font-size: 18pt;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+.place-metrics__label {
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== SEASONS (11) ===== */
+.seasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 1rem;
+}
+.season {
+  padding: 1.4rem 1.2rem;
+  border: 1px solid var(--border);
+  background: rgba(176, 141, 87, 0.03);
+}
+.season__name {
+  font-family: var(--serif);
+  font-size: 14pt;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.season__name small {
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+}
+.season ul {
+  list-style: none;
+  margin: 0;
+}
+.season li {
+  font-size: 9pt;
+  padding: 0.4rem 0;
+  border-bottom: 1px dotted var(--border);
+  color: var(--fg);
+}
+.season li:last-child { border-bottom: none; }
+.season li::before { content: '· '; color: var(--accent); }
+
+/* ===== PERFORMANCE (12) ===== */
+.perf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12mm;
+  margin-top: 1rem;
+}
+.perf-chart { margin-top: 0.5rem; }
+.perf-bar {
+  display: grid;
+  grid-template-columns: 30px 1fr 60px;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 4px 0;
+  font-size: 8pt;
+}
+.perf-bar__letter {
+  font-family: var(--serif);
+  font-size: 11pt;
+  font-weight: 500;
+}
+.perf-bar__track {
+  height: 14px;
+  background: var(--border);
+  position: relative;
+}
+.perf-bar__fill { height: 100%; }
+.perf-bar__value {
+  font-size: 7pt;
+  color: var(--muted);
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+.perf-bar.is-current .perf-bar__letter { color: var(--accent); font-size: 14pt; }
+.perf-bar.is-current .perf-bar__value { color: var(--accent); font-weight: 500; }
+.perf-list {
+  list-style: none;
+  margin: 0;
+}
+.perf-list li {
+  padding: 0.55rem 0 0.55rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 10pt;
+  position: relative;
+}
+.perf-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1.05rem;
+  width: 12px; height: 1px;
+  background: var(--accent);
+}
+
+/* ===== COMPARE (13) ===== */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1.1fr;
+  gap: 0;
+  margin-top: 1.25rem;
+}
+.compare > div {
+  padding: 0.85rem 0.95rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 9pt;
+  line-height: 1.5;
+}
+.compare__head {
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--serif);
+  font-size: 10pt;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.85rem !important;
+}
+.compare__head-blank {
+  background: transparent !important;
+  color: transparent;
+  border-bottom: none !important;
+}
+.compare__cat {
+  font-size: 7.5pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.compare__old { color: rgba(26,20,16,0.6); font-style: italic; }
+.compare__new { color: var(--accent); font-weight: 500; }
+
+/* ===== TIMELINE (14) ===== */
+.timeline {
+  margin-top: 1.25rem;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 25px; top: 30px; bottom: 30px;
+  width: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+.timeline__step {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 1.75rem;
+  padding: 1.1rem 0;
+  align-items: start;
+}
+.timeline__num {
+  position: relative;
+  z-index: 1;
+  width: 50px; height: 50px;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 13pt;
+  color: var(--accent);
+  font-weight: 500;
+}
+.timeline__content h3 {
+  font-family: var(--serif);
+  font-size: 13pt;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+.timeline__content p {
+  font-size: 9.5pt;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ===== CONFID (15) ===== */
+.confid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14mm;
+  margin-top: 1rem;
+  height: calc(297mm - 75mm);
+}
+.confid__text p { font-size: 11pt; line-height: 1.7; margin-bottom: 1rem; }
+.confid__quote {
+  font-family: var(--serif);
+  font-size: 16pt;
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--accent);
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border-left: 1px solid var(--accent);
+  margin-top: 1.5rem;
+}
+.confid__list {
+  list-style: none;
+  align-self: center;
+}
+.confid__list li {
+  padding: 0.7rem 0 0.7rem 2rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 10pt;
+  position: relative;
+}
+.confid__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0; top: 0.65rem;
+  width: 18px; height: 18px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9pt;
+  font-weight: 600;
+}
+
+/* ===== FINAL (16) ===== */
+.final {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(297mm - 44mm);
+  justify-content: center;
+  align-items: center;
+}
+.final .eyebrow { margin-bottom: 1.5rem; }
+.final__title {
+  font-family: var(--serif);
+  font-size: 36pt;
+  line-height: 1;
+  margin: 0 auto 1.5rem;
+  font-weight: 500;
+}
+.final__title em { font-style: italic; color: var(--accent); font-weight: 400; }
+.final__lede {
+  font-size: 12pt;
+  color: var(--muted);
+  max-width: 120mm;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.final__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--accent);
+  color: #F5F1EA;
+  padding: 1.1rem 2.5rem;
+  font-family: var(--sans);
+  font-size: 9pt;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 200ms, box-shadow 200ms, background 200ms;
+  box-shadow: 0 10px 28px rgba(176,141,87,0.3);
+  border: none;
+  cursor: pointer;
+}
+.final__btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(176,141,87,0.4);
+}
+.final__btn svg { width: 18px; height: 18px; fill: currentColor; }
+.final__mention {
+  font-size: 7pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1.5rem 0 2.5rem;
+}
+.final__contact {
+  padding: 1.5rem 2rem;
+  background: var(--fg);
+  color: var(--bg);
+  max-width: 130mm;
+  width: 100%;
+}
+.final__contact .eyebrow { color: var(--accent-soft); margin-bottom: 0.5rem; }
+.final__contact strong {
+  font-family: var(--serif);
+  font-size: 14pt;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+.final__contact p {
+  font-size: 9.5pt;
+  opacity: 0.92;
+  line-height: 1.65;
+  margin: 0;
+}
+.final__legal {
+  position: absolute;
+  bottom: 12mm; left: 20mm; right: 20mm;
+  font-size: 7pt;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 0.55rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff !important; }
+  body { padding: 0; }
+  .nav-bar { display: none !important; }
+  .brochure { max-width: none; }
+  .page {
+    margin: 0;
+    box-shadow: none;
+    display: block !important;
+    animation: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+}
+
+/* Responsive : on adapte pour les écrans < A4 */
+@media (max-width: 240mm) {
+  body { padding: 1rem 0.5rem 6rem; }
+  .page {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 12mm 8mm;
+  }
+  .cover { padding: 0; min-height: 95vh; }
+  .cover__content { padding: 12mm 8mm; }
+  .cover__title { font-size: 42pt; }
+  .h2 { font-size: 22pt; }
+  .manifest, .specs-grid, .split, .perf-grid, .confid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 1.5rem;
+  }
+  .manifest__aside { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .stats, .place-metrics { grid-template-columns: repeat(2, 1fr); }
+  .materials-grid, .wellness-grid, .seasons { grid-template-columns: 1fr; }
+  .orient-points { grid-template-columns: 1fr; }
+  .side-img, .split__media { height: 50mm; }
+  .stats-photo, .place-img, .wellness-photo { height: 50mm; }
+  .compare { grid-template-columns: 1fr; }
+  .compare > div { border-bottom: 1px solid var(--border) !important; }
+  .compare__head { grid-column: 1; }
+  .compare__head-blank { display: none; }
+  .final__title { font-size: 28pt; }
+  .final__legal { position: static; margin-top: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="brochure">
+
+<!-- ===================================================== -->
+<!-- PAGE 1 — COUVERTURE                                    -->
+<!-- ===================================================== -->
+<section class="page cover is-active" data-page="1">
+  <img class="cover__img" src="https://lecambredaze.vercel.app/assets/images/exterior-dusk.jpg" alt="Façade au crépuscule" />
+  <div class="cover__content">
+    <div class="cover__brand">
+      ELIOM
+      <small>Immobilier d'exception</small>
+    </div>
+    <div>
+      <div class="cover__kicker">Bien d'exception · À vendre</div>
+      <h1 class="cover__title">Chalet<br /><em>Mitja</em></h1>
+      <p class="cover__sub">Chalet d'exception de 270 m² · Font-Romeu, Pyrénées catalanes · Construction neuve, livraison 2025</p>
+    </div>
+    <div class="cover__footer">
+      <span>Brochure confidentielle</span>
+      <span>Édition 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 2 — MANIFESTE                                     -->
+<!-- ===================================================== -->
+<section class="page" data-page="2">
+  <div class="eyebrow">Manifeste</div>
+  <h2 class="h2">Un sanctuaire<br />taillé pour la <span class="italic">lumière</span>.</h2>
+  <div class="rule"></div>
+
+  <div class="manifest">
+    <div class="manifest__body">
+      <p>
+        Chalet Mitja a été pensé comme un refuge. Façade plein sud,
+        baies vitrées toute hauteur, hauteur sous plafond de plus de
+        cinq mètres : chaque détail a été dessiné pour que la montagne
+        entre chez vous.
+      </p>
+      <p>
+        Bois patinés des anciennes granges, pierre sèche locale, poêle
+        suspendu à foyer panoramique. Un dialogue entre tradition
+        catalane et architecture contemporaine, où le silence devient
+        une matière première.
+      </p>
+      <p>
+        À 1 650 mètres d'altitude, au-dessus des nuages, on retrouve
+        ce que la montagne offre de plus rare : le temps. Celui des
+        grandes tablées, des feux qui durent, des aurores partagées.
+      </p>
+    </div>
+
+    <aside class="manifest__aside">
+      <div class="manifest__aside-title">Pour qui ?</div>
+      <ul>
+        <li>Familles cherchant un chalet haut de gamme</li>
+        <li>Résidence secondaire clé en main</li>
+        <li>Actif patrimonial neuf</li>
+        <li>Amoureux de l'architecture catalane contemporaine</li>
+        <li>Acquéreurs voulant éviter la gestion de chantier</li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="page-num">02</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 3 — LE BIEN EN CHIFFRES                           -->
+<!-- ===================================================== -->
+<section class="page" data-page="3">
+  <div class="eyebrow">Le bien en chiffres</div>
+  <h2 class="h2">Huit évidences.</h2>
+  <div class="rule"></div>
+
+  <div class="stats">
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V9z"/></svg>
+      <div class="stats__value">270<small>m²</small></div>
+      <div class="stats__label">Surface totale</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 3v18"/></svg>
+      <div class="stats__value">250<small>m²</small></div>
+      <div class="stats__label">Habitables</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M2 17v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5M2 17h20M2 17v3M22 17v3M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+      <div class="stats__value">6</div>
+      <div class="stats__label">Chambres</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M15 21v-2a4 4 0 0 1 4-4h2"/></svg>
+      <div class="stats__value">16</div>
+      <div class="stats__label">Couchages</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 10h16M5 10v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8M9 16v2M12 16v2M15 16v2"/></svg>
+      <div class="stats__value">5</div>
+      <div class="stats__label">Salles de bains</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+      <div class="stats__value">3</div>
+      <div class="stats__label">Niveaux</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M3 20l5-9 4 7 3-5 6 7M3 20h18"/></svg>
+      <div class="stats__value">1650<small>m</small></div>
+      <div class="stats__label">Altitude</div>
+    </div>
+    <div class="stats__cell">
+      <svg class="stats__icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-18 0M3 12a9 9 0 0 1 18 0M12 3v18M3 12h18"/></svg>
+      <div class="stats__value">180°</div>
+      <div class="stats__label">De panorama</div>
+    </div>
+  </div>
+
+  <img class="stats-photo" src="https://lecambredaze.vercel.app/assets/images/aerial-sunset.jpg" alt="Vue aérienne au coucher du soleil" />
+
+  <div class="page-num">03</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 4 — ARCHITECTURE & MATÉRIAUX                      -->
+<!-- ===================================================== -->
+<section class="page" data-page="4">
+  <div class="eyebrow">Architecture · Matériaux</div>
+  <h2 class="h2">Le dialogue<br />des <span class="italic">matières</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="max-width: 140mm; color: var(--muted); font-size: 11pt;">
+    Chaque matériau a été choisi pour sa noblesse, sa durabilité, et son
+    enracinement dans la tradition catalane. Travaillés par des artisans
+    locaux, ils confèrent au chalet une présence rare.
+  </p>
+
+  <div class="materials-grid">
+    <div class="material">
+      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l4-3v15M11 21V11l4-2v12M17 21V13l4-1v9"/></svg>
+      <h3>Vieux bois</h3>
+      <p>Patines des anciennes granges catalanes, marquées par le temps et la neige. Une mémoire vivante intégrée à l'enveloppe contemporaine du chalet.</p>
+    </div>
+    <div class="material">
+      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 12h18M3 18h18M3 6h6M11 6h4M17 6h4M5 12v6M9 12v6M13 12v6M17 12v6"/></svg>
+      <h3>Pierre sèche locale</h3>
+      <p>Construction traditionnelle des Pyrénées-Orientales, montée à sec par des artisans de la région. Une enveloppe minérale qui prolonge le paysage.</p>
+    </div>
+    <div class="material">
+      <svg class="material__icon" viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><path d="M12 22V12M22 8.5L12 12M2 8.5L12 12"/></svg>
+      <h3>Granit</h3>
+      <p>Pierre noble extraite localement, utilisée pour les soubassements et les surfaces de prestige. Résistante, dense, intemporelle.</p>
+    </div>
+    <div class="material">
+      <svg class="material__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V6h14v15M9 6V3M15 6V3M5 11h14M5 16h14"/></svg>
+      <h3>Hauteur +5 m</h3>
+      <p>Sous plafond cathédrale dans la pièce de vie principale. Baies vitrées toute hauteur, lumière en cascade matinale et dorée du soir.</p>
+    </div>
+  </div>
+
+  <div class="page-num">04</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 5 — CARTE D'IDENTITÉ                              -->
+<!-- ===================================================== -->
+<section class="page" data-page="5">
+  <div class="eyebrow">Carte d'identité</div>
+  <h2 class="h2">Les détails<br />qui <span class="italic">comptent</span>.</h2>
+  <div class="rule"></div>
+
+  <div class="specs-grid">
+    <div class="specs-list">
+      <dl>
+        <div class="specs-row"><dt>Surface</dt><dd>270 m² total · 250 m² habitables · 3 niveaux</dd></div>
+        <div class="specs-row"><dt>Distribution</dt><dd>6 chambres dont 1 suite parentale · 16 couchages</dd></div>
+        <div class="specs-row"><dt>Salles d'eau</dt><dd>5 salles de bains (WC privatifs) + 1 WC indépendant</dd></div>
+        <div class="specs-row"><dt>Bien-être</dt><dd>Spa · Sauna infrarouge · Jacuzzi extérieur couvert · Salle de sport</dd></div>
+        <div class="specs-row"><dt>Extérieurs</dt><dd>Terrasse panoramique plein sud · Jardin privatif · Garage</dd></div>
+        <div class="specs-row"><dt>Vue</dt><dd>180° sur les Pyrénées catalanes</dd></div>
+        <div class="specs-row"><dt>Altitude</dt><dd>1 650 m — Plus haute commune habitée à l'année en France</dd></div>
+        <div class="specs-row"><dt>Chauffage</dt><dd>Pompe à chaleur dernière génération · Poêle à bois suspendu</dd></div>
+        <div class="specs-row"><dt>Matériaux</dt><dd>Vieux bois · Pierre sèche locale · Granit · Finitions sur mesure</dd></div>
+        <div class="specs-row"><dt>Performance</dt><dd>Norme RT 2020 · Isolation haute densité</dd></div>
+        <div class="specs-row"><dt>Garanties</dt><dd>Décennales · Construction neuve, jamais habitée</dd></div>
+        <div class="specs-row"><dt>Livraison</dt><dd>2025</dd></div>
+        <div class="specs-row specs-row--accent"><dt>Prix</dt><dd>Sur demande · Dossier confidentiel</dd></div>
+      </dl>
+    </div>
+    <img class="side-img" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale" />
+  </div>
+
+  <div class="page-num">05</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 6 — ESPACES DE VIE                                -->
+<!-- ===================================================== -->
+<section class="page" data-page="6">
+  <div class="eyebrow">Espaces de vie</div>
+  <h2 class="h2">L'art de la <span class="italic">convivialité</span>.</h2>
+  <div class="rule"></div>
+
+  <div class="split">
+    <div class="split__text">
+      <p>
+        Plus de quatre-vingts mètres carrés de pièce de vie ouverte,
+        organisés autour d'une table d'hôte de douze couverts et d'une
+        cheminée centrale. Les baies vitrées toute hauteur effacent la
+        frontière entre l'intérieur et la montagne.
+      </p>
+      <p>
+        Ici, les grandes tablées retrouvent leur place. La cuisine,
+        ouverte sur le séjour, est conçue comme un théâtre — un poêle
+        suspendu à foyer panoramique en signature.
+      </p>
+
+      <ul class="split__list">
+        <li>Pièce de vie + de 80 m² ouverte</li>
+        <li>Table d'hôte 12 couverts</li>
+        <li>Cheminée centrale, poêle à bois suspendu</li>
+        <li>Baies vitrées toute hauteur, plein sud</li>
+        <li>Cuisine ouverte, équipée haut de gamme</li>
+        <li>Dialogue permanent intérieur / extérieur</li>
+      </ul>
+    </div>
+    <img class="split__media" src="https://lecambredaze.vercel.app/assets/images/dining-fireplace.jpg" alt="Salle à manger et poêle à bois contemporain" />
+  </div>
+
+  <div class="page-num">06</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 7 — CHAMBRES & SUITES                             -->
+<!-- ===================================================== -->
+<section class="page" data-page="7">
+  <div class="eyebrow">Espace nuit</div>
+  <h2 class="h2">Six refuges,<br />une <span class="italic">suite</span>.</h2>
+  <div class="rule"></div>
+
+  <div class="split">
+    <img class="split__media" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale avec tête de lit en vieux bois" />
+    <div class="split__text">
+      <p>
+        Six chambres réparties sur trois niveaux, pensées comme autant
+        de refuges privatifs. Une suite parentale premium prend ses
+        aises au calme — dressing intégré et salle de bains attenante.
+      </p>
+      <p>
+        Au total, seize couchages distribués pour accueillir confortablement
+        la famille élargie ou plusieurs amis. Chaque chambre offre une vue
+        montagne.
+      </p>
+
+      <ul class="split__list">
+        <li>6 chambres sur 3 niveaux</li>
+        <li>1 suite parentale premium</li>
+        <li>Dressing intégré · Salle de bains attenante</li>
+        <li>16 couchages au total</li>
+        <li>5 salles de bains (WC privatifs)</li>
+        <li>Vue montagne dans toutes les chambres</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-num">07</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 8 — ESPACE BIEN-ÊTRE                              -->
+<!-- ===================================================== -->
+<section class="page" data-page="8">
+  <div class="eyebrow">Bien-être</div>
+  <h2 class="h2">Le bien-être<br />à <span class="italic">demeure</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
+    Un niveau entier dédié au soin du corps et de l'esprit. Conçu comme
+    un véritable spa privé, ouvert sur la montagne — utilisable chaque
+    jour de l'année.
+  </p>
+
+  <div class="wellness-grid">
+    <div class="wellness-card">
+      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M2 12c2-3 4-3 6-1s4 2 6-1 4-2 6 1 2 3 2 3v6H2z"/><path d="M12 6V3M9 6V3M15 6V3"/></svg>
+      <h4>Spa privatif</h4>
+      <p>Bassin chauffé pour la détente quotidienne, isolé du reste du chalet.</p>
+    </div>
+    <div class="wellness-card">
+      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M5 21V9l7-6 7 6v12M5 21h14M9 21V13h6v8M3 9h18"/></svg>
+      <h4>Sauna infrarouge</h4>
+      <p>Détoxifiant, basse consommation, bois clair et banc en cèdre.</p>
+    </div>
+    <div class="wellness-card">
+      <svg class="wellness-icon" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M5 13c0-2 7-4 14 0M12 6V3"/></svg>
+      <h4>Jacuzzi extérieur</h4>
+      <p>Couvert, orienté vers les sommets. Sous les étoiles, en toute saison.</p>
+    </div>
+    <div class="wellness-card">
+      <svg class="wellness-icon" viewBox="0 0 24 24"><path d="M6 5v14M18 5v14M2 8v8M22 8v8M6 12h12"/></svg>
+      <h4>Salle de sport</h4>
+      <p>Équipée complète, baie vitrée sur les pistes du domaine.</p>
+    </div>
+  </div>
+
+  <img class="wellness-photo" src="https://lecambredaze.vercel.app/assets/images/spa-sauna.jpg" alt="Espace bien-être : sauna et douche italienne" />
+
+  <div class="page-num">08</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 9 — VUE & ORIENTATION                             -->
+<!-- ===================================================== -->
+<section class="page" data-page="9">
+  <div class="eyebrow">Vue · Orientation</div>
+  <h2 class="h2">Plein sud,<br /><span class="italic">panoramique</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
+    L'implantation a été soigneusement étudiée pour capter le meilleur
+    de la course du soleil tout au long de l'année. Façade orientée
+    plein sud, baies vitrées de cinq mètres de haut, panorama 180° sur
+    les sommets enneigés des Pyrénées catalanes.
+  </p>
+
+  <div class="orient-wrap">
+    <svg class="orient-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Horizon -->
+      <line x1="20" y1="170" x2="380" y2="170" stroke="#1A1410" stroke-opacity="0.2" stroke-width="1"/>
+      <!-- Sun arc -->
+      <path d="M 60 170 Q 200 30 340 170" fill="none" stroke="#B08D57" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.6"/>
+      <!-- Sun positions -->
+      <g>
+        <circle cx="100" cy="130" r="9" fill="#d4b888" opacity="0.6"/>
+        <text x="100" y="155" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">EST</text>
+        <text x="100" y="118" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#8c6e3f">08h</text>
+      </g>
+      <g>
+        <circle cx="200" cy="58" r="14" fill="#B08D57"/>
+        <circle cx="200" cy="58" r="22" fill="#B08D57" opacity="0.15"/>
+        <text x="200" y="42" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#8c6e3f" font-weight="500">13h · ZÉNITH</text>
+        <text x="200" y="190" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">SUD</text>
+      </g>
+      <g>
+        <circle cx="300" cy="130" r="9" fill="#d4b888" opacity="0.6"/>
+        <text x="300" y="155" text-anchor="middle" font-family="Josefin Sans" font-size="9" fill="#1A1410" opacity="0.7" letter-spacing="1.5">OUEST</text>
+        <text x="300" y="118" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#8c6e3f">18h</text>
+      </g>
+      <!-- Chalet -->
+      <g transform="translate(186, 158)">
+        <path d="M 0 12 L 14 0 L 28 12 L 28 20 L 0 20 Z" fill="#1A1410"/>
+        <rect x="4" y="14" width="4" height="6" fill="#d4b888"/>
+        <rect x="20" y="14" width="4" height="6" fill="#d4b888"/>
+        <rect x="12" y="14" width="4" height="6" fill="#d4b888"/>
+      </g>
+      <!-- 180° arc indicator -->
+      <path d="M 60 168 A 140 140 0 0 1 340 168" fill="none" stroke="#B08D57" stroke-width="1.5" opacity="0.8"/>
+      <text x="200" y="178" text-anchor="middle" font-family="Cinzel" font-size="10" fill="#B08D57" font-weight="500" letter-spacing="2">180°</text>
+    </svg>
+  </div>
+
+  <div class="orient-points">
+    <div class="orient-point">
+      <div class="orient-point__value">Plein sud</div>
+      <div class="orient-point__label">Façade principale</div>
+    </div>
+    <div class="orient-point">
+      <div class="orient-point__value">300j</div>
+      <div class="orient-point__label">De soleil par an</div>
+    </div>
+    <div class="orient-point">
+      <div class="orient-point__value">5 m</div>
+      <div class="orient-point__label">De baies vitrées</div>
+    </div>
+  </div>
+
+  <div class="page-num">09</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 10 — LE LIEU                                      -->
+<!-- ===================================================== -->
+<section class="page" data-page="10">
+  <div class="eyebrow">Le lieu</div>
+  <h2 class="h2">Font-Romeu,<br />sommets et <span class="italic">soleil</span>.</h2>
+  <div class="rule"></div>
+
+  <img class="place-img" src="https://lecambredaze.vercel.app/assets/images/aerial-sunset.jpg" alt="Vue aérienne du domaine au coucher du soleil" />
+
+  <p style="font-size: 11pt; line-height: 1.65;">
+    Plus haute commune de France habitée à l'année, Font-Romeu cumule une
+    altitude de 1 650 mètres, un domaine skiable de 43 km de pistes, et
+    l'ensoleillement le plus généreux des Pyrénées. À deux pas de l'Espagne,
+    à mi-chemin entre la Méditerranée et l'Atlantique.
+  </p>
+
+  <div class="place-metrics">
+    <div>
+      <div class="place-metrics__value">2h30</div>
+      <div class="place-metrics__label">de Barcelone</div>
+    </div>
+    <div>
+      <div class="place-metrics__value">3h00</div>
+      <div class="place-metrics__label">de Toulouse</div>
+    </div>
+    <div>
+      <div class="place-metrics__value">3h30</div>
+      <div class="place-metrics__label">de Montpellier</div>
+    </div>
+    <div>
+      <div class="place-metrics__value">300j</div>
+      <div class="place-metrics__label">de soleil / an</div>
+    </div>
+  </div>
+
+  <div class="page-num">10</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 11 — ART DE VIVRE                                 -->
+<!-- ===================================================== -->
+<section class="page" data-page="11">
+  <div class="eyebrow">Art de vivre</div>
+  <h2 class="h2">Quatre saisons,<br />mille <span class="italic">raisons</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
+    Une montagne qui se renouvelle. Le ski en hiver, la randonnée en
+    altitude au printemps, les lacs et le golf l'été, les vendanges en
+    Roussillon à l'automne. Et la cuisine catalane toute l'année.
+  </p>
+
+  <div class="seasons">
+    <div class="season">
+      <div class="season__name"><small>Décembre · Mars</small>Hiver</div>
+      <ul>
+        <li>Ski alpin · 43 km de pistes</li>
+        <li>Ski de fond · domaine reconnu mondialement</li>
+        <li>Raquettes sur sentiers balisés</li>
+        <li>Bains norvégiens en altitude</li>
+        <li>Cuisine de montagne, vins du Roussillon</li>
+      </ul>
+    </div>
+    <div class="season">
+      <div class="season__name"><small>Avril · Juin</small>Printemps</div>
+      <ul>
+        <li>Randonnée glaciaire au Carlit</li>
+        <li>VTT enduro dans la Cerdagne</li>
+        <li>Eaux thermales de Llo et Dorres</li>
+        <li>Lacs d'altitude (Bouillouses)</li>
+        <li>Festival Pablo Casals à Prades</li>
+      </ul>
+    </div>
+    <div class="season">
+      <div class="season__name"><small>Juillet · Septembre</small>Été</div>
+      <ul>
+        <li>Trail d'altitude au-dessus des nuages</li>
+        <li>Golf 18 trous de Font-Romeu</li>
+        <li>Baignade en lac d'altitude</li>
+        <li>Train jaune historique</li>
+        <li>Festivals catalans, marchés artisanaux</li>
+      </ul>
+    </div>
+    <div class="season">
+      <div class="season__name"><small>Octobre · Novembre</small>Automne</div>
+      <ul>
+        <li>Cueillette de champignons</li>
+        <li>Vélo de route dans les cols mythiques</li>
+        <li>Vendanges à Maury, Banyuls, Collioure</li>
+        <li>Gastronomie de saison</li>
+        <li>Escapade en Catalogne espagnole</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-num">11</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 12 — PERFORMANCE & GARANTIES                      -->
+<!-- ===================================================== -->
+<section class="page" data-page="12">
+  <div class="eyebrow">Performance · Garanties</div>
+  <h2 class="h2">Construit<br />pour <span class="italic">durer</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
+    Construction conforme à la norme RT 2020 — la plus exigeante du marché
+    français. Bâtiment basse consommation à très haute performance
+    énergétique. Toutes les garanties constructeur incluses.
+  </p>
+
+  <div class="perf-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom: 1rem;">Étiquette énergétique</div>
+      <div class="perf-chart">
+        <div class="perf-bar is-current">
+          <div class="perf-bar__letter">A</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 18%; background: #2a9d3f;"></div></div>
+          <div class="perf-bar__value">Chalet Mitja</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">B</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 30%; background: #6ab04c;"></div></div>
+          <div class="perf-bar__value">51-90</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">C</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 42%; background: #c8d44e;"></div></div>
+          <div class="perf-bar__value">91-150</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">D</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 56%; background: #f5d33b;"></div></div>
+          <div class="perf-bar__value">151-230</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">E</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 70%; background: #ed9c2a;"></div></div>
+          <div class="perf-bar__value">231-330</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">F</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 84%; background: #d6663f;"></div></div>
+          <div class="perf-bar__value">331-450</div>
+        </div>
+        <div class="perf-bar">
+          <div class="perf-bar__letter">G</div>
+          <div class="perf-bar__track"><div class="perf-bar__fill" style="width: 96%; background: #b94a48;"></div></div>
+          <div class="perf-bar__value">&gt; 450</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="eyebrow" style="margin-bottom: 1rem;">Performance & garanties</div>
+      <ul class="perf-list">
+        <li>Norme RT 2020 — bâtiment basse consommation</li>
+        <li>Pompe à chaleur dernière génération</li>
+        <li>Isolation haute densité, ouate de cellulose</li>
+        <li>Triple vitrage faible émissivité</li>
+        <li>Récupération des eaux pluviales (option)</li>
+        <li>Garantie décennale gros œuvre</li>
+        <li>Garantie biennale équipements</li>
+        <li>Parfait achèvement (1 an)</li>
+        <li>Livraison contractuelle 2025</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-num">12</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 13 — POURQUOI LE NEUF                             -->
+<!-- ===================================================== -->
+<section class="page" data-page="13">
+  <div class="eyebrow">Le choix du neuf</div>
+  <h2 class="h2">Pourquoi le neuf<br /><span class="italic">change tout</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 145mm;">
+    Le marché de la montagne reste dominé par l'ancien. La différence,
+    sur la durée et sur la sérénité, est massive.
+  </p>
+
+  <div class="compare">
+    <div class="compare__head-blank"></div>
+    <div class="compare__head">Bien ancien typique</div>
+    <div class="compare__head">Chalet Mitja</div>
+
+    <div class="compare__cat">Entretien</div>
+    <div class="compare__old">Lourd et imprévisible</div>
+    <div class="compare__new">Aucun pendant 10 ans</div>
+
+    <div class="compare__cat">Coûts cachés</div>
+    <div class="compare__old">À découvrir après achat</div>
+    <div class="compare__new">Tout est inclus, prix transparent</div>
+
+    <div class="compare__cat">Garanties</div>
+    <div class="compare__old">Limitées au notaire</div>
+    <div class="compare__new">Décennales sur tout le gros œuvre</div>
+
+    <div class="compare__cat">Finitions</div>
+    <div class="compare__old">À reprendre souvent</div>
+    <div class="compare__new">Sur mesure dès la livraison</div>
+
+    <div class="compare__cat">Énergie</div>
+    <div class="compare__old">DPE moyen E ou F</div>
+    <div class="compare__new">RT 2020 — étiquette A</div>
+
+    <div class="compare__cat">Délais</div>
+    <div class="compare__old">Travaux longs et incertains</div>
+    <div class="compare__new">Livraison contractuelle 2025</div>
+
+    <div class="compare__cat">Style</div>
+    <div class="compare__old">Daté à moderniser</div>
+    <div class="compare__new">Architecture contemporaine</div>
+  </div>
+
+  <div class="page-num">13</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 14 — PROCESS D'ACQUISITION                        -->
+<!-- ===================================================== -->
+<section class="page" data-page="14">
+  <div class="eyebrow">La démarche</div>
+  <h2 class="h2">Quatre étapes,<br /><span class="italic">sans pression</span>.</h2>
+  <div class="rule"></div>
+
+  <p style="color: var(--muted); font-size: 11pt; max-width: 140mm;">
+    Une approche sobre et confidentielle. Aucun démarchage. À chaque
+    étape, vous décidez si vous souhaitez aller plus loin.
+  </p>
+
+  <ol class="timeline" style="list-style: none;">
+    <li class="timeline__step">
+      <div class="timeline__num">01</div>
+      <div class="timeline__content">
+        <h3>Demande de brochure</h3>
+        <p>Vous remplissez le formulaire confidentiel sur notre site. Le dossier complet — plans, prestations, prix — vous est transmis en moins d'une minute, sans engagement.</p>
+      </div>
+    </li>
+    <li class="timeline__step">
+      <div class="timeline__num">02</div>
+      <div class="timeline__content">
+        <h3>Échange personnel</h3>
+        <p>Si le bien correspond à votre recherche, Thibaut Razeyre vous contacte pour comprendre votre projet. Conversation directe, sans pression commerciale.</p>
+      </div>
+    </li>
+    <li class="timeline__step">
+      <div class="timeline__num">03</div>
+      <div class="timeline__content">
+        <h3>Visite privée</h3>
+        <p>Visite individuelle organisée à Font-Romeu, en présentiel ou en visite virtuelle pour les acquéreurs internationaux. Vous prenez le temps qu'il vous faut.</p>
+      </div>
+    </li>
+    <li class="timeline__step">
+      <div class="timeline__num">04</div>
+      <div class="timeline__content">
+        <h3>Acte authentique</h3>
+        <p>Signature chez le notaire en présence d'Eliom. Accompagnement complet jusqu'à la remise des clés et au-delà : architectes, décorateurs, conciergerie.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="page-num">14</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 15 — CONFIDENTIALITÉ                              -->
+<!-- ===================================================== -->
+<section class="page" data-page="15">
+  <div class="eyebrow">Diffusion · Accompagnement</div>
+  <h2 class="h2">Un bien,<br />un <span class="italic">acquéreur</span>.</h2>
+  <div class="rule"></div>
+
+  <div class="confid">
+    <div class="confid__text">
+      <p>
+        Chalet Mitja ne fait l'objet d'aucune diffusion publique massive.
+        Pas d'annonce sur les sites grand public, pas de photographie
+        aérienne géolocalisée disponible. La sélection des contacts est
+        volontairement limitée.
+      </p>
+      <p>
+        Eliom prend en charge l'intégralité du processus : prise de contact
+        qualifiée, organisation des visites, mise en relation avec architectes
+        et décorateurs, accompagnement notarial, conseil fiscal, conciergerie.
+      </p>
+      <div class="confid__quote">
+        Notre métier n'est pas de vendre,<br />c'est de transmettre.
+      </div>
+    </div>
+
+    <ul class="confid__list">
+      <li>Diffusion strictement confidentielle</li>
+      <li>Une unique propriété, un unique acquéreur</li>
+      <li>Accompagnement Eliom de A à Z</li>
+      <li>Mise en relation architectes &amp; décorateurs</li>
+      <li>Conseil fiscal et juridique</li>
+      <li>Gestion locative saisonnière sur demande</li>
+      <li>Présence permanente à Font-Romeu</li>
+      <li>Réseau partenaire Pyrénées-Orientales</li>
+    </ul>
+  </div>
+
+  <div class="page-num">15</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGE 16 — CONTACT + CTA                                -->
+<!-- ===================================================== -->
+<section class="page" data-page="16">
+  <div class="final">
+    <div class="eyebrow">Visite privée</div>
+    <h2 class="final__title">Une seule étape<br />vous en <em>sépare</em>.</h2>
+    <p class="final__lede">
+      Plans, prestations, prix, conditions d'acquisition. Thibaut vous reçoit
+      en visite privée à Font-Romeu, ou répond directement à vos questions
+      sur WhatsApp — en toute confidentialité, sans engagement.
+    </p>
+
+    <a class="final__btn" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
+      Demander une visite privée
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <div class="final__mention">
+      Prix sur demande · Diffusion confidentielle · Sans engagement
+    </div>
+
+    <div class="final__contact">
+      <div class="eyebrow">Contact</div>
+      <strong>Eliom Immobilier</strong>
+      <p>
+        Thibaut Razeyre<br />
+        Canet-en-Roussillon &amp; Font-Romeu<br />
+        <span style="color: var(--accent-soft);">lecambredaze.vercel.app</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="final__legal">
+    © 2026 Eliom Immobilier — Document non contractuel · Photographies non contractuelles · Visite privée sur rendez-vous
+  </div>
+</section>
+
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav-bar" aria-label="Navigation brochure">
+  <button class="nav-btn" id="prevBtn" aria-label="Page précédente" disabled>
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="nav-counter" id="navCounter">01 / 16</div>
+  <button class="nav-btn" id="nextBtn" aria-label="Page suivante">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-print">
+    <button class="nav-btn" id="printBtn" aria-label="Imprimer en PDF" title="Imprimer en PDF">
+      <svg viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<script>
+(() => {
+  const pages = document.querySelectorAll('.page');
+  const total = pages.length;
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.getElementById('navCounter');
+  const dotsEl = document.getElementById('navDots');
+  const printBtn = document.getElementById('printBtn');
+  let current = 1;
+
+  // Build dots
+  for (let i = 1; i <= total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'dot';
+    dot.setAttribute('aria-label', `Aller à la page ${i}`);
+    dot.dataset.page = i;
+    if (i === 1) dot.classList.add('is-active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  }
+  const dots = dotsEl.querySelectorAll('.dot');
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const goTo = (n) => {
+    if (n < 1 || n > total) return;
+    pages.forEach((p, i) => p.classList.toggle('is-active', i + 1 === n));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i + 1 === n));
+    counter.textContent = `${pad(n)} / ${pad(total)}`;
+    prevBtn.disabled = n === 1;
+    nextBtn.disabled = n === total;
+    current = n;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  printBtn.addEventListener('click', () => window.print());
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'p' && (e.metaKey || e.ctrlKey)) { /* let native print fire */ }
+  });
+})();
+</script>
+
+</body>
+</html>
