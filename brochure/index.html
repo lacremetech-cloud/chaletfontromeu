@@ -97,51 +97,81 @@ body {
   color: var(--muted);
 }
 
-/* CTA WhatsApp discret, centré en bas de chaque page intérieure */
+/* CTA WhatsApp en bas de chaque page intérieure — pilule verte WhatsApp */
 .page-wa {
   position: absolute;
-  bottom: 12mm;
+  bottom: 10mm;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 7.5pt;
-  letter-spacing: 0.18em;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: #25D366;
+  color: #fff;
+  font-size: 8pt;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  font-weight: 500;
   text-decoration: none;
-  transition: color 200ms;
+  border-radius: 100px;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: background 200ms, transform 200ms, box-shadow 200ms;
 }
-.page-wa:hover { color: var(--accent); }
-.page-wa svg { width: 12px; height: 12px; fill: var(--accent); flex-shrink: 0; }
+.page-wa:hover {
+  background: #128C7E;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+}
+.page-wa svg {
+  width: 13px; height: 13px;
+  fill: #fff;
+  flex-shrink: 0;
+}
 .page-wa__arrow {
-  width: 10px; height: 10px;
+  width: 11px; height: 11px;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.8;
+  stroke-width: 2;
   transition: transform 200ms;
 }
 .page-wa:hover .page-wa__arrow { transform: translateX(3px); }
 
-/* Encart TVA récupérable (page 5) */
+/* Encart TVA récupérable (page 5) — accent terracotta chaleureux */
 .tva-note {
-  margin-top: 0.85rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--accent);
-  background: rgba(176, 141, 87, 0.07);
+  margin-top: 1rem;
+  padding: 1rem 1.1rem 1rem 3.5rem;
+  border: 1.5px solid #B0463A;
+  background: rgba(196, 69, 54, 0.06);
   font-size: 9pt;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--muted);
+  position: relative;
+  border-radius: 2px;
 }
-.tva-note strong { color: var(--fg); font-weight: 500; }
+.tva-note::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.1rem;
+  width: 22px;
+  height: 22px;
+  background: #B0463A;
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 8v4M12 16h.01M9 22h6M11 2h2l1 6h-4l1-6z'/></svg>");
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.tva-note strong { color: #8B3A30; font-weight: 600; }
 .tva-note .tva-figure {
   font-family: var(--serif);
-  color: var(--accent);
+  color: #B0463A;
   font-size: 11pt;
   letter-spacing: 0.03em;
-  font-weight: 500;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Bouton flottant — téléchargement PDF (vrai download, pas le print dialog) */
@@ -453,8 +483,9 @@ body {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 12mm;
-  height: calc(297mm - 60mm);
+  align-items: stretch;
 }
+.specs-row { padding: 0.5rem 0 !important; }
 .specs-list dl { margin: 0; }
 .specs-row {
   display: grid;
@@ -621,10 +652,25 @@ body {
   margin-top: 1rem;
 }
 .season {
-  padding: 0.95rem 1rem;
+  padding: 0.95rem 1rem 0.95rem 1.3rem;
   border: 1px solid var(--border);
   background: rgba(176, 141, 87, 0.03);
+  position: relative;
 }
+.season::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.season--winter::before { background: linear-gradient(180deg, #8FB1D9, #4A6FA0); }
+.season--spring::before { background: linear-gradient(180deg, #A8C99A, #7BA876); }
+.season--summer::before { background: linear-gradient(180deg, #E4B871, #C8964F); }
+.season--autumn::before { background: linear-gradient(180deg, #D67659, #B0463A); }
+.season--winter .season__name { color: #4A6FA0; }
+.season--spring .season__name { color: #5A8456; }
+.season--summer .season__name { color: var(--accent); }
+.season--autumn .season__name { color: #B0463A; }
 .season__name {
   font-family: var(--serif);
   font-size: 14pt;
@@ -1206,31 +1252,30 @@ body {
       <dl>
         <div class="specs-row"><dt>Surface</dt><dd>270 m² total · 250 m² habitables · 3 niveaux</dd></div>
         <div class="specs-row"><dt>Distribution</dt><dd>6 chambres dont 1 suite parentale · 16 couchages</dd></div>
-        <div class="specs-row"><dt>Salles d'eau</dt><dd>5 salles de bains (WC privatifs) + 1 WC indépendant</dd></div>
-        <div class="specs-row"><dt>Bien-être</dt><dd>Spa · Sauna infrarouge · Jacuzzi extérieur couvert · Salle de sport</dd></div>
-        <div class="specs-row"><dt>Extérieurs</dt><dd>Terrasse panoramique plein sud · Jardin privatif · Garage</dd></div>
+        <div class="specs-row"><dt>Salles d'eau</dt><dd>5 salles de bains + 1 WC indépendant</dd></div>
+        <div class="specs-row"><dt>Bien-être</dt><dd>Spa · Sauna infrarouge · Jacuzzi extérieur · Salle de sport</dd></div>
+        <div class="specs-row"><dt>Extérieurs</dt><dd>Terrasse panoramique plein sud · Jardin · Garage</dd></div>
         <div class="specs-row"><dt>Vue</dt><dd>180° sur les Pyrénées catalanes</dd></div>
-        <div class="specs-row"><dt>Altitude</dt><dd>1 650 m — Plus haute commune habitée à l'année en France</dd></div>
-        <div class="specs-row"><dt>Chauffage</dt><dd>Pompe à chaleur dernière génération · Poêle à bois suspendu</dd></div>
-        <div class="specs-row"><dt>Matériaux</dt><dd>Vieux bois · Pierre sèche locale · Granit · Finitions sur mesure</dd></div>
-        <div class="specs-row"><dt>Performance</dt><dd>Norme RT 2020 · Isolation haute densité</dd></div>
-        <div class="specs-row"><dt>Garanties</dt><dd>Décennales · Construction neuve, jamais habitée</dd></div>
-        <div class="specs-row"><dt>Livraison</dt><dd>2025</dd></div>
+        <div class="specs-row"><dt>Altitude</dt><dd>1 650 m</dd></div>
+        <div class="specs-row"><dt>Chauffage</dt><dd>Pompe à chaleur · Poêle à bois suspendu</dd></div>
+        <div class="specs-row"><dt>Matériaux</dt><dd>Vieux bois · Pierre sèche · Granit</dd></div>
+        <div class="specs-row"><dt>Performance</dt><dd>RT 2020 · DPE A · GES A</dd></div>
+        <div class="specs-row"><dt>Livraison</dt><dd>2025 — Construction neuve</dd></div>
         <div class="specs-row specs-row--accent"><dt>Prix affiché</dt><dd>1 600 000 € TTC</dd></div>
-        <div class="specs-row specs-row--accent"><dt>Prix net après récupération de la TVA</dt><dd>1 350 000 €</dd></div>
       </dl>
-      <div class="tva-note">
-        <strong>TVA récupérable.</strong> Dans le cadre d'une exploitation
-        en résidence de tourisme classée ou en location meublée avec
-        services para-hôteliers, l'acquéreur peut récupérer la TVA
-        incluse dans le prix d'achat. L'investissement effectif passe
-        ainsi de <span class="tva-figure">1 600 000 €</span> à
-        <span class="tva-figure">1 350 000 € net</span> —
-        environ <strong>250 000 € de TVA récupérables</strong>.
-        Conditions précises sur demande.
-      </div>
     </div>
     <img class="side-img" src="https://lecambredaze.vercel.app/assets/images/bedroom-suite.jpg" alt="Suite parentale" />
+  </div>
+
+  <div class="tva-note">
+    <strong>TVA récupérable.</strong> Dans le cadre d'une exploitation
+    en résidence de tourisme classée ou en location meublée avec services
+    para-hôteliers, l'acquéreur peut récupérer la TVA incluse dans le
+    prix. L'investissement effectif passe de
+    <span class="tva-figure">1 600 000 € TTC</span> à
+    <span class="tva-figure">1 350 000 € net</span> —
+    environ <strong>250 000 € de TVA récupérables</strong>.
+    Conditions précises sur demande.
   </div>
 
   <a class="page-wa" href="https://wa.me/message/SJWYIU76NKGZM1" target="_blank" rel="noopener noreferrer">
@@ -1512,7 +1557,7 @@ body {
        style="width:100%; height:55mm; object-fit:cover; margin: 1rem 0 0.5rem;" />
 
   <div class="seasons">
-    <div class="season">
+    <div class="season season--winter">
       <div class="season__name"><small>Décembre · Mars</small>Hiver</div>
       <ul>
         <li>Ski alpin · 43 km de pistes</li>
@@ -1522,7 +1567,7 @@ body {
         <li>Cuisine de montagne, vins du Roussillon</li>
       </ul>
     </div>
-    <div class="season">
+    <div class="season season--spring">
       <div class="season__name"><small>Avril · Juin</small>Printemps</div>
       <ul>
         <li>Randonnée glaciaire au Carlit</li>
@@ -1532,7 +1577,7 @@ body {
         <li>Festival Pablo Casals à Prades</li>
       </ul>
     </div>
-    <div class="season">
+    <div class="season season--summer">
       <div class="season__name"><small>Juillet · Septembre</small>Été</div>
       <ul>
         <li>Trail d'altitude au-dessus des nuages</li>
@@ -1542,7 +1587,7 @@ body {
         <li>Festivals catalans, marchés artisanaux</li>
       </ul>
     </div>
-    <div class="season">
+    <div class="season season--autumn">
       <div class="season__name"><small>Octobre · Novembre</small>Automne</div>
       <ul>
         <li>Cueillette de champignons</li>
